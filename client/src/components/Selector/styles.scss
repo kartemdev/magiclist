@@ -1,0 +1,32 @@
+.magic-selector {
+  &__control {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+    border: 2px solid var(--disabled);
+    border-radius: 4px;
+    background-color: var(--gray);
+  }
+
+  &__indicators {
+    display: flex;
+    align-items: center;
+    
+    &-separator {
+      height: 70%;
+      border: .5px solid var(--gray--dark);
+    }
+
+    &-toggle {
+      padding: 0px 5px 0px 3px;
+      width: 20px;
+      height: 100%;
+      
+      path {
+        fill: var(--primary);
+      }
+    }
+  }
+}
