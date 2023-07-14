@@ -40,10 +40,20 @@ module.exports = {
           'sass-loader',
         ]
       },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: [
+          '@svgr/webpack'
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: ['*', '.tsx', '.ts', '.jsx', '.js', '.scss'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', '.svg'],
+    alias: {
+      static: path.resolve(__dirname, './static'),
+    }
   },
   plugins:[
     new CleanWebpackPlugin(),

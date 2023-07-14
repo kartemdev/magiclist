@@ -12,10 +12,10 @@
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./",
   },
-  "include": ["src"]
+  "include": ["src", "declaration.d.ts"]
 }
