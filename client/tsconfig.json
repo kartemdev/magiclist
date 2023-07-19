@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "umd",
-    "lib": [
-      "ESNext",
-      "dom"
-    ],
-    "jsx": "react",
-    "noEmit": true,    
-    "sourceMap": true,
-    "strict": true,
+    "outDir": "./build",
+    "target": "ES2022",
+    "module": "ES2022",
+    "jsx": "react", 
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "allowJs": true,
     "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": "./",
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src", "declaration.d.ts"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src", "declaration.d.ts", "webpack"],
+  "exclude": ["node_modules", "build"]
 }

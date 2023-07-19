@@ -1,15 +1,30 @@
 import { Configuration } from "webpack";
 
-const babelLoader = (): Configuration => ({
+const babelLoader = (isProd: boolean): Configuration => ({
   module: {
     rules: [
       {
-        test: /\.(js|ts)x?$/,
+        test: /\.(js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.(ts)x?$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: isProd,
+            }
+          }
+        ]
+      }
     ]
   },
 });

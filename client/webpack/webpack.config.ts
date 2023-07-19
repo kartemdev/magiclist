@@ -18,7 +18,7 @@ const common = (isProd: boolean) =>
       },
     },
     resolveModule(),
-    babelLoader(),
+    babelLoader(isProd),
     styleLoader(isProd),
     imageLoader(),
   ]);
