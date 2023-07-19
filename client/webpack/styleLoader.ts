@@ -1,7 +1,7 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { Configuration } from "webpack";
 
-const styleLoader = (): Configuration => ({
+const styleLoader = (isProd: boolean): Configuration => ({
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[fullhash].css',
@@ -14,9 +14,7 @@ const styleLoader = (): Configuration => ({
         test: /\.(s(a|c)ss)$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'sass-loader',
         ]

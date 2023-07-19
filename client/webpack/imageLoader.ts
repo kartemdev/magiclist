@@ -12,9 +12,6 @@ const imageLoader = (): Configuration => ({
       },
     ]
   },
-  optimization: {
-    runtimeChunk: 'single'
-  },
 });
 
 export default imageLoader;
