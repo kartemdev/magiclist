@@ -4,9 +4,8 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { Configuration } from 'webpack';
 
-const buildConfig = (env: Env): Configuration => {
-  const isProd = env.production;
-  const mode = env.production ? "production" : "development";
+const buildConfig = (isProd: boolean): Configuration => {
+  const mode = isProd ? "production" : "development";
 
   return {
     mode,
@@ -32,6 +31,9 @@ const buildConfig = (env: Env): Configuration => {
       hints: false,
       maxEntrypointSize: 512000,
       maxAssetSize: 512000,
+    },
+    optimization: {
+      runtimeChunk: 'single'
     },
   }
 };

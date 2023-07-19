@@ -10,7 +10,7 @@ import { Configuration } from 'webpack';
 import { Env } from './types';
 import devServer from './devServer';
 
-const common = () =>
+const common = (isProd: boolean) =>
   merge([
     {
       entry: {
@@ -19,16 +19,16 @@ const common = () =>
     },
     resolveModule(),
     babelLoader(),
-    styleLoader(),
+    styleLoader(isProd),
     imageLoader(),
   ]);
 
 const config = (env: Env): Configuration | null => {
   if (env.production) {
-   return merge([common(), buildConfig(env)]);
+   return merge([common(env.production), buildConfig(env.production)]);
   }
   if (env.development) {
-   return merge([common(), devServer(), buildConfig(env)]);
+   return merge([common(!env.development), devServer(), buildConfig(!env.development)]);
   }
 
   return null;
