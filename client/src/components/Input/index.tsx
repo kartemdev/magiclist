@@ -21,9 +21,10 @@ const Input: FC<IProps> = (props) => {
     placeholder,
   } = props;
 
-  const uncontrolled = value === undefined;
+  const [selfValue, setSelfValue] = useState<string>('');
   
-  const [stateValue, setStateValue] = useState<string>('');
+  const uncontrolled = value === undefined;
+  const currentValue = uncontrolled ? selfValue : value;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -33,7 +34,7 @@ const Input: FC<IProps> = (props) => {
     }
 
     if (uncontrolled) {
-      setStateValue(value);
+      setSelfValue(value);
     }
   }
 
@@ -47,14 +48,12 @@ const Input: FC<IProps> = (props) => {
         type={type}
         className='magic-input'
         placeholder={placeholder}
-        value={uncontrolled ? stateValue : value}
+        value={currentValue}
         onChange={handleInputChange}
       />
     </div>
   )
 }
-
-export default Input;
 
 Input.defaultProps = {
   name: '',
@@ -62,3 +61,6 @@ Input.defaultProps = {
   label: 'Label',
   placeholder: '',
 };
+
+export default Input;
+
