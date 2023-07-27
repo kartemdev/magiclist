@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { useState } from 'react';
 
 import './styles.scss';
 
@@ -6,12 +6,12 @@ interface IProps {
   name?: string;
   type?: string;
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   placeholder?: string;
 }
 
-const Input: FC<IProps> = (props) => {
+const Input: React.FC<IProps> = (props) => {
   const {
     name,
     type,
@@ -26,15 +26,13 @@ const Input: FC<IProps> = (props) => {
   const uncontrolled = value === undefined;
   const currentValue = uncontrolled ? selfValue : value;
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
-      onChange(value);
+      onChange(event);
     }
 
     if (uncontrolled) {
-      setSelfValue(value);
+      setSelfValue(event.target.value);
     }
   }
 

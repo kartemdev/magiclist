@@ -1,7 +1,8 @@
 .magic-input {
-  width: 300px;
-  height: 30px;
-  padding: 0px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding: 2px 8px;
   font-size: 18px;
   border: 2px solid var(--disabled);
   border-radius: 4px;
@@ -18,12 +19,13 @@
   }
 
   &__block {
-    width: max-content;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
   }
 
   &__label {
     font-size: 18px;
-    width: 100%;
-    max-width: max-content
   }
 };

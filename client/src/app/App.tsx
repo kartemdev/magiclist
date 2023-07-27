@@ -1,6 +1,5 @@
-import React from 'react';
-import { Selector } from '../components';
-import Input from '../components/Input';
+import React, { useState } from 'react';
+import { Selector, Input, Button } from '../components';
 
 const options = [
   {
@@ -18,11 +17,37 @@ const options = [
 ]
 
 const App = () => {
+  const [state, setState] = useState({
+    inputValue: '',
+    selectedValue: null,
+  });
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState((prevState) => ({ ...prevState, inputValue: event.target.value }))
+  };
+
+  const handleSelectChange = (option: { label: string, value: unknown }) => {
+    setState((prevState) => ({ ...prevState, selectedValue: option }))
+  }
+
+  const handleClick = () => {
+    window.alert(`${state.inputValue}\n${state.selectedValue?.label}`)
+  }
+
+
   return (
-    <div style={{ margin: '30px 0px 0px 30px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <Input />
+    <div style={{ margin: '30px 0px 0px 30px', display: 'flex', flexDirection: 'column', gap: '10px', padding: '30px' }}>
+      <Input
+        value={state.inputValue}
+        onChange={handleInputChange}
+      />
       <Selector
         options={options}
+        selected={state.selectedValue}
+        onChange={handleSelectChange}
+      />
+      <Button 
+        onClick={handleClick}
       />
     </div>
 
