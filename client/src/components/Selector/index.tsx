@@ -1,25 +1,25 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 import ArrowHead from'static/icons/arrowhead.svg';
 import { useOutsideClick } from '../../hooks';
 
 import './styles.scss';
 
-interface Option {
+interface IOption {
   label: string,
-  value: any,
+  value: unknown,
 };
 
-interface Props {
-  selected?: Option,
-  options: Option[],
-  onChange?: (option: Option) => void;
+interface IProps {
+  selected?: IOption | null,
+  options: IOption[],
+  onChange?: (option: IOption) => void;
   label?: string;
   placeholder?: string;
   placeholderForEmpty?: string;
 }
 
-const Selector: FC<Props> = (props) => {
+const Selector: React.FC<IProps> = (props) => {
   const {
     selected,
     options,
@@ -29,7 +29,7 @@ const Selector: FC<Props> = (props) => {
     placeholderForEmpty,
   } = props;
 
-  const [selfSelected, setSelfSelected] = useState<Option | null>(null);
+  const [selfSelected, setSelfSelected] = useState<IOption | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -38,7 +38,7 @@ const Selector: FC<Props> = (props) => {
 
   useOutsideClick(ref, () => setIsOpen(false));
 
-  const handleChange = (option: Option) => {
+  const handleChange = (option: IOption) => {
     if (uncontrolled) {
       setSelfSelected(option);
     }
