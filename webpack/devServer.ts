@@ -10,6 +10,14 @@ const devServer = (): Configuration => ({
     port: 8000,
     host: '127.0.0.1',
     hot: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+        runtimeErrors: false,
+      },
+    },
+    historyApiFallback: true,
   },
 });
 

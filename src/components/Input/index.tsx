@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import './styles.scss';
+import classNames from 'classnames';
 
 interface IProps {
   name?: string;
@@ -37,7 +38,9 @@ const Input: React.FC<IProps> = (props) => {
   }
 
   return (
-    <div className='magic-input__block'>
+    <div className={classNames('magic-input__block', {
+      ['magic-input__filled']: !!currentValue
+    })}>
       {label && (
         <div className='magic-input__label'>{label}</div>
       )}
@@ -48,7 +51,7 @@ const Input: React.FC<IProps> = (props) => {
         placeholder={placeholder}
         value={currentValue}
         onChange={handleInputChange}
-      />
+        />
     </div>
   )
 }
