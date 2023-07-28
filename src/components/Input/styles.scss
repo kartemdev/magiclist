@@ -1,9 +1,9 @@
 .magic-input {
   box-sizing: border-box;
   width: 100%;
-  height: 38px;
+  height: 35px;
   padding: 2px 8px;
-  font-size: 18px;
+  font-size: 16px;
   border: 2px solid var(--disabled);
   border-radius: 4px;
   background-color: var(--gray);
@@ -18,14 +18,35 @@
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
   }
 
+  
   &__block {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 300px;
+
+    &:has(.magic-input:focus) {
+      .magic-input__label {
+        top: 0px;
+        left: 0px;
+        color: var(--primary--light);
+      }
+    }
+  }
+  
+  &__label {
+    pointer-events: none;
+    position: relative;
+    color: var(--disabled);
+    top: 26px;
+    left: 10px;
+    font-size: 16px;
   }
 
-  &__label {
-    font-size: 18px;
+  &__filled  &__label {
+    top: 0px;
+    left: 0px;
+    color: var(--primary--light);
   }
+  
 };

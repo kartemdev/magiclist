@@ -7,7 +7,7 @@ import './styles.scss';
 
 interface IOption {
   label: string,
-  value: unknown,
+  value: any,
 };
 
 interface IProps {
@@ -15,7 +15,6 @@ interface IProps {
   options: IOption[],
   onChange?: (option: IOption) => void;
   label?: string;
-  placeholder?: string;
   placeholderForEmpty?: string;
 }
 
@@ -25,12 +24,12 @@ const Selector: React.FC<IProps> = (props) => {
     options,
     onChange,
     label,
-    placeholder,
     placeholderForEmpty,
   } = props;
 
-  const [selfSelected, setSelfSelected] = useState<IOption | null>(null);
+  const [selfSelected, setSelfSelected] = useState<IOption>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [hoverOptionLabel, setHoverOptionLabel] = useState<string>(null);
   const ref = useRef(null);
 
   const uncontrolled = selected === undefined;
@@ -54,6 +53,7 @@ const Selector: React.FC<IProps> = (props) => {
     <div
       className={classNames('magic-selector__block', {
         ['magic-selector__collapsed']: !isOpen,
+        ['magic-selector__selected']: !!currentSelected?.value,
       })}
       ref={ref}
     >
@@ -65,7 +65,7 @@ const Selector: React.FC<IProps> = (props) => {
         >
           <div
             className='magic-selector__value'
-            data-placeholder={placeholder}
+            data-hover-item={hoverOptionLabel}
           >
             {currentSelected?.label}
           </div>
@@ -80,9 +80,11 @@ const Selector: React.FC<IProps> = (props) => {
               {!!options?.length ? (options.map((option) => (
                 <div 
                   className={classNames('magic-selector__list-item', {
-                    ['magic-selector__list-active']: currentSelected?.value === option.value
+                    ['magic-selector__list-active']: currentSelected?.value === option.value,
                   })}
                   onClick={() => handleChange(option)}
+                  onMouseEnter={() => setHoverOptionLabel(option.label)}
+                  onMouseLeave={() => setHoverOptionLabel(null)}
                 >
                   {option.label}
                 </div>
@@ -99,7 +101,6 @@ const Selector: React.FC<IProps> = (props) => {
 
 Selector.defaultProps = {
   label: 'Label',
-  placeholder: 'Choose',
   placeholderForEmpty: 'Empty list',
 };
 

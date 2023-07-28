@@ -1,5 +1,4 @@
 import path from "path";
-import { Env } from "./types";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { Configuration } from 'webpack';
@@ -11,7 +10,8 @@ const buildConfig = (isProd: boolean): Configuration => {
     mode,
     output: {
       path: path.resolve(__dirname, '../build'),
-      filename: isProd ? '[name].[fullhash].bundle.js' : '[name].bundle.js'
+      filename: isProd ? '[name].[fullhash].bundle.js' : '[name].bundle.js',
+      publicPath: '/'
     },
     devServer: {
       static: {
