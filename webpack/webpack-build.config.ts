@@ -24,7 +24,7 @@ const buildConfig = (isProd: boolean): Configuration => {
     plugins:[
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../public/index.html')
+        template: path.resolve(__dirname, '../public/index.html'),
       }),
     ],
     performance: {
