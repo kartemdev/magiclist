@@ -1,4 +1,5 @@
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import path from "path";
 import { Configuration } from "webpack";
 
 const styleLoader = (isProd: boolean): Configuration => ({
@@ -21,6 +22,7 @@ const styleLoader = (isProd: boolean): Configuration => ({
       },
     ]
   },
+  
 });
 
 export default styleLoader;

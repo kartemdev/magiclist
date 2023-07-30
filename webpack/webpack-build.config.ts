@@ -11,7 +11,8 @@ const buildConfig = (isProd: boolean): Configuration => {
     output: {
       path: path.resolve(__dirname, '../build'),
       filename: isProd ? '[name].[fullhash].bundle.js' : '[name].bundle.js',
-      publicPath: '/'
+      publicPath: '/',
+      clean: true,
     },
     devServer: {
       static: {
