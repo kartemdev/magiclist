@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import  ReactDOM  from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
+import classNames from 'classnames';
 import CloseCross from 'static/icons/close-cross.svg'
+import { usePortal } from '../../hooks';
 
 import './styles.scss';
-import classNames from 'classnames';
 
 interface Props {
   isOpen: boolean;
@@ -24,9 +24,7 @@ const Modal: React.FC<Props> = (props) => {
   } = props;
 
   const ref = useRef(null)
-
-  const Portal = ({ children }: { children: React.ReactNode }) =>
-    ReactDOM.createPortal(children, document.body); 
+  const Portal = usePortal(document.body);
 
   return (
     <CSSTransition
@@ -42,11 +40,11 @@ const Modal: React.FC<Props> = (props) => {
             className={classNames('magic-modal', {
               [className]: className
             })}
-            onClick={onClose}   
+            onMouseDown={onClose}   
           >
             <div 
               className='magic-modal__dialog'
-              onClick={(event) => event.stopPropagation()}
+              onMouseDown={(event) => event.stopPropagation()}
             >
               <div className='magic-modal__header'>
                 <div className='magic-modal__header-title'>
