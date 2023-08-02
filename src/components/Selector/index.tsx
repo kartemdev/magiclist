@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
-import ArrowHead from'static/icons/arrowhead.svg';
-import { useOutsideClick } from '../../hooks';
+import { ArrowHeadIcon } from 'assets';
+import { useOutsideClick } from 'hooks';
 
 import './styles.scss';
 
@@ -71,7 +71,7 @@ const Selector: React.FC<IProps> = (props) => {
           </div>
           <div className='magic-selector__indicators'>
             <span className='magic-selector__indicators-separator' />
-            <ArrowHead className='magic-selector__indicators-toggle' />
+            <ArrowHeadIcon className='magic-selector__indicators-toggle' />
           </div>
         </div>
         {isOpen && (

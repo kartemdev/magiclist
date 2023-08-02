@@ -31,20 +31,19 @@
   &__collapsed &__label {
     pointer-events: none;
     color: var(--disabled);
-    top: 26px;
+    top: 27px;
     left: 10px;
   }
   
   &__selected &__label{
     top: 0px;
-    color: var(--primary--light);
     left: 0px;
+    color: var(--primary--light);
   }
 
   &__label {
     position: relative;
     color: var(--primary--light);
-    font-size: 16px;
   }
   
   &__control {
@@ -53,8 +52,7 @@
     justify-content: space-between;
     width: 100%;
     height: 35px;
-    padding: 2px 0px 2px 8px;
-    font-size: 16px;
+    padding: 2px 0px 2px 10px;
     border: 2px solid var(--disabled);
     border-radius: 4px;
     background-color: var(--primary--white);
@@ -62,7 +60,7 @@
   }
 
   &__value {
-    line-height: 28px;
+    line-height: 27px;
     
     &:empty::before {
       content: attr(data-hover-item);

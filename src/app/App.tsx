@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Selector, Input, Button, NavBar } from '../components';
+import { Selector, Input, Button, NavBar, Modal } from 'components';
 import { Route, Routes } from 'react-router-dom';
-import Modal from '../components/Modal';
 
 import './styles.scss';
 
