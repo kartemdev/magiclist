@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
-import CloseCross from 'static/icons/close-cross.svg'
-import { usePortal } from '../../hooks';
+import { CancelIcon } from 'assets'
+import { usePortal } from 'hooks';
 
 import './styles.scss';
 
@@ -50,7 +50,7 @@ const Modal: React.FC<Props> = (props) => {
                 <div className='magic-modal__header-title'>
                   {title}
                 </div>
-                <CloseCross
+                <CancelIcon
                   className='magic-modal__header-close'
                   onClick={onClose}
                 />

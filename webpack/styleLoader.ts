@@ -20,6 +20,10 @@ const styleLoader = (isProd: boolean): Configuration => ({
           'sass-loader',
         ]
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ]
   },
   

@@ -1,5 +1,10 @@
-declare module 'static';
-declare module 'static/*';
+declare module 'app';
+
+declare module 'hooks';
+
+declare module 'assets';
+
+declare module 'components';
 
 declare module '*.svg' {
   import React from "react";
