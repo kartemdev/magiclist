@@ -35,31 +35,34 @@ const Modal: React.FC<Props> = (props) => {
       classNames='magic-modal'
     >
       <Portal>
+        <div
+          ref={ref}
+          className={classNames('magic-modal', {
+            [className]: className
+          })}
+        >
           <div
-            ref={ref}
-            className={classNames('magic-modal', {
-              [className]: className
-            })}
+            className='magic-modal magic-modal__background'
             onMouseDown={onClose}   
           >
-            <div 
-              className='magic-modal__dialog'
-              onMouseDown={(event) => event.stopPropagation()}
-            >
-              <div className='magic-modal__header'>
-                <div className='magic-modal__header-title'>
-                  {title}
-                </div>
-                <CancelIcon
-                  className='magic-modal__header-close'
-                  onClick={onClose}
-                />
+          </div>
+          <div 
+            className='magic-modal__dialog'
+          >
+            <div className='magic-modal__header'>
+              <div className='magic-modal__header-title'>
+                {title}
               </div>
-              <div className='magic-modal__content'>
-                {children}
-              </div>
+              <CancelIcon
+                className='magic-modal__header-close'
+                onClick={onClose}
+              />
+            </div>
+            <div className='magic-modal__content'>
+              {children}
             </div>
           </div>
+        </div>
       </Portal>
     </CSSTransition>
   )

@@ -55,10 +55,9 @@ const Selector: React.FC<IProps> = (props) => {
         ['magic-selector__collapsed']: !isOpen,
         ['magic-selector__selected']: !!currentSelected?.value,
       })}
-      ref={ref}
     >
       <div className='magic-selector__label'>{label}</div>
-      <div className='magic-selector'>
+      <div className='magic-selector' ref={ref}>
         <div
           className='magic-selector__control'
           onClick={() => setIsOpen((prevState) => !prevState)}
