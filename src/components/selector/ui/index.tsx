@@ -2,23 +2,18 @@ import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 import { ArrowHeadIcon } from 'assets';
 import { useOutsideClick } from 'hooks';
+import { IOption } from '../domain';
 
 import './styles.scss';
-
-interface IOption {
-  label: string,
-  value: any,
-};
-
-interface IProps {
-  selected?: IOption | null,
-  options: IOption[],
-  onChange?: (option: IOption) => void;
+interface IProps<T> {
+  selected?: IOption<T> | null,
+  options: IOption<T>[],
+  onChange?: (option: IOption<T>) => void;
   label?: string;
   placeholderForEmpty?: string;
 }
 
-const Selector: React.FC<IProps> = (props) => {
+const Selector = <T, >(props: IProps<T>) => {
   const {
     selected,
     options,
@@ -27,17 +22,17 @@ const Selector: React.FC<IProps> = (props) => {
     placeholderForEmpty,
   } = props;
 
-  const [selfSelected, setSelfSelected] = useState<IOption>(null);
+  const [selfSelected, setSelfSelected] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [hoverOptionLabel, setHoverOptionLabel] = useState<string>(null);
   const ref = useRef(null);
 
   const uncontrolled = selected === undefined;
-  const currentSelected = uncontrolled ? selfSelected : selected;
+  const currentSelected: IOption<T> = uncontrolled ? selfSelected : selected;
 
   useOutsideClick(ref, () => setIsOpen(false));
 
-  const handleChange = (option: IOption) => {
+  const handleChange = (option: IOption<T>) => {
     if (uncontrolled) {
       setSelfSelected(option);
     }
@@ -99,7 +94,7 @@ const Selector: React.FC<IProps> = (props) => {
 };
 
 Selector.defaultProps = {
-  label: 'Label',
+  label: '',
   placeholderForEmpty: 'Empty list',
 };
 

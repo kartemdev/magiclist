@@ -3,6 +3,7 @@
     "outDir": "./build",
     "target": "ES2022",
     "module": "ES2022",
+    "baseUrl": "./src",
     "jsx": "react", 
     "noImplicitAny": true,
     "allowJs": true,
@@ -18,5 +19,5 @@
     }
   },
   "include": ["src", "declaration.d.ts", "webpack"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "build"],
 }

@@ -7,10 +7,10 @@ interface IProps {
   label?: string;
   checked?: boolean;
   value?: string | number;
-  onChange?: (checked: boolean) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CheckBox: React.FC<IProps> = (props) => {
+const Checkbox: React.FC<IProps> = (props) => {
   const {
     name,
     label,
@@ -32,32 +32,33 @@ const CheckBox: React.FC<IProps> = (props) => {
     }
 
     if (onChange) {
-      onChange(checked);
+      onChange(event);
     }
   };
 
   return (
-    <div className='magic-check-box__block'>
-      <label className='magic-check-box__label'>
+    <div className='magic-checkbox__block'>
+      <label className='magic-checkbox__label'>
         <input
           name={name}
           type='checkbox'
           checked={currentChecked}
           value={value}
           onChange={handleCheckedChange}
+          onClick={(event) => event.stopPropagation()}
         />
-        <span className='magic-check-box'></span>
+        <span className='magic-checkbox'></span>
         {label}
       </label>
     </div>
   )
 };
 
-CheckBox.defaultProps = {
+Checkbox.defaultProps = {
   name: '',
-  label: 'Label',
+  label: '',
   value: '',
   onChange: null,
 };
 
-export default CheckBox;
+export default Checkbox;
