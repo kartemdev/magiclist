@@ -1,2 +1,2 @@
-export { default as useOutsideClick } from './useOutsideClick';
-export { default as usePortal } from './usePortal';
+export { default as useOutsideClick } from './use-outside-click';
+export { default as usePortal } from './use-portal';

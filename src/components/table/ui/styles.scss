@@ -1,0 +1,68 @@
+.magic-table {
+  border-collapse: collapse;
+  border-style: hidden;
+  
+
+  &__block {
+    border: 2px solid var(--disabled);
+    border-radius: 4px;
+  }
+
+  &__header &__cell {
+    &-content {
+      padding: 10px;
+      user-select: none;
+      cursor: pointer;
+    }
+  }
+
+  &__body &__row {
+    &:hover {
+      background-color: var(--primary--lighter);
+    }
+
+    &-active {
+      background-color: var(--primary--light);
+
+      &:hover {
+        background-color: var(--primary--light);
+      }
+    }
+  }
+
+  &__cell {
+    border: 2px solid var(--disabled);
+    
+    &-content {
+      padding: 7px 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+    }
+  }
+
+  &__arrowhead {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    display: none;
+    top: 27px;
+    fill: var(--primary);
+    transform: rotate(0deg);
+
+    &-asc, &-desc {
+      display: block;
+    }
+
+    &-desc {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__checkbox {
+    padding: 7px 12px;
+  }
+}

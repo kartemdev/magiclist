@@ -28,12 +28,12 @@ const Input: React.FC<IProps> = (props) => {
   const currentValue = uncontrolled ? selfValue : value;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(event);
-    }
-
     if (uncontrolled) {
       setSelfValue(event.target.value);
+    }
+    
+    if (onChange) {
+      onChange(event);
     }
   };
 
@@ -59,7 +59,7 @@ const Input: React.FC<IProps> = (props) => {
 Input.defaultProps = {
   name: '',
   type: 'text',
-  label: 'Label',
+  label: '',
   placeholder: '',
 };
 

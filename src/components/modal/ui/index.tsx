@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
-import { CancelIcon } from 'assets'
 import { usePortal } from 'hooks';
+import { CrossCancelIcon } from 'assets';
 
 import './styles.scss';
 
@@ -53,7 +53,7 @@ const Modal: React.FC<Props> = (props) => {
               <div className='magic-modal__header-title'>
                 {title}
               </div>
-              <CancelIcon
+              <CrossCancelIcon
                 className='magic-modal__header-close'
                 onClick={onClose}
               />
@@ -69,7 +69,7 @@ const Modal: React.FC<Props> = (props) => {
 };
 
 Modal.defaultProps = {
-  title: 'Header',
+  title: '',
   className: '',
 };
 
