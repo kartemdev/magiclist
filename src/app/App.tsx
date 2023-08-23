@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Selector, Input, Button, NavBar, Modal } from 'components';
+import { CheckBox } from '../components';
 import { Route, Routes } from 'react-router-dom';
 
 import './styles.scss';
@@ -42,6 +43,10 @@ const App = () => {
     {
       to: '/modal',
       content: 'Modal'
+    },
+    {
+      to: '/checkbox',
+      content: 'CheckBox'
     }
   ];
 
@@ -66,6 +71,7 @@ const App = () => {
             <Route path='/modal' element={
               <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
             }/>
+            <Route path='/checkbox' element={<CheckBox />}/>
         </Routes>
       </div>
 
@@ -94,4 +100,3 @@ const App = () => {
 };
 
 export default App;
-
