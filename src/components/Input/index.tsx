@@ -35,7 +35,7 @@ const Input: React.FC<IProps> = (props) => {
     if (uncontrolled) {
       setSelfValue(event.target.value);
     }
-  }
+  };
 
   return (
     <div className={classNames('magic-input__block', {
@@ -54,7 +54,7 @@ const Input: React.FC<IProps> = (props) => {
         />
     </div>
   )
-}
+};
 
 Input.defaultProps = {
   name: '',

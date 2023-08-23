@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-interface NavigationItem {
+interface INavigationItem {
   to: string;
-  content: React.ReactNode;
+  content: React.ReactNode | React.ReactPortal;
 }
 
 interface IProps {
-  groups: NavigationItem[],
+  groups: INavigationItem[],
 }
 
 const NavBar: React.FC<IProps> = (props) => {
@@ -27,6 +27,6 @@ const NavBar: React.FC<IProps> = (props) => {
       </div>
     </div>
   )
-}
+};
 
 export default NavBar;

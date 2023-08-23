@@ -96,7 +96,7 @@ const Selector: React.FC<IProps> = (props) => {
       </div>
     </div>
   )
-}
+};
 
 Selector.defaultProps = {
   label: 'Label',

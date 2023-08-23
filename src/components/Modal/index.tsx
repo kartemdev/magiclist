@@ -23,7 +23,7 @@ const Modal: React.FC<Props> = (props) => {
     onClose,
   } = props;
 
-  const ref = useRef(null)
+  const ref = useRef(null);
   const Portal = usePortal(document.body);
 
   return (
@@ -68,9 +68,9 @@ const Modal: React.FC<Props> = (props) => {
   )
 };
 
-export default Modal;
-
 Modal.defaultProps = {
   title: 'Header',
   className: '',
-}
+};
+
+export default Modal;
