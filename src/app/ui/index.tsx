@@ -1,149 +1,55 @@
-import React, { useState } from 'react';
-import { Selector, Input, Button, Navbar, Modal, Table, Checkbox } from 'components';
+import React from 'react';
+import { Navbar, Table } from 'components';
 import { Route, Routes } from 'react-router-dom';
-import cloneDeep from 'lodash.clonedeep';
+import { UserListPage } from 'pages/user-list-page';
+import { UserDetailPage } from 'pages/user-detail-page';
 import getColumns from '../columns';
 
 import './styles.scss';
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [state, setState] = useState({
-    input: '',
-    selector: null,
-  })
-
-  const options = [
+  const tableData = [
     {
-      label: 'Artyom',
-      value: 22,
+      email: 'arisha@milaya.ru',
+      address: 'raduga street',
+      age: 0.7
     },
     {
-      label: 'Julia',
-      value: 21,
+      email: 'julia@love.ru',
+      address: 'love street',
+      age: 21
     },
     {
-      label: 'Arisha',
-      value: 0.7,
-    },
+      email: 'artyom@strong.ru',
+      address: 'fast street',
+      age: 22
+    }
   ];
-  
+
   const groups = [
     {
-      to: 'input',
-      content: 'Input'
-    },
-    {
-      to: 'selector',
-      content: 'Selector'
-    },
-    {
-      to: 'button',
-      content: 'Button'
-    },
-    {
-      to: '/modal',
-      content: 'Modal'
-    },
-    {
-      to: '/checkbox',
-      content: 'CheckBox'
+      to: '/users',
+      content: 'Пользователи'
     },
     {
       to: '/table',
-      content: 'Table'
-    },
+      content: 'Таблица'
+    }
   ];
-
-  interface TableData {
-    age: number,
-    email: string,
-    address: string
-  }
-
-  const [data, setData] = useState<TableData[]>([
-    {
-      age: 21,
-      email: 'artem@mail.ru',
-      address: 'Moscow'
-    },
-    {
-      age: 22,
-      email: 'julia@mail.ru',
-      address: 'Moscow'
-    },
-    {
-      age: 0.6,
-      email: 'arina@mail.ru',
-      address: 'Moscow'
-    },
-  ]);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState((prev) => ({ ...prev, input: event.target.value }))
-  }
-
-  const handleSelectChange = (option: {label: string, value:number} ) => {
-    setState((prev) => ({ ...prev, selector: option }))
-  }
-
-  const handleSort = (fieldName: keyof TableData, sortType: string) => {
-    const sortedData = cloneDeep(data).sort((a: TableData,b: TableData) => {
-      return a[fieldName] > b[fieldName] 
-        ? (sortType === 'asc' ? 1 : -1)
-        : a[fieldName] < b[fieldName] ? (sortType === 'asc' ? -1 : 1) : 0;
-    });
-
-    setData(sortedData);
-  }
 
   return (
     <>
-      <Navbar groups={groups} />
-
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
-        <Routes>
-            <Route path='/' element={<Input />} />
-            <Route path='/input' element={<Input />}/>
-            <Route path='/selector' element={<Selector options={options}/>}/>
-            <Route path='/button' element={<Button onClick={() => {}} />}/>
-            <Route path='/table' element={<Table
-              columns={getColumns()}
-              data={data}
-              isCheckBoxSelect
-              isMultipleSelect
-              onChangeRow={(data) => console.log(data)}
-              onClickRow={() => setIsOpen(true)}
-              onClickHeaderCell={({ fieldName, sortType }) => handleSort(fieldName, sortType)}
-              />}
-            />
-            <Route path='/modal' element={
-              <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-            }/>
-            <Route path='/checkbox' element={<Checkbox />}/>
-        </Routes>
-      </div>
-
-      <Modal
-        isOpen={isOpen}
-        className='app-modal'
-        onClose={() => setIsOpen(false)}
-      >
-        <div className='app-modal__body'>
-            <Input
-              value={state.input}
-              onChange={handleInputChange}
-            />
-            <Selector
-              options={options}
-              selected={state.selector}
-              onChange={handleSelectChange}
-            />
-        </div>
-        <div className="app-modal__footer">
-          <Button onClick={() => window.alert(`${state.input} ${state.selector?.label}`)}/>
-        </div>
-      </Modal>
+      <Navbar groups={groups}/>
+      <Routes>
+        <Route path='users'>
+          <Route index element={<UserListPage />} />
+          <Route path=':userId' element={<UserDetailPage />} />
+        </Route>
+        <Route path='/table' element={<Table
+          data={tableData}
+          columns={getColumns()}
+        />}/>
+      </Routes>
     </>
   )
 };

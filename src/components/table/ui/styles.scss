@@ -2,8 +2,8 @@
   border-collapse: collapse;
   border-style: hidden;
   
-
   &__block {
+    max-width: max-content;
     border: 2px solid var(--disabled);
     border-radius: 4px;
   }

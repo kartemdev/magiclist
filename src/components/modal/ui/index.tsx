@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
-import { usePortal } from 'hooks';
-import { CrossCancelIcon } from 'assets';
+import { usePortal } from 'shared/hooks';
+import { CrossCancelIcon } from 'shared/assets';
 
 import './styles.scss';
 

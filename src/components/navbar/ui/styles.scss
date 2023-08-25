@@ -44,6 +44,10 @@
     text-decoration: none;
     color: var(--primary--white);
 
+    &-location {
+      background-color: var(--primary)
+    }
+
     &:hover {
       background-color: var(--primary)
     }

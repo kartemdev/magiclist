@@ -6,10 +6,11 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import classNames from 'classnames';
-import cloneDeep from 'lodash.clonedeep';
 import { Checkbox } from 'components';
-import { ArrowHeadFullIcon } from 'assets';
-import { IRow, ISelectedRows, ISortData } from '../domain';
+import { SortOrder } from 'shared/enums';
+import { ArrowHeadFullIcon } from 'shared/assets';
+import { IRow, ISelectedRows, ISortData } from '../types';
+import { getSortOrderClassNames, getSelectedRows } from '../utils';
 
 import './styles.scss';
 
@@ -43,26 +44,16 @@ const Table = <T extends {}, >(props: IProps<T>) => {
     getCoreRowModel: getCoreRowModel(),
   });
 
-  const getSelectedRows = (row: IRow<T>) => {
-    let selected = (isMultipleSelect ? { ...selectedRows, [row.id]: row.data } : { [row.id]: row.data });
-
-    if (selectedRows[row.id]) {
-      selected = cloneDeep(selectedRows);
-      delete selected[row.id];
-    }
-
-    return selected;
-  };
-
   const handleChangeRows = (event: React.MouseEvent, row: IRow<T>) => {
     const rowIsCheckbox = (event.target as Element).className.includes('checkbox');
+    const currentSelectedRows = getSelectedRows(row, isMultipleSelect, selectedRows);
 
     if (!onClickRow) {
-      setSelectedRows(getSelectedRows(row));
+      setSelectedRows(currentSelectedRows);
     }
 
     if (onChangeRow && !onClickRow) {
-      onChangeRow(Object.values(getSelectedRows(row)));
+      onChangeRow(Object.values(currentSelectedRows));
     }
 
     if (onClickRow && !rowIsCheckbox) {
@@ -71,10 +62,12 @@ const Table = <T extends {}, >(props: IProps<T>) => {
   };
 
   const handleChangeCBRows = (row: IRow<T>) => {
-    setSelectedRows(getSelectedRows(row));
+    const currentSelectedRows = getSelectedRows(row, isMultipleSelect, selectedRows);
+
+    setSelectedRows(currentSelectedRows);
 
     if (onChangeRow) {
-      onChangeRow(Object.values(getSelectedRows(row)));
+      onChangeRow(Object.values(currentSelectedRows));
     }
   };
 
@@ -93,15 +86,17 @@ const Table = <T extends {}, >(props: IProps<T>) => {
   };
 
   const handleClickHeaderCell = (headerCellId: string) => {
-    const currentSortType: ISortData<T> = {
+    const currentSortData: ISortData<T> = {
       fieldName: headerCellId as keyof T,
-      sortType: !sortData?.sortType ? 'asc' : sortData.sortType === 'asc' ? 'desc' : 'asc',
+      sortType: 
+        !sortData?.sortType ? SortOrder.ASC
+          : sortData.sortType === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC,
     };
 
-    setSortData(currentSortType);
+    setSortData(currentSortData);
 
     if (onClickHeaderCell) {
-      onClickHeaderCell(currentSortType);
+      onClickHeaderCell(currentSortData);
     }
   };
 
@@ -134,8 +129,7 @@ const Table = <T extends {}, >(props: IProps<T>) => {
                           )}
                       <ArrowHeadFullIcon
                         className={classNames('magic-table__arrowhead', {
-                          ['magic-table__arrowhead-asc']: sortData?.sortType === 'asc' && sortData?.fieldName === header.id,
-                          ['magic-table__arrowhead-desc']: sortData?.sortType === 'desc' && sortData?.fieldName === header.id,
+                          ...getSortOrderClassNames(header.id, sortData),
                         })}
                       />
                     </div>

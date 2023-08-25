@@ -1,3 +1,3 @@
-import App from "./ui";
+export { default as App } from './ui';
 
-export default App;
+export { store } from './store';
