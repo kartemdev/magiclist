@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
-import { ArrowHeadIcon } from 'assets';
-import { useOutsideClick } from 'hooks';
-import { IOption } from '../domain';
+import { ArrowHeadIcon } from 'shared/assets';
+import { useOutsideClick } from 'shared/hooks';
+import { IOption } from '../types';
 
 import './styles.scss';
 interface IProps<T> {

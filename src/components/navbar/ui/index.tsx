@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { INavigationItem } from '../domain';
+import { Link, useLocation } from 'react-router-dom';
+import { INavigationItem } from '../types';
 
 import './styles.scss';
+import classNames from 'classnames';
 interface IProps {
   groups: INavigationItem[],
 }
 
 const Navbar: React.FC<IProps> = (props) => {
-  const {  groups } = props;
+  const { groups } = props;
+
+  const location = useLocation();
 
   return (
     <div className='magic-navbar__block'>
@@ -25,7 +28,9 @@ const Navbar: React.FC<IProps> = (props) => {
           <Link
             key={item.to}
             to={item.to}
-            className='magic-navbar__item'
+            className={classNames('magic-navbar__item', {
+              ['magic-navbar__item-location']: item.to === location.pathname,
+            })}
            >
             {item.content}
           </Link>
