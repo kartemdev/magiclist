@@ -1,0 +1,16 @@
+.home-page {
+  display: flex;
+  width: 100%;
+  margin-top: 30vh;
+  justify-content: center;
+
+  .magic-button {
+    height: 60px;
+    font-size: 20px;
+    font-weight: 500;
+
+    &__block {
+      max-width: 300px;
+    }
+  }
+}
