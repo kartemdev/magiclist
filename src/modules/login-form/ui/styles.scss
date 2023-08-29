@@ -1,0 +1,11 @@
+.login-form {
+  &__submit {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+
+    .magic-button {
+      height: 40px;
+    }
+  }
+}

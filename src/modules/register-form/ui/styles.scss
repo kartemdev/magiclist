@@ -1,0 +1,30 @@
+.register-form {
+  &__block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 260px;
+    padding: 25px;
+    box-shadow: 0px 0px 15px -2px rgba(34, 60, 80, 0.2);
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--disabled);
+  }
+
+  &__submit, &__navigate {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 100%;
+
+    .magic-button {
+      height: 40px;
+    }
+  }
+}

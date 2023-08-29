@@ -1,8 +1,9 @@
 import React from 'react';
-import { Navbar, Table } from 'components';
 import { Route, Routes } from 'react-router-dom';
-import { UserListPage } from 'pages/user-list-page';
-import { UserDetailPage } from 'pages/user-detail-page';
+import { Navbar, Table } from 'shared/components';
+import { HomePage } from 'pages/home-page';
+import { LoginPage } from 'pages/login-page';
+import { RegisterPage } from 'pages/register-page';
 import getColumns from '../columns';
 
 import './styles.scss';
@@ -28,29 +29,26 @@ const App = () => {
 
   const groups = [
     {
-      to: '/users',
-      content: 'Пользователи'
-    },
-    {
       to: '/table',
       content: 'Таблица'
-    }
+    },
   ];
 
   return (
-    <>
+    <div className='app'>
       <Navbar groups={groups}/>
       <Routes>
-        <Route path='users'>
-          <Route index element={<UserListPage />} />
-          <Route path=':userId' element={<UserDetailPage />} />
-        </Route>
-        <Route path='/table' element={<Table
+        <Route path='/' element={<HomePage />}/>
+        <Route path='table' element={<Table
           data={tableData}
           columns={getColumns()}
         />}/>
+        <Route path='auth'>
+          <Route path='login' element={<LoginPage />} />
+          <Route path='register' element={<RegisterPage />} />
+        </Route>
       </Routes>
-    </>
+    </div>
   )
 };
 

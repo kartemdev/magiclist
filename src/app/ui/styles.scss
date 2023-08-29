@@ -1,33 +1,5 @@
 .app {
-  &-modal {
-    .magic-modal {
-      &__dialog {
-        width: 330px;
-
-      }
-
-      &__content {
-        display: flex;
-        flex-direction: column;
-        gap: 50px
-      }
-    }
-
-    &__body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    &__footer {
-      display: flex;
-      justify-content: flex-start;
-
-      .magic-button {
-        max-width: 100px;
-      }
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
