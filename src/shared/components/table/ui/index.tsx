@@ -6,11 +6,11 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import classNames from 'classnames';
-import { Checkbox } from 'shared/components';
-import { SortOrder } from 'shared/enums';
-import { ArrowHeadFullIcon } from 'shared/assets';
+import { Checkbox } from '~shared/components';
+import { SortOrder } from '~shared/enums';
+import { ArrowHeadFullIcon } from '~shared/assets';
 import { IRow, ISelectedRows, ISortData } from '../types';
-import { getSortOrderClassNames, getSelectedRows } from '../utils';
+import { getSortOrderClassNames, getSelectedRows } from '../lib';
 
 import './styles.scss';
 

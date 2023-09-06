@@ -3,7 +3,6 @@
     "outDir": "./build",
     "target": "ES2022",
     "module": "ES2022",
-    "baseUrl": "./src",
     "jsx": "react", 
     "noImplicitAny": true,
     "allowJs": true,
@@ -12,12 +11,29 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~app": ["./app"],
+      "~app/*": ["./app/*"],
+
+      "~pages": ["./pages"],
+      "~pages/*": ["./pages/*"],
+
+      "~modules": ["./modules"],
+      "~modules/*": ["./modules/*"],
+
+      "~services": ["./services"],
+      "~services/*": ["./services/*"],
+
+      "~shared": ["./shared"],
+      "~shared/*": ["./shared/*"],
+    }
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
   },
-  "include": ["src", "declaration.d.ts", "webpack"],
+  "include": ["src", "declaration.d.ts", "webpack", "types/global.d.ts"],
   "exclude": ["node_modules", "build"],
 }

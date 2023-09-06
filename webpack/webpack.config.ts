@@ -14,7 +14,7 @@ const common = (isProd: boolean) =>
   merge([
     {
       entry: {
-        index: path.resolve(__dirname, '../src/index.tsx'),
+        index: path.resolve(__dirname, '../src/app/index.tsx'),
       },
     },
     resolveModule(),

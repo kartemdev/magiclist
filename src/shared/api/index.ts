@@ -1,1 +1,1 @@
-export { baseApi } from './rtk-base-api';
+export { baseApi } from './base-api';

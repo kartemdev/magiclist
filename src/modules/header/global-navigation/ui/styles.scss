@@ -1,0 +1,87 @@
+.global-navigation {
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 40px;
+
+    
+    &-icon {
+      width: 40px;
+      height: 100%;
+
+      path {
+        &:nth-child(1), &:nth-child(3) {
+          stroke: var(--primary);
+        }
+
+        &:nth-child(2), &:nth-child(4) {
+          stroke: var(--primary--light);
+        }
+      }
+    }
+
+    &-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+  }
+
+  .magic-navbar, .magic-navbar-menu {
+    &__item {
+      padding: 4px 0px;
+
+      &-login, &-register, &-logout {
+        padding: 4px 8px;
+        background-color: var(--primary);
+        border-radius: 6px;
+        color: var(--primary--white);
+        text-decoration: none;
+        font-size: 16px;
+
+        &-location {
+          display: none;
+        }
+
+        &:hover {
+          background-color: var(--primary--light);
+        }
+
+        &:active {
+          background-color: var(--primary);
+        }
+      }
+
+      &-register {
+        padding: 2px 7px;
+        background-color: var(--primary--white);
+        border: 2px solid var(--primary);
+        color: var(--primary);
+
+        &:hover {
+          background-color: var(--primary--white);
+          box-shadow: 1px 3px 7px -1px rgba(34, 60, 80, 0.2);
+        }
+      
+        &:active {
+          background-color: var(--primary--white);
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .magic-navbar-menu {
+    &__item {
+      &-login, &-register, &-logout {
+        width: 60%;
+        margin-bottom: 10px;
+      }
+    
+      &-register {
+        width: 70%;
+      }
+    }
+  }
+}
