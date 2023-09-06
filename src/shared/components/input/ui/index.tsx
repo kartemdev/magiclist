@@ -1,8 +1,8 @@
 import React, { forwardRef, useState } from 'react';
 import classNames from 'classnames';
+import { ClosedEye, OpenedEye } from '~shared/assets';
 
 import './styles.scss';
-import { ClosedEye, OpenedEye } from 'shared/assets';
 
 interface IProps {
   name?: string;

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
-import { ArrowHeadIcon } from 'shared/assets';
-import { useOutsideClick } from 'shared/hooks';
+import { ArrowHeadIcon } from '~shared/assets';
+import { useOutsideClick } from '~shared/hooks';
 import { IOption } from '../types';
 
 import './styles.scss';
