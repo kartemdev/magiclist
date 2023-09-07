@@ -6,3 +6,4 @@ export * from './navbar';
 export * from './modal';
 export * from './table';
 export * from './form';
+export * from './page404'
