@@ -3,10 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 import { createColumnHelper } from '@tanstack/react-table';
 import { HomePage } from '~pages/home';
 import { AuthPage } from '~pages/auth';
+import { LayoutPage } from '~pages/layout';
 import { Table } from '~shared/components';
+import { Page404 } from '~shared/components/';
 import PublicRoute from './public-route';
 import PrivateRoute from './private-route';
-import { LayoutPage } from '~pages/layout';
 
 const AppRoute: React.FC = () => {
   const tableData = [
@@ -61,6 +62,7 @@ const AppRoute: React.FC = () => {
             columns={getColumns()}
           />}/>
         </Route>
+        <Route path='*' element={<Page404 />}/>
       </Route>
     </Routes>
   );

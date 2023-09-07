@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
               Главная страница (вы авторизованы)
             </>
           ) : (
-            <Button onClick={() => navigate('/auth')}>Начать</Button>
+            <Button onClick={() => navigate('/auth/register')}>Начать</Button>
           )}
         </>
     </div>

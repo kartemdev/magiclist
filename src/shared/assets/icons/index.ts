@@ -8,3 +8,4 @@ export { default as OpenedBurgerMenuIcon } from './opened-burger-menu.svg';
 export { default as ClosedBurgerMenuIcon } from './closed-burger-menu.svg';
 export { default as GithubIcon } from './github.svg';
 export { default as TelegramIcon } from './telegram.svg';
+export { default as PageNotFoundIcon } from './page-not-found.svg';

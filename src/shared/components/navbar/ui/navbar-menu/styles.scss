@@ -1,17 +1,17 @@
 .magic-navbar-menu {
-  position: absolute;
+  position: fixed;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
   z-index: var(--z-index--xxxl);
   width: 200px;
-  height: calc(100vh - 50px);
+  height: calc(100dvh - 50px);
   top: 50px;
   right: 0px;
   padding: 20px 0px;
   background: var(--disabled);
-  box-shadow: 0px 0px 10px -4px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 10px 0px rgba(34, 60, 80, 0.2);
 
   &__button {
     height: 30px;
@@ -46,60 +46,30 @@
     font-size: 18px;
   
     &-location {
-      background: var(--disabled);
+      background: var(--disabled--light);
     }
   
     &:hover {
-      background-color: var(--disabled);
+      background-color: var(--disabled--light);
       color: var(--primary--black);
     }
   }
     
     
   &-enter {
-    height: 0px;
-    padding: 0px;
-    
-    .magic-navbar-menu {
-      &__item, &__footer {
-        opacity: 0;
-      }
-    }
-
-    &-active .magic-navbar-menu {
-      &__item, &__footer {
-        opacity: 1;
-        transition: all 0.2s;
-      }
-    }
+    right: -100%;
 
     &-active {
-      height: calc(100vh - 50px);
-      padding: 20px 0px;
+      right: 0;
       transition: all 0.3s;
     }
   }
 
   &-exit {
-    height: calc(100vh - 50px);
-    padding: 20px 0px;
-
-    .magic-navbar-menu {
-      &__item, &__footer {
-        opacity: 1;
-      }
-    }
-
-    &-active .magic-navbar-menu {
-      &__item, &__footer {
-        opacity: 0;
-        transition: all 0.2s;
-      }
-    }
+    right: 0;
       
     &-active {
-      height: 0px;
-      padding: 0px;
+      right: -100%;
       transition: all 0.3s;
     }
   }

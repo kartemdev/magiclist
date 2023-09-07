@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { ClosedBurgerMenuIcon, OpenedBurgerMenuIcon } from '~shared/assets';
 import { useOutsideClick } from '~shared/hooks';
@@ -17,6 +17,7 @@ const NavbarMenu: React.FC<IProps> = ({ groups, footerMenu }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const menuRef = useRef(null);
+  const location = useLocation();
   useOutsideClick(menuRef, () => setIsOpenMenu(false));
 
   return (
