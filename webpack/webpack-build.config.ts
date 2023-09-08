@@ -1,7 +1,7 @@
 import path from "path";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import { Configuration } from 'webpack';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const buildConfig = (isProd: boolean): Configuration => {
   const mode = isProd ? "production" : "development";

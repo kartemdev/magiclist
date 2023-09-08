@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
-import { ArrowHeadIcon } from '~shared/assets';
 import { useOutsideClick } from '~shared/hooks';
+import SelectorControl from './selector-control';
+import SelectorMenu from './selector-menu';
 import { IOption } from '../types';
 
 import './styles.scss';
@@ -11,7 +12,7 @@ interface IProps<T> {
   options: IOption<T>[],
   onChange?: (option: IOption<T>) => void;
   label?: string;
-  placeholderForEmpty?: string;
+  placeholderEmptyOptions?: string;
 }
 
 const Selector = <T, >(props: IProps<T>) => {
@@ -21,7 +22,7 @@ const Selector = <T, >(props: IProps<T>) => {
     options,
     onChange,
     label,
-    placeholderForEmpty,
+    placeholderEmptyOptions,
   } = props;
 
   const [selfSelected, setSelfSelected] = useState(null);
@@ -54,38 +55,17 @@ const Selector = <T, >(props: IProps<T>) => {
     >
       <div className='magic-selector__label'>{label}</div>
       <div className='magic-selector' data-name={name} ref={ref}>
-        <div
-          className='magic-selector__control'
-          onClick={() => setIsOpen((prevState) => !prevState)}
-        >
-          <div
-            className='magic-selector__value'
-          >
-            {currentSelected?.label}
-          </div>
-          <div className='magic-selector__indicators'>
-            <span className='magic-selector__indicators-separator' />
-            <ArrowHeadIcon className='magic-selector__indicators-toggle' />
-          </div>
-        </div>
+        <SelectorControl
+          value={currentSelected?.label}
+          toggle={() => setIsOpen((prevState) => !prevState)}
+        />
         {isOpen && (
-          <div className='magic-selector__menu'>
-            <div className='magic-selector__list'>
-              {!!options?.length ? (options.map((option, index) => (
-                <div 
-                  className={classNames('magic-selector__list-item', {
-                    ['magic-selector__list-active']: currentSelected?.value === option.value,
-                  })}
-                  onClick={() => handleChange(option)}
-                  key={index}
-                >
-                  {option.label}
-                </div>
-              ))) : (
-                <div className='magic-selector__list-empty'>{placeholderForEmpty}</div>
-              )}
-            </div>
-          </div>
+          <SelectorMenu
+            options={options}
+            value={currentSelected?.label}
+            onChange={handleChange}
+            placeholderEmptyOptions={placeholderEmptyOptions}
+          />
         )}
       </div>
     </div>
@@ -95,7 +75,7 @@ const Selector = <T, >(props: IProps<T>) => {
 Selector.defaultProps = {
   name: '',
   label: '',
-  placeholderForEmpty: 'Empty list',
+  placeholderEmptyOptions: 'Empty list',
 };
 
 export default Selector;

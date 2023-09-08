@@ -6,7 +6,7 @@ import { useAppSelector } from '~shared/hooks';
 const PublicRoute: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
 
-  return isAuth ? <Navigate to="/" /> : <Outlet />
+  return isAuth ? <Navigate to="/" /> : <Outlet />;
 };
 
 export default PublicRoute;

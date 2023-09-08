@@ -8,10 +8,14 @@
   width: 200px;
   height: calc(100dvh - 50px);
   top: 50px;
-  right: 0px;
+  right: 0;
   padding: 20px 0px;
   background: var(--disabled);
   box-shadow: 0px 0px 10px 0px rgba(34, 60, 80, 0.2);
+
+  &__block-left & {
+    left: 0
+  }
 
   &__button {
     height: 30px;
@@ -29,32 +33,23 @@
     }
   }
 
-  &__body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  &__block-left &-enter {
+    left: -100%;
+
+    &-active {
+      left: 0;
+      transition: all 0.3s;
+    }
   }
 
-  &__item {
-    width: 100%;
-    text-align: center;
-    padding: 5px 0px;
-    text-decoration: none;
-    color: var(--primary--black);
-    font-weight: 400;
-    font-size: 18px;
-  
-    &-location {
-      background: var(--disabled--light);
-    }
-  
-    &:hover {
-      background-color: var(--disabled--light);
-      color: var(--primary--black);
+  &__block-left &-exit {
+    left: 0;
+      
+    &-active {
+      left: -100%;
+      transition: all 0.3s;
     }
   }
-    
     
   &-enter {
     right: -100%;

@@ -1,0 +1,23 @@
+.global-header-right-group {
+  display: flex;
+  gap: 10px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--primary-black);
+
+    &-active, &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--primary);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+  }
+
+  .magic-button {
+    height: 30px;
+    padding: 0px 8px;
+  }
+}

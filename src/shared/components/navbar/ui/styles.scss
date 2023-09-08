@@ -12,36 +12,15 @@
     z-index: var(--z-index--xxxs);
     background-color: var(--disabled--light);
     box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
-
   }
 
   &__side {
     &-left {
-      padding-left: 15px;
+      padding-left: 20px;
     }
 
     &-right {
-      justify-content: flex-end;
-      gap: 10px;
-      padding-right: 25px;
-    }
-  }
-
-  &__logo {
-    text-decoration: none;
-  }
-
-  &__item {
-    text-decoration: none;
-    color: var(--primary--black);
-    font-weight: 400;
-    font-size: 18px;
-
-    &:hover, &-location {
-      text-decoration: underline;
-      text-decoration-color: var(--primary);
-      text-underline-offset: 2px;
-      text-decoration-thickness: 2px;
+      padding-right: 20px;
     }
   }
 }

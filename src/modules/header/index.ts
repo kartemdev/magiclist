@@ -1,1 +1,1 @@
-export * from './global-navigation';
+export * from './global-header';
