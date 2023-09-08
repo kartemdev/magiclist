@@ -1,0 +1,36 @@
+.magic-modal-dialog {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: var(--primary--white);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    border-bottom: 2px solid var(--primary--lighter);
+
+    &-title {
+      padding: 15px;
+      padding-left: 25px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &-close {
+      margin: 15px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+
+      path {
+        fill: var(--primary) !important;
+      }
+    }
+  }
+
+  &__content {
+    box-sizing: border-box;
+    padding: 30px;
+  }
+}

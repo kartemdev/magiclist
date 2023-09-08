@@ -6,7 +6,7 @@ import { useAppSelector } from '~shared/hooks';
 const PrivateRoute: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
 
-  return isAuth ? <Outlet /> : <Navigate to="auth/login" />
+  return isAuth ? <Outlet /> : <Navigate to="auth/login" />;
 };
 
 export default PrivateRoute;

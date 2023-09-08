@@ -1,6 +1,5 @@
-
 export interface ISelectedRows<T> {
-  [key: string]: T
+  [key: string]: T;
 }
 
 export interface IRow<T> {
@@ -10,4 +9,4 @@ export interface IRow<T> {
 export interface ISortData<T> {
   fieldName: keyof T;
   sortType: string;
-};
+}

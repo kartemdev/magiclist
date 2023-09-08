@@ -1,0 +1,33 @@
+.magic-table-body {
+  &__row {
+    &:hover {
+      background-color: var(--primary--lighter);
+    }
+
+    &-active {
+      background-color: var(--primary--light);
+
+      &:hover {
+        background-color: var(--primary--light);
+      }
+    }
+  }
+
+  &__cell {
+    border: 2px solid var(--disabled);
+    
+    &-content {
+      padding: 7px 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+    }
+  }
+
+  &__checkbox {
+    padding: 7px 12px;
+  }
+}

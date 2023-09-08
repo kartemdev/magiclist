@@ -59,6 +59,8 @@ const AppRoute: React.FC = () => {
         <Route element={<PrivateRoute />}>
           <Route path='table' element={<Table
             data={tableData}
+            isMultipleSelect
+            isCheckBoxSelect
             columns={getColumns()}
           />}/>
         </Route>

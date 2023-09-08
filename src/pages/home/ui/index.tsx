@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '~shared/components';
+import { Button, Selector } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
 import { selectIsAuth } from '~services/auth';
 

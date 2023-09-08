@@ -4,7 +4,7 @@
 
 @media screen and (max-width: 768px) {
   .layout-page {
-    &__navigation {
+    &__global-header {
       position: fixed;
       z-index: var(--z-index--xxxl);
       width: 100vw;

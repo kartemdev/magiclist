@@ -1,14 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { GlobalNavigation } from '~modules/header';
+import { GlobalHeader } from '~modules/header';
 
 import './styles.scss';
 
 const LayoutPage: React.FC = () => {
   return (
     <div className='layout-page'>
-      <div className='layout-page__navigation'>
-        <GlobalNavigation />
+      <div className='layout-page__global-header'>
+        <GlobalHeader />
       </div>
       <div className='layout-page__content'>
         <Outlet />

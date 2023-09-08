@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  useReactTable
-} from '@tanstack/react-table';
-import classNames from 'classnames';
-import { Checkbox } from '~shared/components';
-import { SortOrder } from '~shared/enums';
-import { ArrowHeadFullIcon } from '~shared/assets';
+import { ColumnDef, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { IRow, ISelectedRows, ISortData } from '../types';
-import { getSortOrderClassNames, getSelectedRows } from '../lib';
+import { getSelectedRows } from '../lib';
+import TableHeader from './table-header';
+import TableBody from './table-body';
 
 import './styles.scss';
 
@@ -36,7 +29,6 @@ const Table = <T extends {}, >(props: IProps<T>) => {
   } = props;
 
   const [selectedRows, setSelectedRows] = useState<ISelectedRows<T>>({});
-  const [sortData, setSortData] = useState<ISortData<T>>(null);
 
   const table = useReactTable({
     data,
@@ -61,7 +53,7 @@ const Table = <T extends {}, >(props: IProps<T>) => {
     }
   };
 
-  const handleChangeCBRows = (row: IRow<T>) => {
+  const handleChangeCheckbox = (row: IRow<T>) => {
     const currentSelectedRows = getSelectedRows(row, isMultipleSelect, selectedRows);
 
     setSelectedRows(currentSelectedRows);
@@ -71,7 +63,7 @@ const Table = <T extends {}, >(props: IProps<T>) => {
     }
   };
 
-  const handleChangeCBAllRows = () => {
+  const handleChangeCheckboxAll = () => {
     let selected = table.getRowModel().rows.reduce((acc, row) => ({ ...acc, [row.id]: row.original }), {});
 
     if (Object.keys(selectedRows).length === data?.length) {
@@ -85,87 +77,23 @@ const Table = <T extends {}, >(props: IProps<T>) => {
     }
   };
 
-  const handleClickHeaderCell = (headerCellId: string) => {
-    const currentSortData: ISortData<T> = {
-      fieldName: headerCellId as keyof T,
-      sortType: 
-        !sortData?.sortType ? SortOrder.ASC
-          : sortData.sortType === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC,
-    };
-
-    setSortData(currentSortData);
-
-    if (onClickHeaderCell) {
-      onClickHeaderCell(currentSortData);
-    }
-  };
-
   return (
     <div className='magic-table__block'>
       <table className='magic-table'>
-        <thead className='magic-table__header'>
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id} className='magic-table__row'>
-                {isCheckBoxSelect && (
-                  <th
-                    className='magic-table__cell magic-table__checkbox'
-                    onClick={() => handleChangeCBAllRows()}
-                  >
-                    <Checkbox checked={Object.keys(selectedRows).length === data?.length} />
-                  </th>
-                )}
-                {headerGroup.headers.map(header => (
-                  <th
-                    key={header.id}
-                    className='magic-table__cell'
-                    onClick={() => handleClickHeaderCell(header.id)}
-                  >
-                    <div className='magic-table__cell-content'>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                      <ArrowHeadFullIcon
-                        className={classNames('magic-table__arrowhead', {
-                          ...getSortOrderClassNames(header.id, sortData),
-                        })}
-                      />
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className='magic-table__body'>
-            {table.getRowModel().rows.map(row => (
-              <tr
-                key={row.id}
-                className={classNames('magic-table__row', {
-                  ['magic-table__row-active']: selectedRows[row.id]
-                })}
-                onClick={(event) => handleChangeRows(event, {id: row.id, data: { ...row.original }})}
-              >
-                {isCheckBoxSelect && (
-                  <td
-                    data-type='checkbox'
-                    className='magic-table__cell magic-table__checkbox'
-                    onClick={() => handleChangeCBRows({id: row.id, data: { ...row.original }})}
-                  >
-                    <Checkbox checked={!!selectedRows[row.id]} />
-                  </td>
-                )}
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id} className='magic-table__cell'>
-                    <div className='magic-table__cell-content'>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </div>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
+        <TableHeader
+          headerGroups={table.getHeaderGroups()}
+          isCheckBoxSelect={isCheckBoxSelect}
+          checked={Object.keys(selectedRows).length === data?.length}
+          onChangeCheckbox={handleChangeCheckboxAll}
+          onClickCell={onClickHeaderCell}
+        />
+        <TableBody
+          rowGroups={table.getRowModel().rows}
+          isCheckBoxSelect={isCheckBoxSelect}
+          onChangeCheckbox={handleChangeCheckbox}
+          selectedRows={selectedRows}
+          onChangeRows={handleChangeRows}
+        />
       </table>
     </div>
   )

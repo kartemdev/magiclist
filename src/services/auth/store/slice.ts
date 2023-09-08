@@ -36,7 +36,7 @@ export const authSlice = createSlice({
           }
         }
       )
-  }
+  },
 });
 
 export const selectIsAuth = (state: RootState) => !!state.auth?.accessToken;

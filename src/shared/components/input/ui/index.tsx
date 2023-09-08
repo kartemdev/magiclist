@@ -1,49 +1,22 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-import { ClosedEye, OpenedEye } from '~shared/assets';
 
 import './styles.scss';
 
 interface IProps {
-  name?: string;
-  type?: string;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   error?: string;
-  placeholder?: string;
   className?: string;
-  autoComplete?: string;
-}
+  children?: React.ReactNode;
+};
 
-const Input = forwardRef<HTMLInputElement, IProps>((props, ref) => {
+const InputBlock = forwardRef<HTMLInputElement, IProps>((props, ref) => {
   const {
-    name,
-    type,
-    value,
-    onChange,
     label,
     error,
-    placeholder,
     className,
-    autoComplete,
+    children,
   } = props;
-
-  const [selfValue, setSelfValue] = useState<string>('');
-  const [isShowPass, setIsShowPass] = useState<boolean>(false);
-  
-  const uncontrolled = value === undefined;
-  const currentValue = uncontrolled ? selfValue : value;
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (uncontrolled) {
-      setSelfValue(event.target.value);
-    }
-    
-    if (onChange) {
-      onChange(event);
-    }
-  };
 
   return (
     <div className={classNames('magic-input__block', {
@@ -52,40 +25,20 @@ const Input = forwardRef<HTMLInputElement, IProps>((props, ref) => {
       {label && (
         <div className='magic-input__label'>{label}</div>
       )}
-      <input
-        ref={ref}
-        name={name}
-        type={isShowPass ? 'text' : type}
-        className='magic-input'
-        placeholder={placeholder}
-        value={currentValue}
-        onChange={handleInputChange}
-        autoComplete={autoComplete}
-      />
-      {type === 'password' && (
-        <div
-          className='magic-input__show-pass'
-          onClick={() => setIsShowPass((prev) => !prev)}
-        >
-          {isShowPass ? <OpenedEye /> : <ClosedEye />}
-        </div>
-      )}
+      {children}
       {error && (
         <div className='magic-input__error'>{error}</div>
       )}
     </div>
-  )
+  );
 });
 
-Input.defaultProps = {
-  name: '',
-  type: 'text',
+InputBlock.defaultProps = {
   label: '',
   error: '',
-  placeholder: '',
-  autoComplete: '',
   className: '',
+  children: null,
 };
 
-export default Input;
+export default InputBlock;
 

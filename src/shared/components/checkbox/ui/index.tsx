@@ -53,7 +53,7 @@ const Checkbox = forwardRef<HTMLInputElement, IProps>((props, ref) => {
           onChange={handleCheckedChange}
           onClick={(event) => event.stopPropagation()}
         />
-        <span className='magic-checkbox'></span>
+        <span className='magic-checkbox' />
         {label}
       </label>
     </div>
