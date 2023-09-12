@@ -9,3 +9,4 @@ export { default as ClosedBurgerMenuIcon } from './closed-burger-menu.svg';
 export { default as GithubIcon } from './github.svg';
 export { default as TelegramIcon } from './telegram.svg';
 export { default as PageNotFoundIcon } from './page-not-found.svg';
+export { default as GlobaIcon } from './global.svg';

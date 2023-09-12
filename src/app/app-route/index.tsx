@@ -4,10 +4,11 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { HomePage } from '~pages/home';
 import { AuthPage } from '~pages/auth';
 import { LayoutPage } from '~pages/layout';
-import { Table } from '~shared/components';
-import { Page404 } from '~shared/components/';
+import { Table } from '~shared/ui';
+import { Page404 } from '~shared/ui';
 import PublicRoute from './public-route';
 import PrivateRoute from './private-route';
+import { useTranslation } from 'react-i18next';
 
 const AppRoute: React.FC = () => {
   const tableData = [
@@ -49,6 +50,9 @@ const AppRoute: React.FC = () => {
     ]
   }
 
+  const { t } = useTranslation();
+  window.translate = t;
+
   return (
     <Routes>
       <Route element={<LayoutPage />}>
@@ -64,7 +68,7 @@ const AppRoute: React.FC = () => {
             columns={getColumns()}
           />}/>
         </Route>
-        <Route path='*' element={<Page404 />}/>
+        <Route path='*' element={<Page404 content={window.translate('page_not_found')} />}/>
       </Route>
     </Routes>
   );

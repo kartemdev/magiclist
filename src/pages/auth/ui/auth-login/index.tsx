@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginForm } from '~modules/auth';
-import { Button } from '~shared/components';
+import { Button } from '~shared/ui';
 
 import './styles.scss';
 
@@ -13,7 +13,7 @@ const AuthLogin: React.FC = () => {
 
       <div className='auth-login__form'>
         <div className='auth-login__title'>
-          {'Войти в аккаунт'}
+          {window.translate('sign_in_acc')}
         </div>
 
         <LoginForm />
@@ -22,7 +22,7 @@ const AuthLogin: React.FC = () => {
           typeStyle='secondary'
           onClick={() => navigate('/auth/register')}
         >
-          {'Создать аккаунт'}
+          {window.translate('create_acc')}
         </Button>
       </div>
     </div>

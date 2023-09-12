@@ -1,0 +1,23 @@
+{
+	"begin": "Begin",
+	"sign_in": "Sign in",
+	"sign_up": "Sign up",
+	"create_acc": "Create account",
+	"have_acc": "Already have an account",
+	"table": "Table",
+	"login": "Login",
+	"email": "E-mail",
+	"password": "Password",
+	"repeat_password": "Repeat password",
+	"required_field_error": "Required field",
+	"min_symbols_length_3": "Minimum 3 characters",
+	"min_symbols_length_6": "Minimum 6 characters",
+	"max_symbols_length_6": "Maximum 6 characters",
+	"max_symbols_length_20": "Maximum 20 characters",
+	"email_validation_error": "Incorrect e-mail format",
+	"repeat_password_validation_error": "Passwords must match",
+	"sign_in_acc": "Sign in to your account",
+	"ru-RU": "Russian",
+	"en-US": "English",
+	"page_not_found": "Oops, page not found"
+}

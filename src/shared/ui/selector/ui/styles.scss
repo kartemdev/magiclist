@@ -1,0 +1,46 @@
+.ml-selector {
+  position: relative;
+  box-sizing: border-box;
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }  
+  
+  &__collapsed & {
+    position: initial;
+  }
+  
+  &__collapsed &-control__indicators-toggle {
+    transform: rotateZ(0deg);
+  }
+
+  &__collapsed &-control {
+    background-color: var(--gray);
+    box-shadow: none;
+    
+    &:hover {
+      box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
+    }
+  }
+  
+  &__collapsed &__label {
+    pointer-events: none;
+    color: var(--disabled);
+    top: 27px;
+    left: 10px;
+  }
+  
+  &__selected &__label {
+    top: 0px;
+    left: 0px;
+    color: var(--primary--light);
+  }
+
+  &__label {
+    position: relative;
+    color: var(--primary--light);
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
-import { Button, Form, InputBlock, InputPassword, InputText } from '~shared/components';
+import { Button, Form, InputBlock, InputPassword, InputText } from '~shared/ui';
 import { RegisterFormData } from '../../types';
 import { validationSchema } from '../../lib';
 
@@ -36,28 +36,28 @@ const RegisterForm: React.FC = () => {
       >
       <InputBlock
         className='register-form__user-name'
-        label='Логин'
+        label={window.translate('login')}
         error={errors.userName?.message}
       >
         <InputText {...registerField('userName')} />
       </InputBlock>
       <InputBlock
         className='register-form__email'
-        label='Электронная почта'
+        label={window.translate('email')}
         error={errors.email?.message}
       >
         <InputText {...registerField('email')} type='email' />
       </InputBlock>
       <InputBlock
         className='register-form__password'
-        label='Пароль'
+        label={window.translate('password')}
         error={errors.password?.message}
       >
         <InputPassword {...registerField('password')} autoComplete='new-password' />
       </InputBlock>
       <InputBlock
         className='register-form__repeat-password'
-        label='Повторите пароль'
+        label={window.translate('repeat_password')}
         error={errors.confirmPassword?.message}
       >
         <InputPassword {...registerField('confirmPassword')} autoComplete='off' />
@@ -66,7 +66,7 @@ const RegisterForm: React.FC = () => {
         className='register-form__submit'
         type='submit'
       >
-        {'Создать аккаунт'}
+        {window.translate('create_acc')}
       </Button>
     </Form>
   );
