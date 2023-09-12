@@ -9,9 +9,10 @@ const resolveModule = () => ({
       '~pages': path.resolve(__dirname, '../src/pages'),
       '~modules': path.resolve(__dirname, '../src/modules'),
       '~services': path.resolve(__dirname, '../src/services'),
+      '~components': path.resolve(__dirname, '../src/components'),
       '~shared': path.resolve(__dirname, '../src/shared'),
-      '@mixins': path.resolve(__dirname, '../src/shared/scss/mixins.scss'),
-      'process': 'process/browser'
+      "~mixins": path.resolve(__dirname, '../src/shared/scss/mixins.scss'),
+      '~langs': path.resolve(__dirname, '../langs'),
     }
   },
 });

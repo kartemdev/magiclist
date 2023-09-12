@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, NavbarLink } from '~shared/components';
+import { Button, NavbarLink } from '~shared/ui';
+import { LangsSelector } from '~components/langs-selector';
 
 import './styles.scss';
 
@@ -13,23 +14,26 @@ const GlobalHeaderRightGroup: React.FC<IProps> = ({ isAuth }) => {
       {isAuth ? (
         <>
           <NavbarLink to='/table' className='global-header-right-group__item'>
-            {'Таблица'}
+            {window.translate('table')}
           </NavbarLink>  
         </>
       ) : (
         <>
           <NavbarLink to='/auth/login'>
             <Button typeStyle='primary'>
-              {'Войти'}
+              {window.translate('sign_in')}
             </Button>
           </NavbarLink>
           <NavbarLink to='/auth/register'>
             <Button typeStyle='secondary'>
-              {'Регистрация'}
+              {window.translate('sign_up')}
             </Button>
           </NavbarLink>
         </>
       )}
+      <div className='global-header-right-group__langs-selector'>
+        <LangsSelector />
+      </div>
     </div>
   );
 };

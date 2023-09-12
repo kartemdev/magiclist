@@ -1,0 +1,23 @@
+{
+	"begin": "Начать",
+	"sign_in": "Войти",
+	"sign_up": "Регистрация",
+	"create_acc": "Создать аккаунт",
+	"have_acc": "Уже есть аккаунт",
+	"table": "Таблица",
+	"login": "Логин",
+	"email": "Электронная почта",
+	"password": "Пароль",
+	"repeat_password": "Повторите пароль",
+	"required_field_error": "Обязательное поле",
+	"min_symbols_length_3": "Минимум 3 символа",
+	"min_symbols_length_6": "Минимум 6 символов",
+	"max_symbols_length_6": "Максимум 6 символов",
+	"max_symbols_length_20": "Максимум 20 символов",
+	"email_validation_error": "Неправильный формат e-mail",
+	"repeat_password_validation_error": "Пароли должны совпадать",
+	"sign_in_acc": "Войти в аккаунт",
+	"ru-RU": "Русский",
+	"en-US": "Английский",
+	"page_not_found": "Ой, страница не найдена"
+}
