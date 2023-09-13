@@ -19,15 +19,15 @@ const InputBlock = forwardRef<HTMLInputElement, IProps>((props, ref) => {
   } = props;
 
   return (
-    <div className={classNames('magic-input__block', {
+    <div className={classNames('ml-input__block', {
       [className]: className,
     })}>
       {label && (
-        <div className='magic-input__label'>{label}</div>
+        <div className='ml-input__label'>{label}</div>
       )}
       {children}
       {error && (
-        <div className='magic-input__error'>{error}</div>
+        <div className='ml-input__error'>{error}</div>
       )}
     </div>
   );

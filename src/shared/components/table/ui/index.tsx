@@ -78,8 +78,8 @@ const Table = <T extends {}, >(props: IProps<T>) => {
   };
 
   return (
-    <div className='magic-table__block'>
-      <table className='magic-table'>
+    <div className='ml-table__block'>
+      <table className='ml-table'>
         <TableHeader
           headerGroups={table.getHeaderGroups()}
           isCheckBoxSelect={isCheckBoxSelect}

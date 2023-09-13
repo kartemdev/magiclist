@@ -44,12 +44,12 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
   };
 
   return (
-    <thead className='magic-table-header'>
+    <thead className='ml-table-header'>
       {headerGroups.map(headerGroup => (
-        <tr key={headerGroup.id} className='magic-table-header__row'>
+        <tr key={headerGroup.id} className='ml-table-header__row'>
           {isCheckBoxSelect && (
             <th
-              className='magic-table-header__cell magic-table-header__checkbox'
+              className='ml-table-header__cell ml-table-header__checkbox'
               onClick={() => onChangeCheckbox()}
             >
               <Checkbox checked={checked} />
@@ -58,10 +58,10 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
           {headerGroup.headers.map(header => (
             <th
               key={header.id}
-              className='magic-table-header__cell'
+              className='ml-table-header__cell'
               onClick={() => handleClickCell(header.id)}
             >
-              <div className='magic-table-header__cell-content'>
+              <div className='ml-table-header__cell-content'>
                 {header.isPlaceholder
                   ? null
                   : flexRender(
@@ -69,7 +69,7 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
                       header.getContext()
                     )}
                 <ArrowHeadFullIcon
-                  className={classNames('magic-table-header__arrowhead', {
+                  className={classNames('ml-table-header__arrowhead', {
                     ...getSortOrderClassNames(header.id, sortData),
                   })}
                 />

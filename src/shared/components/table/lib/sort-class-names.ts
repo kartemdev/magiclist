@@ -6,8 +6,8 @@ export const getSortOrderClassNames = <T, >(id: string, sortData: ISortData<T>) 
     const { sortType, fieldName } = sortData;
 
     return {
-      ['magic-table-header__arrowhead-asc']: sortType === SortOrder.ASC && fieldName === id,
-      ['magic-table-header__arrowhead-desc']: sortType === SortOrder.DESC && fieldName === id,
+      ['ml-table-header__arrowhead-asc']: sortType === SortOrder.ASC && fieldName === id,
+      ['ml-table-header__arrowhead-desc']: sortType === SortOrder.DESC && fieldName === id,
     }
   }
 };

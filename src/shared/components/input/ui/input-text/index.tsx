@@ -22,7 +22,7 @@ const InputText = forwardRef<HTMLInputElement, IProps>((props , ref) => {
     <input
       ref={ref}
       name={name}
-      className='magic-input magic-input-text'
+      className='ml-input ml-input-text'
       type={type}
       placeholder={placeholder}
       value={value}

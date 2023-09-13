@@ -22,7 +22,7 @@ const NavbarLink: React.FC<IProps> = (props) => {
   return (
     <Link
       to={to}
-      className={classNames('magic-navbar-item', {
+      className={classNames('ml-navbar-item', {
         [className]: className,
         [`${className}-active`]: to === location.pathname && className,
       })}

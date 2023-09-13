@@ -48,13 +48,13 @@ const Selector = <T, >(props: IProps<T>) => {
 
   return (
     <div
-      className={classNames('magic-selector__block', {
-        ['magic-selector__collapsed']: !isOpen,
-        ['magic-selector__selected']: !!currentSelected?.value,
+      className={classNames('ml-selector__block', {
+        ['ml-selector__collapsed']: !isOpen,
+        ['ml-selector__selected']: !!currentSelected?.value,
       })}
     >
-      <div className='magic-selector__label'>{label}</div>
-      <div className='magic-selector' data-name={name} ref={ref}>
+      <div className='ml-selector__label'>{label}</div>
+      <div className='ml-selector' data-name={name} ref={ref}>
         <SelectorControl
           value={currentSelected?.label}
           toggle={() => setIsOpen((prevState) => !prevState)}

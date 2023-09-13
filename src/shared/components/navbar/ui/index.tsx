@@ -10,11 +10,11 @@ const Navbar: React.FC<IProps> = (props) => {
   const { leftGroup, rightGroup } = props;
 
   return (
-    <div className='magic-navbar__block'>
-      <div className='magic-navbar magic-navbar__side-left'>
+    <div className='ml-navbar__block'>
+      <div className='ml-navbar ml-navbar__side-left'>
         {leftGroup}
       </div>
-      <div className='magic-navbar magic-navbar__side-right'>
+      <div className='ml-navbar ml-navbar__side-right'>
         {rightGroup}
       </div>
     </div>
