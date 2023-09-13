@@ -24,27 +24,27 @@ const TableBody = <T extends {}, >(props: IProps<T>) => {
   } = props;
 
   return (
-    <tbody className='magic-table-body'>
+    <tbody className='ml-table-body'>
       {rowGroups.map(row => (
         <tr
           key={row.id}
-          className={classNames('magic-table-body__row', {
-            ['magic-table-body__row-active']: !!selectedRows[row.id]
+          className={classNames('ml-table-body__row', {
+            ['ml-table-body__row-active']: !!selectedRows[row.id]
           })}
           onClick={(event) => onChangeRows(event, {id: row.id, data: { ...row.original }})}
         >
           {isCheckBoxSelect && (
             <td
               data-type='checkbox'
-              className='magic-table-body__cell magic-table-body__checkbox'
+              className='ml-table-body__cell ml-table-body__checkbox'
               onClick={() => onChangeCheckbox({id: row.id, data: { ...row.original }})}
             >
               <Checkbox checked={!!selectedRows[row.id]} />
             </td>
           )}
           {row.getVisibleCells().map(cell => (
-            <td key={cell.id} className='magic-table-body__cell'>
-              <div className='magic-table-body__cell-content'>
+            <td key={cell.id} className='ml-table-body__cell'>
+              <div className='ml-table-body__cell-content'>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </div>
             </td>

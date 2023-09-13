@@ -16,20 +16,20 @@ const NavbarMenu: React.FC<IProps> = ({ children, leftSide }) => {
   const menuRef = useRef(null);
 
   return (
-    <div className={classNames('magic-navbar-menu__block', {
-      ['magic-navbar-menu__block-left']: leftSide,
+    <div className={classNames('ml-navbar-menu__block', {
+      ['ml-navbar-menu__block-left']: leftSide,
     })}>
       <div
-        className='magic-navbar-menu__button'
+        className='ml-navbar-menu__button'
         onClick={() => setIsOpenMenu((prevState) => !prevState)}
       >
         {isOpenMenu ? (
           <OpenedBurgerMenuIcon
-            className='magic-navbar-menu__button-icon'
+            className='ml-navbar-menu__button-icon'
           />
         ) : (
           <ClosedBurgerMenuIcon
-            className='magic-navbar-menu__button-icon'
+            className='ml-navbar-menu__button-icon'
           />
         )}
       </div>
@@ -38,9 +38,9 @@ const NavbarMenu: React.FC<IProps> = ({ children, leftSide }) => {
         nodeRef={menuRef}
         timeout={400}
         unmountOnExit
-        classNames='magic-navbar-menu'
+        classNames='ml-navbar-menu'
       >
-        <div className='magic-navbar-menu' ref={menuRef}>
+        <div className='ml-navbar-menu' ref={menuRef}>
           {children}
         </div>
       </CSSTransition>

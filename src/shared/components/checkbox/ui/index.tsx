@@ -40,10 +40,10 @@ const Checkbox = forwardRef<HTMLInputElement, IProps>((props, ref) => {
   };
 
   return (
-    <div className={classNames('magic-checkbox__block', {
+    <div className={classNames('ml-checkbox__block', {
       [className]: className,
     })}>
-      <label className='magic-checkbox__label'>
+      <label className='ml-checkbox__label'>
         <input
           ref={ref}
           name={name}
@@ -53,7 +53,7 @@ const Checkbox = forwardRef<HTMLInputElement, IProps>((props, ref) => {
           onChange={handleCheckedChange}
           onClick={(event) => event.stopPropagation()}
         />
-        <span className='magic-checkbox' />
+        <span className='ml-checkbox' />
         {label}
       </label>
     </div>

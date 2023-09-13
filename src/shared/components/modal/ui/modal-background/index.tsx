@@ -9,7 +9,7 @@ interface IProps {
 const ModalBackground: React.FC<IProps> = ({ onClose }) => {
   return (
     <div
-      className='magic-modal magic-modal-background'
+      className='ml-modal ml-modal-background'
       onMouseDown={onClose}   
     />
   );

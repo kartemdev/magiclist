@@ -17,17 +17,17 @@ const ModalDialog: React.FC<IProps> = (props) => {
   } = props;
 
   return (
-    <div className='magic-modal-dialog'>
-      <div className='magic-modal-dialog__header'>
-        <div className='magic-modal-dialog__header-title'>
+    <div className='ml-modal-dialog'>
+      <div className='ml-modal-dialog__header'>
+        <div className='ml-modal-dialog__header-title'>
           {title}
         </div>
         <CrossCancelIcon
-          className='magic-modal-dialog__header-close'
+          className='ml-modal-dialog__header-close'
           onClick={onClose}
         />
       </div>
-      <div className='magic-modal-dialog__content'>
+      <div className='ml-modal-dialog__content'>
         {children}
       </div>
     </div>

@@ -33,12 +33,12 @@ const Modal: React.FC<Props> = (props) => {
       nodeRef={ref}
       timeout={500}
       unmountOnExit
-      classNames='magic-modal'
+      classNames='ml-modal'
     >
       <Portal>
         <div
           ref={ref}
-          className={classNames('magic-modal', {
+          className={classNames('ml-modal', {
             [className]: className
           })}
         >

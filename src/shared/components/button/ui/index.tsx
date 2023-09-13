@@ -21,12 +21,12 @@ const Button: React.FC<IProps> = (props) => {
   } = props;
 
   return (
-    <div className={classNames('magic-button__block', {
+    <div className={classNames('ml-button__block', {
       [className]: className
     })}>
       <button
-        className={classNames('magic-button', {
-          [`magic-button__${typeStyle}`]: typeStyle,
+        className={classNames('ml-button', {
+          [`ml-button__${typeStyle}`]: typeStyle,
         })}
         type={type}
         onClick={onClick}

@@ -20,12 +20,12 @@ const SelectorMenu = <T, >(props: IProps<T>) => {
   } = props;
 
   return (
-    <div className='magic-selector-menu'>
-      <div className='magic-selector-menu__list'>
+    <div className='ml-selector-menu'>
+      <div className='ml-selector-menu__list'>
         {!!options?.length ? (options.map((option, index) => (
           <div 
-            className={classNames('magic-selector-menu__list-item', {
-              ['magic-selector-menu__list-active']: value === option.value,
+            className={classNames('ml-selector-menu__list-item', {
+              ['ml-selector-menu__list-active']: value === option.value,
             })}
             onClick={() => onChange(option)}
             key={index}
@@ -33,7 +33,7 @@ const SelectorMenu = <T, >(props: IProps<T>) => {
             {option.label}
           </div>
         ))) : (
-          <div className='magic-selector-menu__list-empty'>{placeholderEmptyOptions}</div>
+          <div className='ml-selector-menu__list-empty'>{placeholderEmptyOptions}</div>
         )}
       </div>
     </div>

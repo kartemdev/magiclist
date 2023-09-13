@@ -28,14 +28,14 @@ const InputPasswrod = forwardRef<HTMLInputElement, IProps>((props, ref) => {
         ref={ref}
         name={name}
         type={isShowPass ? 'text' : 'password'}
-        className='magic-input magic-input-password'
+        className='ml-input ml-input-password'
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         autoComplete={autoComplete}
       />
       <div
-        className='magic-input-password__show'
+        className='ml-input-password__show'
         onClick={() => setIsShowPass((prev) => !prev)}
       >
         {isShowPass ? <OpenedEye /> : <ClosedEye />}

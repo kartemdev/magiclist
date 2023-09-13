@@ -18,7 +18,7 @@ const Form = <T, >(props: IProps<T>) => {
 
   return (
     <form
-      className={classNames('magic-form', {
+      className={classNames('ml-form', {
         [className]: className,
       })}
       onSubmit={onSubmit}
