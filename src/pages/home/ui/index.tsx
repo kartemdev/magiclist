@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Selector } from '~shared/components';
+import { Button } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
 import { selectIsAuth } from '~services/auth';
 
@@ -15,9 +15,9 @@ const HomePage: React.FC = () => {
     <div className='home-page'>
         <>
           {isAuth ? (
-            <>
-              Главная страница (вы авторизованы)
-            </>
+            <div style={{ fontSize: 30 }}>
+              Julia, you my big love &#128151;
+            </div>
           ) : (
             <Button onClick={() => navigate('/auth/register')}>Начать</Button>
           )}

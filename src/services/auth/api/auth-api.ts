@@ -1,5 +1,5 @@
 import { baseApi } from "~shared/api";
-import { IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "./types";
+import { IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "../types";
 
 export const authApi = baseApi.enhanceEndpoints({
   addTagTypes: ['Login', 'Register', 'Refresh'],
@@ -34,5 +34,5 @@ export const authApi = baseApi.enhanceEndpoints({
   }),
 });
 
-export const { useRegisterMutation: useRegister } = authApi;
+export const { useRegisterMutation: useRegister, useLoginMutation: useLogin } = authApi;
 export const useRefresh = () => authApi.useRefreshTokenQuery(undefined);

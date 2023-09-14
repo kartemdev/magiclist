@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../api/auth-api";
-
-
-interface IAuthState {
-  userName?: string;
-  email?: string;
-  accessToken?: string | null;
-}
+import { matchReducer } from "../lib";
+import { IAuthState } from "../types";
 
 const initialState: IAuthState = {};
 
@@ -17,23 +12,21 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addMatcher(
+        authApi.endpoints.login.matchFulfilled,
+        (state: IAuthState, { payload }) => {
+          matchReducer(state, payload);
+        }
+      )
+      .addMatcher(
         authApi.endpoints.register.matchFulfilled,
         (state: IAuthState, { payload }) => {
-          if (payload.accessToken) {
-            state.email = payload.email;
-            state.userName = payload.userName;
-            state.accessToken= payload.accessToken;
-          }
+          matchReducer(state, payload);
         }
       )
       .addMatcher(
         authApi.endpoints.refreshToken.matchFulfilled,
         (state: IAuthState, { payload }) => {
-          if (payload.accessToken) {
-            state.email = payload.email;
-            state.userName = payload.userName;
-            state.accessToken= payload.accessToken;
-          }
+          matchReducer(state, payload);
         }
       )
   },
