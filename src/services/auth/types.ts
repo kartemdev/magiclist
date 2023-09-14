@@ -18,3 +18,9 @@ export interface IResponseAuthDTO {
   email: string;
   accessToken: string;
 }
+
+export interface IAuthState {
+  userName?: string;
+  email?: string;
+  accessToken?: string | null;
+}

@@ -1,7 +1,8 @@
 export {
   authApi,
+  useLogin,
   useRegister,
-  useRefresh
+  useRefresh,
 } from './api/auth-api';
 
 export {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useLogin } from '~services/auth';
 import { Button, Form, InputBlock, InputPassword, InputText } from '~shared/components';
 import { LoginFormData } from '../../types';
 import { validationSchema } from '../../lib';
@@ -8,6 +9,9 @@ import { validationSchema } from '../../lib';
 import './styles.scss';
 
 const LoginForm: React.FC = () => {
+
+  const [loginUser] = useLogin();
+
   const defaultValues ={
     email: '',
     password: '',
@@ -19,6 +23,7 @@ const LoginForm: React.FC = () => {
   });
 
   const onSubmit = (data: LoginFormData) => {
+    loginUser(data);
   };
 
   return (
