@@ -2,6 +2,7 @@ import path from "path";
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
+const webpack = require('webpack');
 
 const buildConfig = (isProd: boolean): Configuration => {
   const mode = isProd ? "production" : "development";
@@ -14,19 +15,14 @@ const buildConfig = (isProd: boolean): Configuration => {
       publicPath: '/',
       clean: true,
     },
-    devServer: {
-      static: {
-        directory: path.resolve(__dirname, '../public'),
-      },
-      port: 5000,
-      host: '127.0.0.1',
-      hot: true,
-    },
     plugins:[
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../public/index.html'),
         favicon: path.resolve(__dirname, '../public', 'favicon.ico')
+      }),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
       }),
     ],
     performance: {

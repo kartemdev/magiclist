@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "magiclist",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -30,6 +30,7 @@
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "node-sass": "^9.0.0",
+    "process": "^0.11.10",
     "regenerator-runtime": "^0.13.11",
     "sass": "^1.63.4",
     "sass-loader": "^13.3.2",

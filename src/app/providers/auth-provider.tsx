@@ -8,7 +8,7 @@ interface IProps {
 const AuthProvider: React.FC<IProps> = ({ children }) => {
   const { isLoading } = useRefresh();
 
-  return isLoading ? <div>...loading</div> : children;
+  return isLoading ? <div>...loading</div> : <>{children}</>;
 };
 
 export default AuthProvider;

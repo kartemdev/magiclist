@@ -10,7 +10,8 @@ const resolveModule = () => ({
       '~modules': path.resolve(__dirname, '../src/modules'),
       '~services': path.resolve(__dirname, '../src/services'),
       '~shared': path.resolve(__dirname, '../src/shared'),
-      "@mixins": path.resolve(__dirname, '../src/shared/scss/mixins.scss'),
+      '@mixins': path.resolve(__dirname, '../src/shared/scss/mixins.scss'),
+      'process': 'process/browser'
     }
   },
 });
