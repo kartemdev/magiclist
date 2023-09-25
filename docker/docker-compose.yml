@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ${API_PATH}
+      dockerfile: Dockerfile
+    environment:
+      - APP_HOST=${APP_HOST}
+      - POSTGRES_URL=${POSTGRES_URL}
+      - ACCESS_SECRET_KEY=${ACCESS_SECRET_KEY}
+  frontend:
+    build:
+      context: ${APP_PATH}
+      dockerfile: Dockerfile
+      target: builder
+  nginx:
+    build:
+      context: ${APP_PATH}
+      dockerfile: Dockerfile
+      target: prod
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt/live/magiclist.ru/fullchain.pem:/etc/nginx/certs/fullchain.pem
+      - /etc/letsencrypt/live/magiclist.ru/privkey.pem:/etc/nginx/certs/privkey.pem
+    depends_on:
+      - backend

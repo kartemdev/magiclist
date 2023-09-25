@@ -1,4 +1,7 @@
-export const API_BASE = process.env.API_HOST || 'http://localhost/api';
+export const API_BASE = 'https://magiclist.ru/api';
+
+// localhost
+// export const API_BASE = 'http://localhost/api';
 
 export const config = {
   API_BASE,
