@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { createColumnHelper } from '@tanstack/react-table';
-import { HomePage } from '~pages/home';
-import { AuthPage } from '~pages/auth';
-import { LayoutPage } from '~pages/layout';
-import { Table } from '~shared/ui';
+import { Preloader, Table } from '~shared/ui';
 import { Page404 } from '~shared/ui';
 import PublicRoute from './public-route';
 import PrivateRoute from './private-route';
 import { useTranslation } from 'react-i18next';
+import { lazily } from 'react-lazily';
+
+const { HomePage } = lazily(() => import(/* webpackChunkName: "ml_home" */ '~pages/home'));
+const { AuthPage } = lazily(() => import(/* webpackChunkName: "ml_auth" */ '~pages/auth'));
+const { LayoutPage } = lazily(() => import(/* webpackChunkName: "ml_layout" */ '~pages/layout'));
 
 const AppRoute: React.FC = () => {
   const tableData = [
@@ -50,15 +52,31 @@ const AppRoute: React.FC = () => {
     ]
   }
 
+  const renderFallback = () => (
+    <Preloader isFullScreen textContent={window.translate('please_wait')} />
+  );
+
   const { t } = useTranslation();
   window.translate = t;
 
   return (
     <Routes>
-      <Route element={<LayoutPage />}>
-        <Route path='/' element={<HomePage />}/>
+      <Route element={
+        <Suspense fallback={renderFallback()}>
+          <LayoutPage />
+        </Suspense>
+      }>
+        <Route path='/' element={
+          <Suspense fallback={renderFallback()}>
+            <HomePage />
+          </Suspense>
+        }/>
         <Route element={<PublicRoute />}>
-          <Route path='auth/*' element={<AuthPage />} />
+          <Route path='auth/*' element={
+            <Suspense fallback={renderFallback()}>
+              <AuthPage />
+            </Suspense>
+          }/>
         </Route>
         <Route element={<PrivateRoute />}>
           <Route path='table' element={<Table

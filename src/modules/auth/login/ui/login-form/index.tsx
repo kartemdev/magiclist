@@ -1,8 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from '~services/auth';
-import { Button, Form, InputBlock, InputPassword, InputText } from '~shared/ui';
+import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
 import { LoginFormData } from '../../types';
 import { validationSchema } from '../../lib';
 
@@ -10,7 +11,7 @@ import './styles.scss';
 
 const LoginForm: React.FC = () => {
 
-  const [loginUser] = useLogin();
+  const [loginUser, { isLoading }] = useLogin();
 
   const defaultValues ={
     email: '',
@@ -49,10 +50,12 @@ const LoginForm: React.FC = () => {
         />
       </InputBlock>
       <Button
-        className='login-form__submit'
+        className={classNames('login-form__submit', {
+          ['login-form__submit-loading']: isLoading,
+        })}
         type='submit'
       >
-        {window.translate('sign_in')}
+        {isLoading ? <Preloader size={30} thickness={5} typeStyle='secondary'/> : window.translate('sign_in')}
       </Button>
     </Form>
   );

@@ -7,3 +7,4 @@ export * from './modal';
 export * from './table';
 export * from './form';
 export * from './page404';
+export * from './preloader';
