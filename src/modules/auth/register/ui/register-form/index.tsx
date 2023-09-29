@@ -1,8 +1,9 @@
 import React from 'react';
+import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
-import { Button, Form, InputBlock, InputPassword, InputText } from '~shared/ui';
+import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
 import { RegisterFormData } from '../../types';
 import { validationSchema } from '../../lib';
 
@@ -10,7 +11,7 @@ import './styles.scss';
 
 const RegisterForm: React.FC = () => {
 
-  const [registerUser] = useRegister();
+  const [registerUser, { isLoading }] = useRegister();
 
   const defaultValues ={
     userName: '',
@@ -63,10 +64,12 @@ const RegisterForm: React.FC = () => {
         <InputPassword {...registerField('confirmPassword')} autoComplete='off' />
       </InputBlock>
       <Button
-        className='register-form__submit'
+        className={classNames('register-form__submit', {
+          ['register-form__submit-loading']: isLoading,
+        })}
         type='submit'
       >
-        {window.translate('create_acc')}
+        {isLoading ? <Preloader size={30} thickness={5} typeStyle='secondary'/> : window.translate('create_acc')}
       </Button>
     </Form>
   );

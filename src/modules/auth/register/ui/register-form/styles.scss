@@ -18,10 +18,19 @@
     border-bottom: 2px solid var(--disabled);
   }
 
-  &__submit, &__navigate {
+  &__submit {
     margin-top: 10px;
     width: 100%;
     max-width: 100%;
+
+    &-loading {
+      .ml-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+      }
+    }
 
     .ml-button {
       height: 40px;

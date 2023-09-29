@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider, StoreProvider } from './providers';
 import AppRoute from './app-route';
 
+import '~langs';
 import '~shared/scss';
 
 const container = document.getElementById('root');
