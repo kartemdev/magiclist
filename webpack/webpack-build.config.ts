@@ -2,7 +2,6 @@ import path from "path";
 import { Configuration } from 'webpack';
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import TerserPlugin from 'terser-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import FontPreloadPlugin from 'webpack-font-preload-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
@@ -21,7 +20,6 @@ const buildConfig = (isProd: boolean): Configuration => {
       clean: true,
     },
     plugins:[
-      new CompressionPlugin(),
       new FontPreloadPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({

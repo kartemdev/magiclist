@@ -16,7 +16,9 @@ RUN rm -rf /etc/nginx/conf.d/default.conf
 
 RUN rm -rf /var/www/html
 
-COPY --from=builder /usr/src/app/.nginx /etc/nginx/conf.d/default.conf
+COPY --from=builder /usr/src/app/nginx/nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=builder /usr/src/app/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /usr/src/app/build /var/www/html/
 
