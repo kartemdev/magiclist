@@ -2,7 +2,7 @@ import { baseApi } from "~shared/api";
 import { IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "../types";
 
 export const authApi = baseApi.enhanceEndpoints({
-  addTagTypes: ['Login', 'Register', 'Refresh'],
+  addTagTypes: ['Login', 'Register', 'Logout', 'Refresh'],
 }).injectEndpoints({
   endpoints: (build) => ({
     login: build.mutation<IResponseAuthDTO, IPayloadLoginDTO>({
@@ -23,7 +23,15 @@ export const authApi = baseApi.enhanceEndpoints({
       }),
       invalidatesTags: ['Register'],
     }),
-    refreshToken: build.query<IResponseAuthDTO, undefined>({
+    logout: build.mutation<unknown, unknown>({
+      query: () => ({
+        url: 'auth/logout',
+        method: 'get',
+        credentials: 'include',
+      }),
+      invalidatesTags: ['Logout'],
+    }),
+    refresh: build.query<IResponseAuthDTO, unknown>({
       query: () => ({
         url: 'auth/refresh',
         method: 'get',
@@ -34,5 +42,10 @@ export const authApi = baseApi.enhanceEndpoints({
   }),
 });
 
-export const { useRegisterMutation: useRegister, useLoginMutation: useLogin } = authApi;
-export const useRefresh = () => authApi.useRefreshTokenQuery(undefined);
+export const {
+  useLoginMutation: useLogin,
+  useRegisterMutation: useRegister,
+  useLogoutMutation: useLogout,
+} = authApi;
+
+export const useRefresh = () => authApi.useRefreshQuery(undefined);

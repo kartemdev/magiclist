@@ -33,7 +33,7 @@ const LoginForm: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}
       >
       <InputBlock
-        className='login-form__user-name'
+        className='login-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
       >

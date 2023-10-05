@@ -3,6 +3,7 @@ import { Button, NavbarLink } from '~shared/ui';
 import { LangsSelector } from '~components/langs-selector';
 
 import './styles.scss';
+import { LogoutButton } from '~components/logout-button';
 
 interface IProps {
   isAuth: boolean;
@@ -15,7 +16,10 @@ const GlobalHeaderRightGroup: React.FC<IProps> = ({ isAuth }) => {
         <>
           <NavbarLink to='/table' className='global-header-right-group__item'>
             {window.translate('table')}
-          </NavbarLink>  
+          </NavbarLink>
+          <div className='global-header-right-group__item'>
+            <LogoutButton />
+          </div>
         </>
       ) : (
         <>
