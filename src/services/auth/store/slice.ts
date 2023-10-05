@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { authApi } from "../api/auth-api";
-import { matchReducer } from "../lib";
-import { IAuthState } from "../types";
+import { createSlice } from '@reduxjs/toolkit';
+import { authApi } from '../api/auth-api';
+import { matchReducer, resetState } from '../lib';
+import { IAuthState } from '../types';
 
 const initialState: IAuthState = {};
 
@@ -10,23 +10,36 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    const {
+      login,
+      register,
+      logout,
+      refresh
+    } = authApi.endpoints;
+
     builder
       .addMatcher(
-        authApi.endpoints.login.matchFulfilled,
+        login.matchFulfilled,
         (state: IAuthState, { payload }) => {
           matchReducer(state, payload);
         }
       )
       .addMatcher(
-        authApi.endpoints.register.matchFulfilled,
+        register.matchFulfilled,
         (state: IAuthState, { payload }) => {
           matchReducer(state, payload);
         }
       )
       .addMatcher(
-        authApi.endpoints.refreshToken.matchFulfilled,
+        refresh.matchFulfilled,
         (state: IAuthState, { payload }) => {
           matchReducer(state, payload);
+        }
+      )
+      .addMatcher(
+        logout.matchFulfilled,
+        (state: IAuthState) => {
+          resetState(state);
         }
       )
   },

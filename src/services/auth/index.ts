@@ -2,6 +2,7 @@ export {
   authApi,
   useLogin,
   useRegister,
+  useLogout,
   useRefresh,
 } from './api/auth-api';
 

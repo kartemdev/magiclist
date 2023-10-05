@@ -2,6 +2,7 @@ import React from 'react';
 import { GithubIcon, TelegramIcon } from '~shared/assets';
 import { Button, NavbarLink } from '~shared/ui';
 import { LangsSelector } from '~components/langs-selector';
+import { LogoutButton } from '~components/logout-button';
 
 import './styles.scss';
 
@@ -15,9 +16,12 @@ const GlobalHeaderMenuGroup: React.FC<IProps> = ({ isAuth }) => {
       <div className='global-header-menu-group__body'>
         {isAuth ? (
           <>
+            <div className='global-header-menu-group__body-button'>
+              <LogoutButton />
+            </div> 
             <NavbarLink to='/table' className='global-header-menu-group__body-item'>
               {window.translate('table')}
-            </NavbarLink>  
+            </NavbarLink>
           </>
         ) : (
           <>

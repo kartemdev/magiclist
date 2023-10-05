@@ -5,7 +5,7 @@ import './styles.scss';
 
 interface IProps {
   type?: 'submit' | 'reset' | 'button';
-  typeStyle?: string;
+  typeStyle?: 'primary' | 'secondary';
   className?: string;
   children?: React.ReactNode | string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
