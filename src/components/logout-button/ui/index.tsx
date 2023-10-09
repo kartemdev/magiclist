@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useLogout } from '~services/auth';
@@ -12,20 +12,13 @@ const LogoutButton: React.FC = () => {
   const navigate = useNavigate();
   const [logoutUser, { isLoading }] = useLogout();
 
-  const loadedRef = useRef(false);
-
   const handleLogout = () => {
     dispatch(logoutUser);
   };
   
   useEffect(() => {
     return () => {
-      if (loadedRef.current) {
-        loadedRef.current = false;
-        navigate('/');
-      } else {
-        loadedRef.current = true;
-      }
+      navigate('/');
     }
   }, []);
 
