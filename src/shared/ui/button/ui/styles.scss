@@ -49,4 +49,17 @@
       box-shadow: none;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    &__primary {
+      &:hover {
+        background-color: var(--primary);
+      }
+    }
+
+    &__secondary {
+      background-color: var(--primary--white);
+      box-shadow: none !important;
+    }
+  }
 }

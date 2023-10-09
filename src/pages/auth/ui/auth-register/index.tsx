@@ -6,7 +6,7 @@ import { Button } from '~shared/ui';
 import './styles.scss';
 
 const AuthRegister: React.FC = () => {
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className='auth-register'>
