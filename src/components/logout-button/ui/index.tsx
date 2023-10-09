@@ -1,27 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useLogout } from '~services/auth';
 import { useAppDispatch } from '~shared/hooks';
-import { Button, Preloader } from '~shared/ui';
-
-import './styles.scss';
+import { Button } from '~shared/ui';
 
 const LogoutButton: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [logoutUser, { isLoading }] = useLogout();
+  
+  const [logoutUser, { isLoading }] = useLogout({ fixedCacheKey: 'logout' });
 
   const handleLogout = () => {
     dispatch(logoutUser);
+    navigate('/');
   };
   
-  useEffect(() => {
-    return () => {
-      navigate('/');
-    }
-  }, []);
-
   return (
     <>
       <Button
@@ -31,7 +25,7 @@ const LogoutButton: React.FC = () => {
         })}
         typeStyle='secondary'
       >
-        {isLoading ? <Preloader size={23} thickness={4} /> : window.translate('logout')}
+        {window.translate('logout')}
       </Button>
     </>
   )
