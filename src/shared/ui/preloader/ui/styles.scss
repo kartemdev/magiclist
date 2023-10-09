@@ -64,6 +64,10 @@
     width: var(--preloader--size);
     height: var(--preloader--size);
 
+    .ml-preloader {
+      z-index: 0;
+    }
+
     &-full {
       display: flex;
       justify-content: center;

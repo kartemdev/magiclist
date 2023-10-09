@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './styles.scss';
+
 interface IProps {
   leftGroup?: React.ReactNode;
   rightGroup: React.ReactNode;

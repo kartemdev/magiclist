@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import { useOutsideClick } from '~shared/hooks';
@@ -14,8 +15,13 @@ interface IProps {
 const NavbarMenu: React.FC<IProps> = ({ children, leftSide }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
+  const location = useLocation();
   const menuRef = useRef(null);
   useOutsideClick(menuRef, () => setIsOpenMenu(false));
+  
+  useEffect(() => {
+    setIsOpenMenu(false);
+  }, [location]);
 
   return (
     <div className={classNames('ml-navbar-menu__block', {

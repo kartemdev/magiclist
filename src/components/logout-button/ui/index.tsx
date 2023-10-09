@@ -1,23 +1,44 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 import { useLogout } from '~services/auth';
 import { useAppDispatch } from '~shared/hooks';
-import { Button } from '~shared/ui';
+import { Button, Preloader } from '~shared/ui';
+
+import './styles.scss';
 
 const LogoutButton: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [logoutUser, { isLoading }] = useLogout();
 
-  const [ logoutUser ] = useLogout();
+  const loadedRef = useRef(false);
 
-  const handleLogout = () => dispatch(logoutUser);
+  const handleLogout = () => {
+    dispatch(logoutUser);
+  };
+  
+  useEffect(() => {
+    return () => {
+      if (loadedRef.current) {
+        loadedRef.current = false;
+        navigate('/');
+      } else {
+        loadedRef.current = true;
+      }
+    }
+  }, []);
 
   return (
     <>
       <Button
         onClick={handleLogout}
-        className='logout-button'
+        className={classNames('logout-button', {
+          ['logout-button__loading']: isLoading,
+        })}
         typeStyle='secondary'
       >
-        {window.translate('logout')}
+        {isLoading ? <Preloader size={23} thickness={4} /> : window.translate('logout')}
       </Button>
     </>
   )
