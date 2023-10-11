@@ -6,7 +6,7 @@
 	"have_acc": "Already have an account",
 	"table": "Table",
 	"login": "Login",
-	"email": "E-mail",
+	"email": "Email",
 	"password": "Password",
 	"repeat_password": "Repeat password",
 	"required_field_error": "Required field",
@@ -21,5 +21,9 @@
 	"en-US": "English",
 	"page_not_found": "Oops, page not found",
 	"please_wait": "Please, wait",
-	"logout": "Logout"
+	"logout": "Logout",
+	"invalid_password_email": "Wrong e-mail or password",
+	"server_error": "Internal server error",
+	"user_email_already_exists": "Email is already in use",
+	"user_name_already_exists": "Login is already in use"
 }

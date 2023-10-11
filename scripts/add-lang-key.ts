@@ -6,7 +6,7 @@ const isEntryPoint = () => require.main === module;
 if (isEntryPoint()) {
   const argLength = process.argv.length;
 
-  if (argLength < 6) {
+  if (argLength < 8) {
     console.log(
       'There are missing arguments (npm run add-lang-keys (key) (rus translate) (eng translate) (json files paths))'
     );

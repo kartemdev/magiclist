@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { lazily } from 'react-lazily';
 import { Route, Routes } from 'react-router-dom';
 import { createColumnHelper } from '@tanstack/react-table';
 import { Preloader, Table } from '~shared/ui';
@@ -6,7 +7,6 @@ import { Page404 } from '~shared/ui';
 import PublicRoute from './public-route';
 import PrivateRoute from './private-route';
 import { useTranslation } from 'react-i18next';
-import { lazily } from 'react-lazily';
 
 const { HomePage } = lazily(() => import(/* webpackChunkName: "ml_home" */ '~pages/home'));
 const { AuthPage } = lazily(() => import(/* webpackChunkName: "ml_auth" */ '~pages/auth'));
@@ -56,7 +56,7 @@ const AppRoute: React.FC = () => {
     <Preloader isFullScreen textContent={window.translate('please_wait')} />
   );
 
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   window.translate = t;
 
   return (

@@ -1,5 +1,7 @@
 import { baseApi } from "~shared/api";
 import { IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "../types";
+import { notyEmit } from "~shared/lib";
+import { error } from "console";
 
 export const authApi = baseApi.enhanceEndpoints({
   addTagTypes: ['Login', 'Register', 'Logout', 'Refresh'],
@@ -37,6 +39,9 @@ export const authApi = baseApi.enhanceEndpoints({
         method: 'get',
         credentials: 'include',
       }),
+      transformErrorResponse: (response) => {
+ 
+      },
       providesTags: ['Refresh'],
     }),
   }),
