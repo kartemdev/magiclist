@@ -1,4 +1,4 @@
-import { SortOrder } from "~shared/enums";
+import { SortOrder } from "~shared/lib";
 import { ISortData } from "../types";
 
 export const getSortOrderClassNames = <T, >(id: string, sortData: ISortData<T>) => {

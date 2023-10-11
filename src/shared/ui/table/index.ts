@@ -1,3 +1,7 @@
 export { default as Table } from './ui';
 
-export * from './types';
+export type {
+  IRow,
+  ISortData,
+  ISelectedRows,
+} from './types';

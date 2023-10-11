@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { HeaderGroup, flexRender } from '@tanstack/react-table';
 import { Checkbox } from '~shared/ui';
 import { ArrowHeadFullIcon } from '~shared/assets';
-import { SortOrder } from '~shared/enums';
+import { SortOrder } from '~shared/lib';
 import { ISortData } from '../../types';
 import { getSortOrderClassNames } from '../../lib';
 

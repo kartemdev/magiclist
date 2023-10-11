@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from '~services/auth';
 import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
 import { LoginFormData } from '../../types';
-import { validationLoginForm } from '../../lib';
+import { getErrorMessage, validationLoginForm } from '../../lib';
 
 import './styles.scss';
 
 const LoginForm: React.FC = () => {
 
-  const [loginUser, { isLoading }] = useLogin();
+  const [loginUser, { isLoading, error }] = useLogin();
 
-  const defaultValues ={
+  const defaultValues = {
     email: '',
     password: '',
   };
 
-  const { register, formState: { errors }, handleSubmit } = useForm({
+
+  const { register, formState: { errors }, handleSubmit, setError } = useForm({
     defaultValues,
     resolver: yupResolver(validationLoginForm()),
   });
@@ -26,6 +27,16 @@ const LoginForm: React.FC = () => {
   const onSubmit = (data: LoginFormData) => {
     loginUser(data);
   };
+
+  useEffect(() => {
+    const errorMessage = getErrorMessage(error);
+
+    if (errorMessage) {
+      const [field, message] = errorMessage;
+
+      setError(field as keyof typeof defaultValues, message)
+    }
+  }, [error]);
 
   return (
     <Form

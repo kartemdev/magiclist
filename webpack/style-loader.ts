@@ -11,8 +11,7 @@ const styleLoader = (isProd: boolean): Configuration => ({
   module: {
     rules: [
       {
-        test: /\.(s(a|c)ss)$/,
-        exclude: /node_modules/,
+        test: /\.((sa|sc|c)ss)$/,
         use: [
           isProd ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',

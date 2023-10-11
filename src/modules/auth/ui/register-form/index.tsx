@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
+import { HttpStatusPrefixes, getHttpError } from '~shared/lib';
 import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
 import { RegisterFormData } from '../../types';
-import { validationRegisterForm } from '../../lib';
+import { getErrorMessage, validationRegisterForm } from '../../lib';
 
 import './styles.scss';
 
 const RegisterForm: React.FC = () => {
 
-  const [registerUser, { isLoading }] = useRegister();
+  const [registerUser, { isLoading, error }] = useRegister();
 
   const defaultValues ={
     userName: '',
@@ -20,7 +21,7 @@ const RegisterForm: React.FC = () => {
     confirmPassword: '',
   };
 
-  const { register: registerField, formState: { errors }, handleSubmit } = useForm({
+  const { register: registerField, formState: { errors }, handleSubmit, setError } = useForm({
     defaultValues,
     resolver: yupResolver(validationRegisterForm()),
   });
@@ -29,6 +30,16 @@ const RegisterForm: React.FC = () => {
     delete data.confirmPassword;
     registerUser(data);
   };
+
+  useEffect(() => {
+    const errorMessage = getErrorMessage(error);
+
+    if (errorMessage) {
+      const [field, message] = errorMessage;
+
+      setError(field as keyof typeof defaultValues, message)
+    }
+  }, [error]);
 
   return (
     <Form
