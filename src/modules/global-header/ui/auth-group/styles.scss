@@ -1,0 +1,32 @@
+.auth-group {
+  display: flex;
+  align-items: center;
+  margin: 0px 15px;
+  gap: 10px;
+
+  &__item {
+    &-profile, &-auth {
+      height: 27px;
+      width: 27px;
+  
+      path {
+        fill: var(--primary);
+      }
+    }
+
+    &-auth {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  .ml-button {
+    height: 30px;
+    padding: 0px 8px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .auth-group {
+    margin-right: 5px;
+  }
+}

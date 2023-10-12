@@ -85,6 +85,12 @@ const AppRoute: React.FC = () => {
             isCheckBoxSelect
             columns={getColumns()}
           />}/>
+          <Route path='profile' element={<Table
+            data={tableData}
+            isMultipleSelect
+            isCheckBoxSelect
+            columns={getColumns()}
+          />}/>
         </Route>
         <Route path='*' element={<Page404 content={window.translate('page_not_found')} />}/>
       </Route>

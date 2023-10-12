@@ -3,9 +3,10 @@ import { useMediaQuery } from 'react-responsive';
 import { selectIsAuth } from '~services/auth';
 import { Navbar, NavbarMenu } from '~shared/ui';
 import { useAppSelector } from '~shared/hooks';
-import GlobalHeaderLeftGroup from './global-header-left-group';
-import GlobalHeaderRightGroup from './global-header-right-group';
-import GlobalHeaderMenuGroup from './global-header-menu-group';
+import LogoGroup from './logo-group';
+import MainGroup from './main-group';
+import MenuGroup from './menu-group';
+import AuthGroup from './auth-group';
 
 const GlobalHeader: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
@@ -14,14 +15,20 @@ const GlobalHeader: React.FC = () => {
   return (
     <div className='global-header'>
       <Navbar
-        leftGroup={<GlobalHeaderLeftGroup />}
+        leftGroup={<LogoGroup />}
         rightGroup={
           isMobile ? (
-            <NavbarMenu>
-              <GlobalHeaderMenuGroup isAuth={isAuth} />
-            </NavbarMenu>
+            <>
+              <AuthGroup isAuth={isAuth} />
+              <NavbarMenu>
+                <MenuGroup isAuth={isAuth} />
+              </NavbarMenu>
+            </>
           ) : (
-            <GlobalHeaderRightGroup isAuth={isAuth} />
+            <>
+              <MainGroup isAuth={isAuth} />
+              <AuthGroup isAuth={isAuth} />
+            </>
           )
         }
       />

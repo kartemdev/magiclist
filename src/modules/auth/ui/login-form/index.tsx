@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from '~services/auth';
 import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
 import { LoginFormData } from '../../types';
-import { validationSchema } from '../../lib';
+import { validationLoginForm } from '../../lib';
 
 import './styles.scss';
 
@@ -20,7 +20,7 @@ const LoginForm: React.FC = () => {
 
   const { register, formState: { errors }, handleSubmit } = useForm({
     defaultValues,
-    resolver: yupResolver(validationSchema()),
+    resolver: yupResolver(validationLoginForm()),
   });
 
   const onSubmit = (data: LoginFormData) => {

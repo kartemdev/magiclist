@@ -1,1 +1,0 @@
-export { validationSchema } from './validation';
