@@ -23,4 +23,3 @@ COPY --from=builder /usr/src/app/nginx/default.conf /etc/nginx/conf.d/default.co
 COPY --from=builder /usr/src/app/build /var/www/html/
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-

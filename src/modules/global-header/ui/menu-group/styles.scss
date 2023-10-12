@@ -1,4 +1,4 @@
-.global-header-menu-group {
+.menu-group {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -10,13 +10,6 @@
     align-items: center;
     
     .ml-navbar-item {
-      width: 100%;
-    }
-
-    &-button {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 10px;
       width: 100%;
     }
 

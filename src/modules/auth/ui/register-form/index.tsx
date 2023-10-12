@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
 import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
 import { RegisterFormData } from '../../types';
-import { validationSchema } from '../../lib';
+import { validationRegisterForm } from '../../lib';
 
 import './styles.scss';
 
@@ -22,7 +22,7 @@ const RegisterForm: React.FC = () => {
 
   const { register: registerField, formState: { errors }, handleSubmit } = useForm({
     defaultValues,
-    resolver: yupResolver(validationSchema()),
+    resolver: yupResolver(validationRegisterForm()),
   });
 
   const onSubmit = (data: RegisterFormData) => {

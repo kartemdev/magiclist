@@ -9,7 +9,7 @@ import './styles.scss';
 
 interface IProps {
   children: React.ReactNode;
-  leftSide?: React.ReactNode;
+  leftSide?: boolean;
 }
 
 const NavbarMenu: React.FC<IProps> = ({ children, leftSide }) => {
@@ -55,5 +55,9 @@ const NavbarMenu: React.FC<IProps> = ({ children, leftSide }) => {
   </div>
   );
 };
+
+NavbarMenu.defaultProps = {
+  leftSide: false,
+}
 
 export default NavbarMenu;

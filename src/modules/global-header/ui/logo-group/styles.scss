@@ -1,0 +1,35 @@
+.logo-group {
+  &__link {
+    text-decoration: none;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 40px;
+
+    
+  }
+
+  &__icon {
+    width: 40px;
+    height: 100%;
+
+    path {
+      &:nth-child(1), &:nth-child(3) {
+        stroke: var(--primary);
+      }
+
+      &:nth-child(2), &:nth-child(4) {
+        stroke: var(--primary--light);
+      }
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--primary);
+  }
+}
