@@ -1,6 +1,7 @@
 .ml-table-header {
   &__cell {
     border: 2px solid var(--disabled);
+    padding: 10px 15px;
 
     &-content {
       position: relative;
@@ -9,7 +10,6 @@
       justify-content: center;
       align-items: center;
       gap: 3px;
-      padding: 10px;
       user-select: none;
       cursor: pointer;
     }
@@ -20,7 +20,7 @@
     width: 15px;
     height: 15px;
     display: none;
-    top: 27px;
+    top: calc(100% - 2px);
     fill: var(--primary);
     transform: rotate(0deg);
 
