@@ -15,6 +15,7 @@ interface IProps<T> {
   onClickHeaderCell?: (sortData: ISortData<T>) => void;
   isCheckBoxSelect?: boolean;
   isMultipleSelect?: boolean;
+  isSorted?: boolean;
 }
 
 const Table = <T extends {}, >(props: IProps<T>) => {
@@ -26,6 +27,7 @@ const Table = <T extends {}, >(props: IProps<T>) => {
     onClickHeaderCell,
     isCheckBoxSelect,
     isMultipleSelect,
+    isSorted,
   } = props;
 
   const [selectedRows, setSelectedRows] = useState<ISelectedRows<T>>({});
@@ -83,6 +85,7 @@ const Table = <T extends {}, >(props: IProps<T>) => {
         <TableHeader
           headerGroups={table.getHeaderGroups()}
           isCheckBoxSelect={isCheckBoxSelect}
+          isSorted={isSorted}
           checked={Object.keys(selectedRows).length === data?.length}
           onChangeCheckbox={handleChangeCheckboxAll}
           onClickCell={onClickHeaderCell}
@@ -105,6 +108,7 @@ Table.defaultProps = {
   onClickHeaderCell: null,
   isMultipleSelect: false,
   isCheckBoxSelect: false,
+  isSorted: true,
 }
 
 export default Table;
