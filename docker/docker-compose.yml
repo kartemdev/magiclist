@@ -12,11 +12,15 @@ services:
       context: ${APP_PATH}
       dockerfile: Dockerfile
       target: builder
+      args:
+        API_HOST: ${API_HOST}
   nginx:
     build:
       context: ${APP_PATH}
       dockerfile: Dockerfile
       target: prod
+      args:
+        API_HOST: ${API_HOST}
     ports:
       - 80:80
       - 443:443

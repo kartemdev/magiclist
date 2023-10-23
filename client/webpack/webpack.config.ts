@@ -24,10 +24,10 @@ const common = (isProd: boolean) =>
 
 const config = (env: Env): Configuration | null => {
   if (env.production) {
-   return merge([common(env.production), buildConfig(env.production)]);
+   return merge([common(env.production), buildConfig(env.production, env)]);
   }
   if (env.development) {
-   return merge([common(!env.development), devServer(), buildConfig(!env.development)]);
+   return merge([common(!env.development), devServer(), buildConfig(!env.development, env)]);
   }
 
   return null;

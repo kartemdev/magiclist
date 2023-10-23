@@ -1,12 +1,13 @@
 import path from "path";
-import { Configuration } from 'webpack';
+import webpack, { Configuration } from 'webpack';
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import TerserPlugin from 'terser-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import FontPreloadPlugin from 'webpack-font-preload-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import { Env } from "./types";
 
-const buildConfig = (isProd: boolean): Configuration => {
+const buildConfig = (isProd: boolean, env: Env): Configuration => {
   const mode = isProd ? "production" : "development";
 
   return {
@@ -24,7 +25,10 @@ const buildConfig = (isProd: boolean): Configuration => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, '../public/index.html'),
-        favicon: path.resolve(__dirname, '../public', 'favicon.ico')
+        favicon: path.resolve(__dirname, '../public', 'favicon.ico'),
+      }),
+      new webpack.DefinePlugin({
+        'API_HOST': JSON.stringify(env.API_HOST),
       }),
     ],
     performance: {

@@ -3,6 +3,7 @@ import { store } from "../src/app/app-store";
 export {};
 
 declare global {
+  let API_HOST: string | null;
 
   type AppDispatch = typeof store.dispatch
   

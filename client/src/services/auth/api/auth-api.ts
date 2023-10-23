@@ -39,9 +39,6 @@ export const authApi = baseApi.enhanceEndpoints({
         method: 'get',
         credentials: 'include',
       }),
-      transformErrorResponse: (response) => {
- 
-      },
       providesTags: ['Refresh'],
     }),
   }),

@@ -35,8 +35,8 @@
       "~mixins": ["./mixins"],
       "~mixins/*": ["./mixins/*"],
 
-      "~langs": ["../langs"],
-      "~langs/*": ["../langs/*"],
+      "~langs": ["../../langs"],
+      "~langs/*": ["../../langs/*"],
     }
   },
   "ts-node": {
