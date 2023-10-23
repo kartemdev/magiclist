@@ -10,5 +10,6 @@ declare global {
 
   interface Window {
     translate: TFunction;
+    _env_: Record<string, string>;
   }
 }

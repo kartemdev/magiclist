@@ -12,7 +12,7 @@ const resolveModule = () => ({
       '~components': path.resolve(__dirname, '../src/components'),
       '~shared': path.resolve(__dirname, '../src/shared'),
       "~mixins": path.resolve(__dirname, '../src/shared/scss/mixins.scss'),
-      '~langs': path.resolve(__dirname, '../langs'),
+      '~langs': path.resolve(__dirname, '../../langs'),
     }
   },
 });

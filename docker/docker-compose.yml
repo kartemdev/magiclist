@@ -17,6 +17,8 @@ services:
       context: ${APP_PATH}
       dockerfile: Dockerfile
       target: prod
+    environment:
+      - API_HOST=${API_HOST}
     ports:
       - 80:80
       - 443:443

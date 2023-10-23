@@ -2,7 +2,9 @@
   overflow: auto;
 
   &__content {
+    box-sizing: border-box;
     height: calc(100dvh - 50px);
+    padding: 20px 10px;
   }
 }
 
@@ -13,10 +15,6 @@
       z-index: var(--z-index--xxxl);
       width: 100vw;
       margin-bottom: 50px;
-    }
-
-    &__content {
-      margin-top: 50px;
     }
   }
 }
