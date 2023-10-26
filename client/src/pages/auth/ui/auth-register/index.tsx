@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { RegisterForm } from '~modules/auth';
-import { Button } from '~shared/ui';
+import { Button } from '~shared/components';
 
 import './styles.scss';
 

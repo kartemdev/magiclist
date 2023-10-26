@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavbarLink } from '~shared/ui';
+import { NavbarLink } from '~shared/components';
 
 import './styles.scss';
 

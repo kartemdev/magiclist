@@ -1,38 +1,28 @@
-import React, { forwardRef, useState } from 'react';
+import React, { useState } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 import { ClosedEye, OpenedEye } from '~shared/assets';
 import withInput from '../with-input';
 
 import './styles.scss';
 interface IProps {
-  name?: string;
+  name: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   autoComplete?: string;
+  register?: UseFormRegister<FieldValues> | null;
 }
 
-const InputPasswrod = forwardRef<HTMLInputElement, IProps>((props, ref) => {
-  const {
-    name,
-    value,
-    onChange,
-    placeholder,
-    autoComplete,
-  } = props;
-
+const InputPasswrod: React.FC<IProps> = ({ name, register, ...props }) => {
   const [isShowPass, setIsShowPass] = useState<boolean>(false);
 
   return (
     <>
       <input
-        ref={ref}
-        name={name}
+        {...props}
+        {...register?.(name)}
         type={isShowPass ? 'text' : 'password'}
         className='ml-input ml-input-password'
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        autoComplete={autoComplete}
       />
       <div
         className='ml-input-password__show'
@@ -42,6 +32,6 @@ const InputPasswrod = forwardRef<HTMLInputElement, IProps>((props, ref) => {
       </div>
     </>
   );
-});
+};
 
 export default withInput(InputPasswrod);

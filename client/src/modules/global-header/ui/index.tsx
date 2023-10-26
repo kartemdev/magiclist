@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { selectIsAuth } from '~services/auth';
-import { Navbar, NavbarMenu } from '~shared/ui';
+import { Navbar, NavbarMenu } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
 import LogoGroup from './logo-group';
 import MainGroup from './main-group';

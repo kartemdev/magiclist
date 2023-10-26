@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Page404 } from '~shared/ui';
+import { Page404 } from '~shared/components';
 import AuthLogin from './auth-login';
 import AuthRegister from './auth-register';
 

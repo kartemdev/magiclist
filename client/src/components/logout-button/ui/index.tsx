@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { useLogout } from '~services/auth';
 import { useAppDispatch } from '~shared/hooks';
-import { Button } from '~shared/ui';
+import { Button } from '~shared/components';
 
 const LogoutButton: React.FC = () => {
   const dispatch = useAppDispatch();

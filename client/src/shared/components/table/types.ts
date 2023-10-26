@@ -7,6 +7,6 @@ export interface IRow<T> {
   data: T;
 }
 export interface ISortData<T> {
-  fieldName: keyof T;
+  fieldName: Key<T>;
   sortType: string;
 }
