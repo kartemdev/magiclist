@@ -1,79 +1,85 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
-import { HttpStatusPrefixes, getHttpError } from '~shared/lib';
-import { Button, Form, InputBlock, InputPassword, InputText, Preloader } from '~shared/ui';
-import { RegisterFormData } from '../../types';
+import { withoutField } from '~shared/lib';
+import { IPayloadRegisterDTO } from '~services/auth/types';
+import { Button, Form, InputPassword, InputText, Preloader } from '~shared/components';
+import { IRegisterFormData } from '../../types';
 import { getErrorMessage, validationRegisterForm } from '../../lib';
 
 import './styles.scss';
 
 const RegisterForm: React.FC = () => {
-
   const [registerUser, { isLoading, error }] = useRegister();
 
-  const defaultValues ={
+  const defaultValues = useMemo(() => ({
     userName: '',
     email: '',
     password: '',
     confirmPassword: '',
-  };
+  }), []);
 
-  const { register: registerField, formState: { errors }, handleSubmit, setError } = useForm({
+  const {
+    register: registerInput,
+    formState: { errors },
+    handleSubmit: handleSubmitForm,
+    setError,
+  } = useForm({
     defaultValues,
     resolver: yupResolver(validationRegisterForm()),
   });
-
-  const onSubmit = (data: RegisterFormData) => {
-    delete data.confirmPassword;
-    registerUser(data);
-  };
-
+  
   useEffect(() => {
     const errorMessage = getErrorMessage(error);
 
     if (errorMessage) {
       const [field, message] = errorMessage;
 
-      setError(field as keyof typeof defaultValues, message)
+      setError(field as Key<typeof defaultValues>, message)
     }
   }, [error]);
-
+  
+  const handleSubmit = (data: IRegisterFormData) => {
+    registerUser(withoutField<IRegisterFormData, IPayloadRegisterDTO>(data, 'confirmPassword'));
+  };
+  
   return (
     <Form
       className='register-form'
-      onSubmit={handleSubmit(onSubmit)}
-      >
-      <InputBlock
+      onSubmit={handleSubmitForm(handleSubmit)}
+    >
+      <InputText
+        name='userName'
         className='register-form__user-name'
         label={window.translate('login')}
         error={errors.userName?.message}
-      >
-        <InputText {...registerField('userName')} />
-      </InputBlock>
-      <InputBlock
+        register={registerInput}
+      />
+      <InputText
+        name='email'
         className='register-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
-      >
-        <InputText {...registerField('email')} type='email' />
-      </InputBlock>
-      <InputBlock
+        register={registerInput}
+      />
+      <InputPassword
+        name='password'
         className='register-form__password'
         label={window.translate('password')}
+        autoComplete='new-password'
         error={errors.password?.message}
-      >
-        <InputPassword {...registerField('password')} autoComplete='new-password' />
-      </InputBlock>
-      <InputBlock
+        register={registerInput}
+      />
+      <InputPassword
+        name='confirmPassword'
         className='register-form__repeat-password'
         label={window.translate('repeat_password')}
+        autoComplete='off'
         error={errors.confirmPassword?.message}
-      >
-        <InputPassword {...registerField('confirmPassword')} autoComplete='off' />
-      </InputBlock>
+        register={registerInput}
+      />
       <Button
         className={classNames('register-form__submit', {
           ['register-form__submit-loading']: isLoading,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 
 import './styles.scss';
@@ -45,4 +45,4 @@ Button.defaultProps = {
   onClick: () => null,
 };
 
-export default Button;
+export default memo(Button);

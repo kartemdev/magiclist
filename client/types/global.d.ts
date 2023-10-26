@@ -9,6 +9,8 @@ declare global {
   
   type RootState = ReturnType<typeof store.getState>
 
+  type Key<T> = keyof T;
+
   interface Window {
     translate: TFunction;
   }

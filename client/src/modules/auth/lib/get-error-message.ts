@@ -4,7 +4,6 @@ import { HttpStatusPrefixes, getHttpError } from "~shared/lib";
 
 export const getErrorMessage = (error: ISelfError | SerializedError): [string, { message: string }] => {
   const httpError = getHttpError({ error, statusPrefix: HttpStatusPrefixes.CLIENT });
-  const currentErrors = [];
 
   if (httpError) {
     let errorField;

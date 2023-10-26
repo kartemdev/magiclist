@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogoutButton } from '~components/logout-button';
 import { LoginUserIcon, ProfileUserIcon } from '~shared/assets';
-import { NavbarLink } from '~shared/ui';
+import { NavbarLink } from '~shared/components';
 
 import './styles.scss';
 

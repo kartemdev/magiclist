@@ -1,6 +1,6 @@
 import React from 'react';
 import { GithubIcon, TelegramIcon } from '~shared/assets';
-import { NavbarLink } from '~shared/ui';
+import { NavbarLink } from '~shared/components';
 import { LangsSelector } from '~components/langs-selector';
 
 import './styles.scss';

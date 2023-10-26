@@ -10,3 +10,10 @@ export {
   authSlice,
   selectIsAuth,
 } from './store/slice';
+
+export type {
+  IAuthState,
+  IPayloadLoginDTO,
+  IPayloadRegisterDTO,
+  IResponseAuthDTO,
+} from './types'

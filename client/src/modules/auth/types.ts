@@ -1,9 +1,9 @@
-export interface LoginFormData {
+export interface ILoginFormData {
   email: string;
   password: string;
 }
 
-export interface RegisterFormData {
+export interface IRegisterFormData {
   email: string;
   userName: string;
   password: string;

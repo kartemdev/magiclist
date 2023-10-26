@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import { Header, HeaderGroup, flexRender } from '@tanstack/react-table';
-import { Checkbox } from '~shared/ui';
+import { Checkbox } from '~shared/components';
 import { ArrowHeadFullIcon } from '~shared/assets';
 import { SortOrder } from '~shared/lib';
 import { ISortData } from '../../types';
@@ -33,7 +33,7 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
   const handleClickCell = (header: Header<T, unknown>) => {
     if (isSorted && onClickCell) {
       const currentSortData: ISortData<T> = {
-        fieldName: header.id as keyof T,
+        fieldName: header.id as Key<T>,
         sortType: 
           !sortData?.sortType ? SortOrder.ASC
             : sortData.sortType === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC,
