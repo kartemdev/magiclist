@@ -5,6 +5,7 @@ import './styles.scss';
 
 interface IProps {
   type?: 'submit' | 'reset' | 'button';
+  isDisabled?: boolean,
   typeStyle?: 'primary' | 'secondary';
   className?: string;
   children?: React.ReactNode | string;
@@ -14,6 +15,7 @@ interface IProps {
 const Button: React.FC<IProps> = (props) => {
   const {
     type,
+    isDisabled,
     typeStyle,
     className,
     children,
@@ -29,6 +31,7 @@ const Button: React.FC<IProps> = (props) => {
           [`ml-button__${typeStyle}`]: typeStyle,
         })}
         type={type}
+        disabled={isDisabled}
         onClick={onClick}
       >
         {children}
@@ -39,6 +42,7 @@ const Button: React.FC<IProps> = (props) => {
 
 Button.defaultProps = {
   type: 'button',
+  isDisabled: false,
   typeStyle: 'primary',
   className: '',
   children: 'Click',

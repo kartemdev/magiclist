@@ -1,5 +1,5 @@
 import { SerializedError } from "@reduxjs/toolkit";
-import { ISelfError } from "~shared/api";
+import { ISelfError, RtkErrorStatusesEnum } from "~shared/api";
 
 export enum HttpStatusPrefixes {
   'INFO' =  1,
@@ -9,7 +9,7 @@ export enum HttpStatusPrefixes {
   'SERVER' = 5,
 };
 
-export interface GetHttpParams {
+export interface GetHttpParamsEnum {
   error: ISelfError | SerializedError,
   statusPrefix?: HttpStatusPrefixes,
   includeStatuses?: number[]
@@ -27,14 +27,27 @@ export const isHttpStatus = (status: number | string, statusPrefix?: HttpStatusP
   return false
 };
 
-export const getHttpError = ({ error, statusPrefix, includeStatuses }: GetHttpParams) => {
+export const getHttpError = ({ error, statusPrefix, includeStatuses }: GetHttpParamsEnum) => {
+  let currentError;
+
   if (
     (error && 'data' in error) &&
     isHttpStatus(error.data.statusCode, statusPrefix) &&
     isIncludeHttpStatuses(error.status, includeStatuses)
   ) {
-    return error.data;
+    currentError = error.data;
   }
-  return null;
+
+  if (error && 'error' in error) {
+    if (error.status === RtkErrorStatusesEnum.TIMEOUT_ERROR) {
+      currentError = { message: 'timeout_error' };
+    }
+
+    if (error.status === RtkErrorStatusesEnum.FETCH_ERROR) {
+      currentError = { message: 'server_error' };
+    }
+  }
+
+  return currentError;
 };
 
