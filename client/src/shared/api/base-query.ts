@@ -1,6 +1,6 @@
 import { BaseQueryFn, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { config } from '~shared/config';
-import { getHttpError, notyEmit } from '~shared/lib';
+import { SERVER_TIMEOUT, getHttpError, notyEmit } from '~shared/lib';
 import { ISelfError } from './types';
 
 
@@ -9,6 +9,7 @@ export const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers: Headers, { getState }) => {
     return headers;
   },
+  timeout: SERVER_TIMEOUT,
   credentials: 'include',
 });
 
@@ -19,7 +20,7 @@ export const baseQueryWithReauth: BaseQueryFn<
   const { error = null } = response;
   
   if (error) {
-    notyEmit.serverError(getHttpError({ error })?.message || 'server_error', error.status)
+    notyEmit.serverError(getHttpError({ error })?.message, error.status)
   }
   
   return response;

@@ -12,7 +12,7 @@ import { getErrorMessage, validationRegisterForm } from '../../lib';
 import './styles.scss';
 
 const RegisterForm: React.FC = () => {
-  const [registerUser, { isLoading, error }] = useRegister();
+  const [registerUser, { isLoading, error }] = useRegister({ fixedCacheKey: 'register' });
 
   const defaultValues = useMemo(() => ({
     userName: '',

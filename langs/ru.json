@@ -25,5 +25,6 @@
 	"invalid_password_email": "Неправильный email или пароль",
 	"server_error": "Внутреняя ошибка сервера",
 	"user_email_already_exists": "Email уже используется",
-	"user_name_already_exists": "Login уже используется"
+	"user_name_already_exists": "Login уже используется",
+	"timeout_error": "Время ожидания ответа истекло"
 }

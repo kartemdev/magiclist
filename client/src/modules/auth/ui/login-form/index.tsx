@@ -10,7 +10,7 @@ import { getErrorMessage, validationLoginForm } from '../../lib';
 import './styles.scss';
 
 const LoginForm: React.FC = () => {
-  const [loginUser, { isLoading, error }] = useLogin();
+  const [loginUser, { isLoading, error }] = useLogin({ fixedCacheKey: 'login' });
 
   const defaultValues = useMemo(() => ({
     email: '',
