@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
 import { withoutField } from '~shared/lib';
-import { IPayloadRegisterDTO } from '~services/auth/types';
+import { IPayloadRegisterDTO } from '~shared/api';
 import { Button, Form, InputPassword, InputText, Preloader } from '~shared/components';
 import { IRegisterFormData } from '../../types';
 import { getErrorMessage, validationRegisterForm } from '../../lib';

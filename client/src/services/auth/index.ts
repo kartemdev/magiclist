@@ -8,12 +8,12 @@ export {
 
 export {
   authSlice,
+  setAuthUser,
   selectIsAuth,
 } from './store/slice';
 
+export { logoutListener, authUserListener } from './lib';
+
 export type {
   IAuthState,
-  IPayloadLoginDTO,
-  IPayloadRegisterDTO,
-  IResponseAuthDTO,
-} from './types'
+} from './types';

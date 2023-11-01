@@ -1,7 +1,5 @@
-import { baseApi } from "~shared/api";
-import { IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "../types";
-import { notyEmit } from "~shared/lib";
-import { error } from "console";
+import { baseApi, IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "~shared/api";
+import { ApiEndPoints } from "~shared/lib";
 
 export const authApi = baseApi.enhanceEndpoints({
   addTagTypes: ['Login', 'Register', 'Logout', 'Refresh'],
@@ -9,7 +7,7 @@ export const authApi = baseApi.enhanceEndpoints({
   endpoints: (build) => ({
     login: build.mutation<IResponseAuthDTO, IPayloadLoginDTO>({
       query: (payload) => ({
-        url: 'auth/login',
+        url: ApiEndPoints.LOGIN,
         method: 'POST',
         body: payload,
         credentials: 'include',
@@ -18,7 +16,7 @@ export const authApi = baseApi.enhanceEndpoints({
     }),
     register: build.mutation<IResponseAuthDTO, IPayloadRegisterDTO>({
       query: (payload) => ({
-        url: 'auth/register',
+        url: ApiEndPoints.REGISTER,
         method: 'POST',
         body: payload,
         credentials: 'include',
@@ -27,7 +25,7 @@ export const authApi = baseApi.enhanceEndpoints({
     }),
     logout: build.mutation<unknown, unknown>({
       query: () => ({
-        url: 'auth/logout',
+        url: ApiEndPoints.LOGOUT,
         method: 'get',
         credentials: 'include',
       }),
@@ -35,7 +33,7 @@ export const authApi = baseApi.enhanceEndpoints({
     }),
     refresh: build.query<IResponseAuthDTO, unknown>({
       query: () => ({
-        url: 'auth/refresh',
+        url: ApiEndPoints.REFRESH,
         method: 'get',
         credentials: 'include',
       }),
