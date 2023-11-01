@@ -1,18 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import classNames from 'classnames';
 import { useLogout } from '~services/auth';
-import { useAppDispatch } from '~shared/hooks';
 import { Button } from '~shared/components';
 
 const LogoutButton: React.FC = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   
-  const [logoutUser, { isLoading }] = useLogout({ fixedCacheKey: 'logout' });
+  const [logoutUser] = useLogout({ fixedCacheKey: 'logout' });
 
   const handleLogout = () => {
-    dispatch(logoutUser);
+    logoutUser(null);
     navigate('/');
   };
   
@@ -20,9 +17,7 @@ const LogoutButton: React.FC = () => {
     <>
       <Button
         onClick={handleLogout}
-        className={classNames('logout-button', {
-          ['logout-button__loading']: isLoading,
-        })}
+        className='logout-button'
         typeStyle='secondary'
       >
         {window.translate('logout')}

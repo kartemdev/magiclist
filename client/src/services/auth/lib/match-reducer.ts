@@ -1,4 +1,5 @@
-import { IAuthState, IResponseAuthDTO } from '../types';
+import { IResponseAuthDTO } from '~shared/api';
+import { IAuthState } from '../types';
 
 export const matchReducer = (state: IAuthState, payload: IResponseAuthDTO) => {
   if (payload.accessToken) {
