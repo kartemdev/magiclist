@@ -7,12 +7,13 @@ import { IOption } from '../types';
 
 import './styles.scss';
 interface IProps<T> {
-  name?: string,
-  selected?: IOption<T> | null,
-  defaultValue?: IOption<T> | null,
-  options: IOption<T>[],
+  name?: string;
+  selected?: IOption<T> | null;
+  defaultValue?: IOption<T> | null;
+  options: IOption<T>[];
   onChange?: (option: IOption<T>) => void;
   label?: string;
+  isTopPlacementMenu?: boolean;
   placeholderEmptyOptions?: string;
 }
 
@@ -24,6 +25,7 @@ const Selector = <T, >(props: IProps<T>) => {
     options,
     onChange,
     label,
+    isTopPlacementMenu,
     placeholderEmptyOptions,
   } = props;
 
@@ -61,12 +63,14 @@ const Selector = <T, >(props: IProps<T>) => {
       className={classNames('ml-selector__block', {
         ['ml-selector__collapsed']: !isOpen,
         ['ml-selector__selected']: !!currentSelected?.value,
+        ['ml-selector__top-placement']: !isOpen && isTopPlacementMenu,
       })}
     >
       <div className='ml-selector__label'>{label}</div>
       <div className='ml-selector' data-name={name} ref={ref}>
         <SelectorControl
           value={currentSelected?.label}
+          isTopPlacementMenu={isTopPlacementMenu}
           toggle={() => setIsOpen((prevState) => !prevState)}
         />
         {isOpen && (
@@ -75,6 +79,7 @@ const Selector = <T, >(props: IProps<T>) => {
             value={currentSelected?.label}
             onChange={handleChange}
             placeholderEmptyOptions={placeholderEmptyOptions}
+            isTopPlacementMenu={isTopPlacementMenu}
           />
         )}
       </div>
@@ -86,6 +91,7 @@ Selector.defaultProps = {
   name: '',
   label: '',
   defaultValue: null,
+  isTopPlacementMenu: false,
   placeholderEmptyOptions: 'Empty list',
 };
 

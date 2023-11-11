@@ -5,11 +5,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegister } from '~services/auth';
 import { withoutField } from '~shared/lib';
 import { IPayloadRegisterDTO } from '~shared/api';
-import { Button, Form, InputPassword, InputText, Preloader } from '~shared/components';
+import { Button, Form, InputGroup, Preloader } from '~shared/components';
 import { IRegisterFormData } from '../../types';
 import { getErrorMessage, validationRegisterForm } from '../../lib';
 
-import './styles.scss';
+import '../styles.scss';
 
 const RegisterForm: React.FC = () => {
   const [registerUser, { isLoading, error }] = useRegister({ fixedCacheKey: 'register' });
@@ -47,46 +47,46 @@ const RegisterForm: React.FC = () => {
   
   return (
     <Form
-      className='register-form'
+      className='auth-form register-form'
       onSubmit={handleSubmitForm(handleSubmit)}
     >
-      <InputText
+      <InputGroup.Text
         name='userName'
-        className='register-form__user-name'
+        className='auth-form__user-name'
         label={window.translate('login')}
         error={errors.userName?.message}
         register={registerInput}
       />
-      <InputText
+      <InputGroup.Text
         name='email'
-        className='register-form__email'
+        className='auth-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
         register={registerInput}
       />
-      <InputPassword
+      <InputGroup.Password
         name='password'
-        className='register-form__password'
+        className='auth-form__password'
         label={window.translate('password')}
         autoComplete='new-password'
         error={errors.password?.message}
         register={registerInput}
       />
-      <InputPassword
+      <InputGroup.Password
         name='confirmPassword'
-        className='register-form__repeat-password'
+        className='auth-form__repeat-password'
         label={window.translate('repeat_password')}
         autoComplete='off'
         error={errors.confirmPassword?.message}
         register={registerInput}
       />
       <Button
-        className={classNames('register-form__submit', {
-          ['register-form__submit-loading']: isLoading,
+        className={classNames('auth-form__submit', {
+          ['auth-form__submit-loading']: isLoading,
         })}
         type='submit'
       >
-        {isLoading ? <Preloader size={30} thickness={5} typeStyle='secondary'/> : window.translate('create_acc')}
+        {isLoading ? <Preloader size={30} thickness={5} typeStyle='secondary'/> : window.translate('sign_up')}
       </Button>
     </Form>
   );

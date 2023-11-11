@@ -11,19 +11,19 @@ interface IProps {
 
 const AuthGroup: React.FC<IProps> = ({ isAuth }) => {
   return (
-    <div className='auth-group'>
+    <div className='header-auth-group'>
       {isAuth ? (
         <>
-          <NavbarLink to='profile' className='auth-group__item'>
-            <ProfileUserIcon className='auth-group__item-profile'/>
+          <NavbarLink to='profile' className='header-auth-group__item'>
+            <ProfileUserIcon className='header-auth-group__item_profile'/>
           </NavbarLink>
           <div className='auth-group__item'>
             <LogoutButton />
           </div>
         </>
       ) : (
-        <NavbarLink to='auth' className='auth-group__item'>
-          <LoginUserIcon className='auth-group__item-auth'/>
+        <NavbarLink to='auth' className='header-auth-group__item'>
+          <LoginUserIcon className='header-auth-group__item_auth'/>
         </NavbarLink>
       )}
     </div>

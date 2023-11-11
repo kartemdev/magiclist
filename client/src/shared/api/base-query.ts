@@ -1,7 +1,7 @@
 import { BaseQueryFn, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { createAction } from '@reduxjs/toolkit';
 import { config } from '~shared/config';
-import { ApiEndPoints, SERVER_TIMEOUT, getHttpError, notyEmit } from '~shared/lib';
+import { ApiEndPoints, EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS, SERVER_TIMEOUT, getHttpError, notyEmit } from '~shared/lib';
 import { ISelfError } from './types';
 import { IResponseAuthDTO } from './dto';
 
@@ -26,12 +26,12 @@ export const baseQuery = fetchBaseQuery({
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs, unknown, ISelfError
 > = async (args, api, extraOptions) => {
-  const { dispatch } = api;
+  const { dispatch, endpoint } = api;
   
   let response = await baseQuery(args, api, extraOptions);
   const { error = null } = response;
 
-  if (error?.status === 401) {
+  if (error?.status === 401 && !EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS.includes(endpoint)) {
     const refreshResponse = await baseQuery(ApiEndPoints.REFRESH, api, extraOptions)
 
     if (refreshResponse.data) {

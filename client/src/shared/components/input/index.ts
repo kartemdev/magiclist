@@ -1,2 +1,7 @@
-export { default as InputText } from './ui/input-text';
-export { default as InputPassword } from './ui/input-password';
+import InputText from './ui/input-text';
+import InputPassword from './ui/input-password';
+
+export const InputGroup = {
+  Text: InputText,
+  Password: InputPassword,
+};

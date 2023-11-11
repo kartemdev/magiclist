@@ -1,5 +1,6 @@
 import { SerializedError } from "@reduxjs/toolkit";
-import { ISelfError, RtkErrorStatusesEnum } from "~shared/api";
+import { ISelfError } from "~shared/api";
+import { RtkErrorStatusesEnum } from "./constants";
 
 export enum HttpStatusPrefixes {
   'INFO' =  1,

@@ -4,23 +4,23 @@ import { RegisterForm } from '~modules/auth';
 import { useRegister } from '~services/auth';
 import { Button } from '~shared/components';
 
-import './styles.scss';
+import '../styles.scss';
 
-const AuthRegister: React.FC = () => {
+const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
   const [, { isLoading }] = useRegister({ fixedCacheKey: 'register' })
 
   return (
-    <div className='auth-register'>
-
-      <div className='auth-register__form'>
-        <div className='auth-register__title'>
+    <div className='auth-page register-page'>
+      <div className='auth-page__form'>
+        <div className='auth-page__title'>
           {window.translate('create_acc')}
         </div>
 
         <RegisterForm />
+
         <Button
-          className='auth-register__navigate'
+          className='auth-page__navigate'
           typeStyle='secondary'
           isDisabled={isLoading}
           onClick={() => navigate('/auth/login')}
@@ -32,4 +32,4 @@ const AuthRegister: React.FC = () => {
   );
 };
 
-export default AuthRegister;
+export default RegisterPage;

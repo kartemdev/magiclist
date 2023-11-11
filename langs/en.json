@@ -26,5 +26,11 @@
 	"server_error": "Internal server error",
 	"user_email_already_exists": "Email is already in use",
 	"user_name_already_exists": "Login is already in use",
-	"timeout_error": "Response timeout has expired"
+	"timeout_error": "Response timeout has expired",
+	"edit": "Edit",
+	"analyze": "Analyze",
+	"organize": "Organize",
+	"powered_kartemdev": "Powered by kartemdev",
+	"copyright_ml": "2023 Magic list",
+	"web_tables_ml": "Spreadsheets in browser"
 }

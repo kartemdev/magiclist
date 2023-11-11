@@ -4,23 +4,23 @@ import { LoginForm } from '~modules/auth';
 import { useLogin } from '~services/auth';
 import { Button } from '~shared/components';
 
-import './styles.scss';
+import '../styles.scss';
 
-const AuthLogin: React.FC = () => {
+const LoginPage: React.FC = () => {
   const navigate =  useNavigate();
   const [, { isLoading }] = useLogin({ fixedCacheKey: 'login' });
 
   return (
-    <div className='auth-login'>
-
-      <div className='auth-login__form'>
-        <div className='auth-login__title'>
+    <div className='auth-page login-page'>
+      <div className='auth-page__form'>
+        <div className='auth-page__title'>
           {window.translate('sign_in_acc')}
         </div>
 
         <LoginForm />
+
         <Button
-          className='auth-login__navigate'
+          className='auth-page__navigate'
           typeStyle='secondary'
           isDisabled={isLoading}
           onClick={() => navigate('/auth/register')}
@@ -32,4 +32,4 @@ const AuthLogin: React.FC = () => {
   );
 };
 
-export default AuthLogin;
+export default LoginPage;

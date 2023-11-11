@@ -19,8 +19,8 @@
     transform: translate(-50%, -60%) rotate(40deg);
     top: 50%;
     left: 50%;
-    opacity: 0;
-    transition: opacity .2s;
+    scale: 0;
+    transition: scale .2s;
   }
 
   &__label {
@@ -30,8 +30,8 @@
       display: none;
 
       &:checked ~ span::before {
-        opacity: 1;
-        transition: opacity .2s;
+        scale: 1;
+        transition: scale .2s;
       }
     }
   }
