@@ -8,12 +8,14 @@ import MainGroup from './main-group';
 import MenuGroup from './menu-group';
 import AuthGroup from './auth-group';
 
-const GlobalHeader: React.FC = () => {
+import './styles.scss';
+
+const Header: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <div className='global-header'>
+    <div className='header'>
       <Navbar
         leftGroup={<LogoGroup />}
         rightGroup={
@@ -36,4 +38,4 @@ const GlobalHeader: React.FC = () => {
   );
 };
 
-export default GlobalHeader;
+export default Header;

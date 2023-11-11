@@ -9,9 +9,9 @@ interface IProps {
 
 const MainGroup: React.FC<IProps> = ({ isAuth }) => {
   return (
-    <div className='main-group'>
+    <div className='header-main-group'>
       {isAuth && (
-        <NavbarLink to='/table' className='main-group__item'>
+        <NavbarLink to='/table' className='header-main-group__item'>
           {window.translate('table')}
         </NavbarLink>
       )}

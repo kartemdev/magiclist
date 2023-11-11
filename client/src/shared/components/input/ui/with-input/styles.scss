@@ -5,22 +5,22 @@
   padding: 2px 8px;
   font-family: "Roboto";
   font-size: 16px;
-  border: 2px solid var(--disabled);
+  border: 1px solid transparent;
   border-radius: 6px;
   background-color: var(--gray);
 
   &::placeholder {
-    color: var(--disabled);
+    color: var(--gray--dark);
   }
 
-  &:hover {
+  &:hover:not(.ml-input:focus) {
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
   }
 
   &:focus {
     outline: none !important;
+    border: 1px solid var(--gray--dark);
     background-color: var(--primary--white);
-    box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
   }
   
   &__block {
@@ -29,12 +29,6 @@
     width: 100%;
     max-width: 300px;
     margin-bottom: 15px;
-
-    &:has(.ml-input-password__show:hover) {
-      .ml-input {
-        box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
-      }
-    }
   }
 
   &__label {

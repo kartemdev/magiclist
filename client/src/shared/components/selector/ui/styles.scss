@@ -12,18 +12,23 @@
   &__collapsed & {
     position: initial;
   }
-  
-  &__collapsed &-control__indicators-toggle {
-    transform: rotateZ(0deg);
-  }
 
   &__collapsed &-control {
     background-color: var(--gray);
+    border-color: transparent;
     box-shadow: none;
     
-    &:hover {
-      box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
+    &__indicators-toggle {
+      transform: rotateZ(180deg);
     }
+
+    &:hover {
+      box-shadow: 0px 3px 8px 0px rgba(34, 60, 80, 0.1);
+    }
+  }
+
+  &__top-placement &-control__indicators-toggle {
+    transform: rotateZ(0deg);
   }
   
   &__collapsed &__label {

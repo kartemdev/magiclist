@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useLogin } from '~services/auth';
-import { Button, Form, InputPassword, InputText, Preloader } from '~shared/components';
+import { Button, Form, InputGroup, Preloader } from '~shared/components';
 import { ILoginFormData } from '../../types';
 import { getErrorMessage, validationLoginForm } from '../../lib';
 
-import './styles.scss';
+import '../styles.scss';
 
 const LoginForm: React.FC = () => {
   const [loginUser, { isLoading, error }] = useLogin({ fixedCacheKey: 'login' });
@@ -43,27 +43,27 @@ const LoginForm: React.FC = () => {
 
   return (
     <Form
-      className='login-form'
+      className='auth-form login-form'
       onSubmit={handleSubmitForm(handleSubmit)}
     >
-      <InputText
+      <InputGroup.Text
         name='email'
-        className='login-form__email'
+        className='auth-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
         register={registerInput}
       />
-      <InputPassword
+      <InputGroup.Password
         name='password'
-        className='login-form__password'
+        className='auth-form__password'
         autoComplete='current-password'
         label={window.translate('password')}
         error={errors.password?.message}
         register={registerInput}
       />
       <Button
-        className={classNames('login-form__submit', {
-          ['login-form__submit-loading']: isLoading,
+        className={classNames('auth-form__submit', {
+          ['auth-form__submit-loading']: isLoading,
         })}
         type='submit'
       >

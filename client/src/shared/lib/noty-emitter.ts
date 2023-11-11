@@ -8,7 +8,6 @@ export enum NotyEmitterTypes {
   INFO = 'info',
 };
 
-
 function createToaster(value: string, type?: NotyEmitterTypes) {
   (!type ? toast : toast[type])(i18next.t(value), {
     position: "top-right",

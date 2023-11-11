@@ -1,14 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Preloader } from '~shared/components';
+import { Preloader } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
 import { selectIsAuth, useLogout } from '~services/auth';
+import PreviewPage from './preview-page';
 
 import './styles.scss';
 
 const HomePage: React.FC = () => {
-  const navigate = useNavigate();
-
   const [, { isLoading }] = useLogout({ fixedCacheKey: 'logout' });
 
   const isAuth = useAppSelector(selectIsAuth);
@@ -22,7 +20,7 @@ const HomePage: React.FC = () => {
               Julia, you my big love &#128151;
             </div>
           ) : (
-            <Button onClick={() => navigate('/auth/register')}>{window.translate('begin')}</Button>
+            <PreviewPage />
           )}
         </>
     </div>

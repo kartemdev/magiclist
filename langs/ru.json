@@ -26,5 +26,11 @@
 	"server_error": "Внутреняя ошибка сервера",
 	"user_email_already_exists": "Email уже используется",
 	"user_name_already_exists": "Login уже используется",
-	"timeout_error": "Время ожидания ответа истекло"
+	"timeout_error": "Время ожидания ответа истекло",
+	"edit": "Редактируй",
+	"analyze": "Анализируй",
+	"organize": "Организовывай",
+	"powered_kartemdev": "Powered by kartemdev",
+	"copyright_ml": "2023 Magic list",
+	"web_tables_ml": "Электронные таблицы в браузере"
 }

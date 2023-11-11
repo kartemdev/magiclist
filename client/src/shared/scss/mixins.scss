@@ -40,4 +40,46 @@
       transform: rotate(-360deg);
     }
   }
-} 
+}
+
+@mixin keyframesScale {
+  @keyframes scaleIn {
+    0% {
+      scale: 0;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  @keyframes scaleOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+}
+
+@mixin keyframesOpacity {
+  @keyframes opacityIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes opacityOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}

@@ -9,6 +9,7 @@ interface IProps<T> {
   options: IOption<T>[];
   onChange: (option: IOption<T>) => void;
   placeholderEmptyOptions: string;
+  isTopPlacementMenu: boolean;
 }
 
 const SelectorMenu = <T, >(props: IProps<T>) => {
@@ -16,11 +17,14 @@ const SelectorMenu = <T, >(props: IProps<T>) => {
     value,
     options,
     onChange,
+    isTopPlacementMenu,
     placeholderEmptyOptions,
   } = props;
 
   return (
-    <div className='ml-selector-menu'>
+    <div className={classNames('ml-selector-menu', {
+      ['ml-selector-menu__top-placement']: isTopPlacementMenu,
+    })}>
       <div className='ml-selector-menu__list'>
         {!!options?.length ? (options.map((option, index) => (
           <div 

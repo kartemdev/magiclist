@@ -1,11 +1,11 @@
-.auth-group {
+.header-auth-group {
   display: flex;
   align-items: center;
   margin: 0px 15px;
   gap: 10px;
 
   &__item {
-    &-profile, &-auth {
+    &_profile, &_auth {
       height: 27px;
       width: 27px;
   
@@ -14,7 +14,7 @@
       }
     }
 
-    &-auth {
+    &_auth {
       transform: rotateZ(180deg);
     }
   }

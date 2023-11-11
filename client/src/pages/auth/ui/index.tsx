@@ -1,19 +1,17 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Page404 } from '~shared/components';
-import AuthLogin from './auth-login';
-import AuthRegister from './auth-register';
+import LoginPage from './login-page';
+import RegisterPage from './register-page';
 
 const AuthPage: React.FC = () => {
   return (
-    <div className='auth-page'>
-      <Routes>
-        <Route path='/' element={<Navigate to='login' />} />
-        <Route path='login' element={<AuthLogin />}/>
-        <Route path='register' element={<AuthRegister />}/>
-        <Route path='*' element={<Page404 content={window.translate('page_not_found')} />}/>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path='/' element={<Navigate to='login' />} />
+      <Route path='login' element={<LoginPage />}/>
+      <Route path='register' element={<RegisterPage />}/>
+      <Route path='*' element={<Page404 content={window.translate('page_not_found')} />}/>
+    </Routes>
   );
 };
 

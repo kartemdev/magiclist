@@ -6,7 +6,11 @@ import { langsOptions } from '../lib';
 
 import './styles.scss';
 
-const LangsSelector: React.FC = () => {
+interface IProps {
+  isTopPlacementMenu?: boolean;
+}
+
+const LangsSelector: React.FC<IProps> = ({ isTopPlacementMenu }) => {
   const [lang, setLang] = useState<IOption<string>>(null);
 
   const langSelectorOptions = langsOptions.map((lang) => ({ ...lang, label: window.translate(lang.label) }));
@@ -31,9 +35,14 @@ const LangsSelector: React.FC = () => {
         selected={lang}
         defaultValue={defaultValue}
         onChange={handleLangSelectorChange}
+        isTopPlacementMenu={isTopPlacementMenu}
       />
     </div>
   );
+};
+
+LangsSelector.defaultProps = {
+  isTopPlacementMenu: false,
 };
 
 export default LangsSelector;

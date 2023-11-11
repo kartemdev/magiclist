@@ -4,6 +4,7 @@ import { ClosedEye, OpenedEye } from '~shared/assets';
 import withInput from '../with-input';
 
 import './styles.scss';
+
 interface IProps {
   name: string;
   value?: string;
