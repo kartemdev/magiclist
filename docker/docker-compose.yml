@@ -25,7 +25,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /etc/letsencrypt/live/magiclist.ru/fullchain.pem:/etc/nginx/certs/fullchain.pem
-      - /etc/letsencrypt/live/magiclist.ru/privkey.pem:/etc/nginx/certs/privkey.pem
+      - ${PATH_SERT_FULLCHAIN}:/etc/nginx/certs/fullchain.pem
+      - ${PATH_SERT_PRIVKEY}:/etc/nginx/certs/privkey.pem
     depends_on:
       - backend

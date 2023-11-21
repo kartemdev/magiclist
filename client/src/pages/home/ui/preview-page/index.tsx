@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button } from '~shared/components';
 
-import './styles.scss'
+import './styles.scss';
 
 const PreviewPage: React.FC = () => {
   const navigate = useNavigate();
