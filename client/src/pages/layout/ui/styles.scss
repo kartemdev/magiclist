@@ -1,5 +1,4 @@
 .layout-page {
-  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,6 +15,7 @@
 
   &__content {
     min-width: 320px;
+    min-height: calc(100lvh - 50px);
     background-image: url('../../../shared/assets/images/homeBg.jpg');
     background-attachment: fixed;
     background-size: cover;
