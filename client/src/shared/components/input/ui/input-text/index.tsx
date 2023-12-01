@@ -1,6 +1,6 @@
 import React from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import withInput from '../with-input';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface IProps {
   name: string;
@@ -8,14 +8,14 @@ interface IProps {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  register?: UseFormRegister<FieldValues> | null;
+  registerProps?: UseFormRegisterReturn<string> | null;
 }
 
-const InputText: React.FC<IProps> = ({name, register, ...props}) => {
+const InputText: React.FC<IProps> = ({name, registerProps, ...props}) => {
   return (
     <input
       {...props}
-      {...register?.(name)}
+      {...registerProps}
       className='ml-input ml-input-text'
     />
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavbarLink } from '~shared/components';
+import AuthMain from './auth-main';
 
 import './styles.scss';
 
@@ -10,11 +10,7 @@ interface IProps {
 const MainGroup: React.FC<IProps> = ({ isAuth }) => {
   return (
     <div className='header-main-group'>
-      {isAuth && (
-        <NavbarLink to='/table' className='header-main-group__item'>
-          {window.translate('table')}
-        </NavbarLink>
-      )}
+      {isAuth && <AuthMain />}
     </div>
   );
 };

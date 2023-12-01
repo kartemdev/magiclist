@@ -1,0 +1,35 @@
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  .ml-input {
+    &__block {
+      max-width: 100%;
+    }
+
+    &:disabled {
+      cursor: text;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .user-profile {
+    &__field {
+      gap: 5px;
+    }
+  }
+}

@@ -1,20 +1,22 @@
-export interface IPayloadLoginDTO {
+// ---------- RequestDTOs ----------
+
+export interface ILoginRequestDTO {
   email: string;
   password: string;
 }
 
-export interface IPayloadRegisterDTO {
+export interface IRegisterRequestDTO {
   email: string;
   userName: string;
   password: string;
 }
 
-export interface IPayloadRefreshTokensDTO {
+export interface IRefreshTokensRequestDTO {
   userName: string;
 }
 
-export interface IResponseAuthDTO {
-  userName: string;
-  email: string;
+// ---------- ResponsetDTOs ----------
+
+export interface IAuthResponseDTO {
   accessToken: string;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { Header, HeaderGroup, flexRender } from '@tanstack/react-table';
+import type { Header, HeaderGroup } from '@tanstack/react-table'; 
+import { flexRender } from '@tanstack/react-table';
 import { Checkbox } from '~shared/components';
 import { ArrowHeadFullIcon } from '~shared/assets';
 import { SortOrder } from '~shared/lib';

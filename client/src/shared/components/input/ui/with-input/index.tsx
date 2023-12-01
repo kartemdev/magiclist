@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldValues, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
 import classNames from 'classnames';
 
 import './styles.scss';
@@ -13,8 +13,9 @@ interface IProps {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  disabled?: boolean;
   autoComplete?: string;
-  register?: UseFormRegister<FieldValues> | null;
+  registerProps?: UseFormRegisterReturn<string> | null;
 }
 
 const withInput = (Component: React.ComponentType<IProps>) => {
@@ -22,7 +23,7 @@ const withInput = (Component: React.ComponentType<IProps>) => {
     const {
       value,
       onChange,
-      register,
+      registerProps,
       label,
       error,
       className,
@@ -30,7 +31,7 @@ const withInput = (Component: React.ComponentType<IProps>) => {
 
     const [selfValue, setSelfValue] = useState<string>('');
     
-    const uncontrolled = value === undefined && !register;
+    const uncontrolled = value === undefined && !registerProps;
     const currentValue = uncontrolled ? selfValue : value;
   
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +54,7 @@ const withInput = (Component: React.ComponentType<IProps>) => {
           <Component
             {...props}
             value={currentValue}
-            register={register}
+            registerProps={registerProps}
             onChange={handleInputChange}
           />
         {error && (
@@ -68,7 +69,8 @@ const withInput = (Component: React.ComponentType<IProps>) => {
     onChange: null,
     placeholder: '',
     autoComplete: '',
-    register: null,
+    registerProps: null,
+    disabled: false,
   };
   
   return memo(InputElement);

@@ -1,12 +1,17 @@
 export { baseApi } from './base-api';
 
-export { logoutAction, setAuthUserAction } from './base-query';
+export { logoutAction, setAuthTokenAction } from './base-query';
 
 export type { ISelfError } from './types';
 
 export {
-  IPayloadLoginDTO,
-  IPayloadRegisterDTO,
-  IPayloadRefreshTokensDTO,
-  IResponseAuthDTO,
-} from './dto';
+  ILoginRequestDTO,
+  IRegisterRequestDTO,
+  IRefreshTokensRequestDTO,
+  IAuthResponseDTO,
+} from './dto/auth';
+
+export {
+  IUpdateUserInfoRequestDTO,
+  IUserInfoResponseDTO,
+} from './dto/user';

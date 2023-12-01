@@ -1,15 +1,7 @@
 .ml-table-body {
   &__row {
-    &:hover {
+    &:hover, &-active {
       background-color: var(--primary--lighter);
-    }
-
-    &-active {
-      background-color: var(--primary--light);
-
-      &:hover {
-        background-color: var(--primary--light);
-      }
     }
   }
 

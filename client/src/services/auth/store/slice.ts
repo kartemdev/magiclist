@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IResponseAuthDTO } from '~shared/api';
+import { IAuthResponseDTO } from '~shared/api';
 import { authApi } from '../api/auth-api';
-import { matchReducer, resetState } from '../lib';
+import { matchReducer } from '../lib';
 import { IAuthState } from '../types';
 
 const initialState: IAuthState = {};
@@ -10,7 +10,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthUser(state, action: PayloadAction<IResponseAuthDTO>) {
+    setAuthToken(state, action: PayloadAction<IAuthResponseDTO>) {
       matchReducer(state, action.payload);
     },
   },
@@ -44,11 +44,11 @@ export const authSlice = createSlice({
       .addMatcher(
         logout.matchFulfilled,
         (state: IAuthState) => {
-          resetState(state);
+          state.accessToken = null;
         },
-      )
+      );
   },
 });
 
-export const { setAuthUser } = authSlice.actions;
+export const { setAuthToken } = authSlice.actions;
 export const selectIsAuth = (state: RootState) => !!state.auth?.accessToken;

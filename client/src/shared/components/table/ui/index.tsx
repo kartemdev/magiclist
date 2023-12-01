@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ColumnDef, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import type { ColumnDef } from '@tanstack/react-table';
 import { IRow, ISelectedRows, ISortData } from '../types';
 import { getSelectedRows } from '../lib';
 import TableHeader from './table-header';

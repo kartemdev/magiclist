@@ -1,43 +1,39 @@
-import { baseApi, IPayloadLoginDTO, IPayloadRegisterDTO, IResponseAuthDTO } from "~shared/api";
-import { ApiEndPoints } from "~shared/lib";
+import { baseApi, ILoginRequestDTO, IRegisterRequestDTO, IAuthResponseDTO} from "~shared/api";
+import { AuthEndPoints } from "~shared/config";
 
-export const authApi = baseApi.enhanceEndpoints({
-  addTagTypes: ['Login', 'Register', 'Logout', 'Refresh'],
-}).injectEndpoints({
+export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    login: build.mutation<IResponseAuthDTO, IPayloadLoginDTO>({
+    login: build.mutation<IAuthResponseDTO, ILoginRequestDTO>({
       query: (payload) => ({
-        url: ApiEndPoints.LOGIN,
+        url: AuthEndPoints.LOGIN,
         method: 'POST',
         body: payload,
         credentials: 'include',
       }),
-      invalidatesTags: ['Login'],
+      invalidatesTags: ['UserInfo'],
     }),
-    register: build.mutation<IResponseAuthDTO, IPayloadRegisterDTO>({
+    register: build.mutation<IAuthResponseDTO, IRegisterRequestDTO>({
       query: (payload) => ({
-        url: ApiEndPoints.REGISTER,
+        url: AuthEndPoints.REGISTER,
         method: 'POST',
         body: payload,
         credentials: 'include',
       }),
-      invalidatesTags: ['Register'],
+      invalidatesTags: ['UserInfo'],
     }),
     logout: build.mutation<unknown, unknown>({
       query: () => ({
-        url: ApiEndPoints.LOGOUT,
-        method: 'get',
+        url: AuthEndPoints.LOGOUT,
+        method: 'GET',
         credentials: 'include',
       }),
-      invalidatesTags: ['Logout'],
     }),
-    refresh: build.query<IResponseAuthDTO, unknown>({
+    refresh: build.query<IAuthResponseDTO, undefined>({
       query: () => ({
-        url: ApiEndPoints.REFRESH,
-        method: 'get',
+        url: AuthEndPoints.REFRESH,
+        method: 'GET',
         credentials: 'include',
       }),
-      providesTags: ['Refresh'],
     }),
   }),
 });

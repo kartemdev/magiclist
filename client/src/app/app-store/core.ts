@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { baseApi } from '~shared/api';
-import { logoutListener, authUserListener } from '~services/auth';
+import { logoutListener, authTokenListener } from '~services/auth';
 import { rootReducer } from './root-reducer';
 
 const createStore = () => configureStore({
@@ -9,8 +9,9 @@ const createStore = () => configureStore({
     return getDefaultMiddleware()
       .concat(baseApi.middleware)
       .concat(logoutListener.middleware)
-      .concat(authUserListener.middleware);
+      .concat(authTokenListener.middleware);
   },
+  devTools: !API_HOST,
 });
 
 export const store = createStore();
