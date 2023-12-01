@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldValues, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
 import { ClosedEye, OpenedEye } from '~shared/assets';
 import withInput from '../with-input';
 
@@ -11,17 +11,17 @@ interface IProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   autoComplete?: string;
-  register?: UseFormRegister<FieldValues> | null;
+  registerProps?: UseFormRegisterReturn<string> | null;
 }
 
-const InputPasswrod: React.FC<IProps> = ({ name, register, ...props }) => {
+const InputPasswrod: React.FC<IProps> = ({ name, registerProps, ...props }) => {
   const [isShowPass, setIsShowPass] = useState<boolean>(false);
 
   return (
     <>
       <input
         {...props}
-        {...register?.(name)}
+        {...registerProps}
         type={isShowPass ? 'text' : 'password'}
         className='ml-input ml-input-password'
       />

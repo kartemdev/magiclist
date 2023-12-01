@@ -2,10 +2,10 @@ import React, { useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useRegister } from '~services/auth';
-import { withoutField } from '~shared/lib';
-import { IPayloadRegisterDTO } from '~shared/api';
+import { withoutFields } from '~shared/lib';
+import { IRegisterRequestDTO } from '~shared/api';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
+import { useRegister } from '~services/auth';
 import { IRegisterFormData } from '../../types';
 import { getErrorMessage, validationRegisterForm } from '../../lib';
 
@@ -42,7 +42,7 @@ const RegisterForm: React.FC = () => {
   }, [error]);
   
   const handleSubmit = (data: IRegisterFormData) => {
-    registerUser(withoutField<IRegisterFormData, IPayloadRegisterDTO>(data, 'confirmPassword'));
+    registerUser(withoutFields<IRegisterFormData, IRegisterRequestDTO>(data, ['confirmPassword']));
   };
   
   return (
@@ -53,16 +53,16 @@ const RegisterForm: React.FC = () => {
       <InputGroup.Text
         name='userName'
         className='auth-form__user-name'
-        label={window.translate('login')}
+        label={window.translate('user_name')}
         error={errors.userName?.message}
-        register={registerInput}
+        registerProps={registerInput('userName')}
       />
       <InputGroup.Text
         name='email'
         className='auth-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
-        register={registerInput}
+        registerProps={registerInput('email')}
       />
       <InputGroup.Password
         name='password'
@@ -70,7 +70,7 @@ const RegisterForm: React.FC = () => {
         label={window.translate('password')}
         autoComplete='new-password'
         error={errors.password?.message}
-        register={registerInput}
+        registerProps={registerInput('password')}
       />
       <InputGroup.Password
         name='confirmPassword'
@@ -78,7 +78,7 @@ const RegisterForm: React.FC = () => {
         label={window.translate('repeat_password')}
         autoComplete='off'
         error={errors.confirmPassword?.message}
-        register={registerInput}
+        registerProps={registerInput('confirmPassword')}
       />
       <Button
         className={classNames('auth-form__submit', {

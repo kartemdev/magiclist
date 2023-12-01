@@ -1,7 +1,6 @@
 import React from 'react';
-import { GithubIcon, TelegramIcon } from '~shared/assets';
-import { NavbarLink } from '~shared/components';
 import { LangsSelector } from '~components/langs-selector';
+import AuthMenu from './auth-menu';
 
 import './styles.scss';
 
@@ -13,13 +12,7 @@ const MenuGroup: React.FC<IProps> = ({ isAuth }) => {
   return (
     <div className='header-menu-group'>
       <div className='header-menu-group__body'>
-        {isAuth && (
-          <>
-            <NavbarLink to='/table' className='header-menu-group__body_item'>
-              {window.translate('table')}
-            </NavbarLink>
-          </>
-        )}
+        {isAuth && <AuthMenu />}
       </div>
       <div className='header-menu-group__footer'>
         <LangsSelector isTopPlacementMenu />

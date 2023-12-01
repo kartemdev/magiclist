@@ -8,11 +8,11 @@ export {
 
 export {
   authSlice,
-  setAuthUser,
+  setAuthToken,
   selectIsAuth,
 } from './store/slice';
 
-export { logoutListener, authUserListener } from './lib';
+export { logoutListener, authTokenListener } from './lib';
 
 export type {
   IAuthState,

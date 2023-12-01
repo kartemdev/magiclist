@@ -8,7 +8,7 @@ if (isEntryPoint()) {
 
   if (argLength < 8) {
     console.log(
-      'There are missing arguments (npm run add-lang-keys (key) (rus translate) (eng translate) (json files paths))'
+      'There are missing arguments (npm run add-lang-key (key) (rus translate) (eng translate) (json files paths))'
     );
     process.exit(1);
   }

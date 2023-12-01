@@ -33,3 +33,11 @@
     color: var(--primary);
   }
 }
+
+@media screen and (max-width: 340px) {
+  .header-logo-group {
+    &__title {
+      display: none;
+    }
+  }
+}

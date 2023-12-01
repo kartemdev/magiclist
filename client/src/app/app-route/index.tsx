@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 const { HomePage } = lazily(() => import(/* webpackChunkName: "ml_home" */ '~pages/home'));
 const { AuthPage } = lazily(() => import(/* webpackChunkName: "ml_auth" */ '~pages/auth'));
 const { LayoutPage } = lazily(() => import(/* webpackChunkName: "ml_layout" */ '~pages/layout'));
+const { ProfilePage } = lazily(() => import(/* webpackChunkName: "ml_profile" */ '~pages/profile'));
 
 const AppRoute: React.FC = () => {
   const tableData = [
@@ -85,12 +86,7 @@ const AppRoute: React.FC = () => {
             isCheckBoxSelect
             columns={getColumns()}
           />}/>
-          <Route path='profile' element={<Table
-            data={tableData}
-            isMultipleSelect
-            isCheckBoxSelect
-            columns={getColumns()}
-          />}/>
+          <Route path='profile' element={<ProfilePage />}/>
         </Route>
         <Route path='*' element={<Page404 content={window.translate('page_not_found')} />}/>
       </Route>

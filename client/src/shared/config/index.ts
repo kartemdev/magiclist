@@ -1,5 +1,8 @@
-export const API_BASE = API_HOST || 'http://localhost:3000/api';
+export {
+  AuthEndPoints,
+  UserEndPoints,
+} from './api-endpoints';
 
-export const config = {
+export {
   API_BASE,
-} as const;
+} from './base-url';

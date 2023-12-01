@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import React from 'react';
 import classNames from 'classnames';
-import { Row, flexRender } from '@tanstack/react-table';
+import type { Row } from '@tanstack/react-table'; 
+import { flexRender } from '@tanstack/react-table';
 import { Checkbox } from '~shared/components';
 import { IRow, ISelectedRows } from '../../types';
 

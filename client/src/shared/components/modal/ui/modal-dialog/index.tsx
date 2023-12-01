@@ -1,5 +1,5 @@
 import React from 'react';
-import { CrossCancelIcon } from '~shared/assets';
+import { CrossBolderCancelIcon } from '~shared/assets';
 
 import './styles.scss';
 
@@ -22,7 +22,7 @@ const ModalDialog: React.FC<IProps> = (props) => {
         <div className='ml-modal-dialog__header-title'>
           {title}
         </div>
-        <CrossCancelIcon
+        <CrossBolderCancelIcon
           className='ml-modal-dialog__header-close'
           onClick={onClose}
         />

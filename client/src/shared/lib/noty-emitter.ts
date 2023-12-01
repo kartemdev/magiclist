@@ -26,7 +26,7 @@ export function notyEmit(value: string) {
 }
 
 notyEmit.success = (value: string) => {
-  createToaster(value, NotyEmitterTypes.SUCCESS);
+  createToaster(i18next.t(value), NotyEmitterTypes.SUCCESS);
 };
 
 notyEmit.error = (value: string) => {

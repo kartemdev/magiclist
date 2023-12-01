@@ -16,11 +16,11 @@ export interface GetHttpParamsEnum {
   includeStatuses?: number[]
 };
 
-export const isIncludeHttpStatuses = (status: number | string, includeStatuses: number[]) => (
-  includeStatuses ? includeStatuses?.includes(+status) : true
+export const isIncludeHttpStatuses = (status: number , includeStatuses: number[]) => (
+  includeStatuses ? includeStatuses?.includes(status) : true
 );
 
-export const isHttpStatus = (status: number | string, statusPrefix?: HttpStatusPrefixes) => {
+export const isHttpStatus = (status: number, statusPrefix?: HttpStatusPrefixes) => {
   if (typeof status === 'number') {
     const regExpStatus = new RegExp(`^${statusPrefix || '[1-5]'}[0-9][0-9]`);
     return regExpStatus.test(status.toString());
@@ -34,7 +34,7 @@ export const getHttpError = ({ error, statusPrefix, includeStatuses }: GetHttpPa
   if (
     (error && 'data' in error) &&
     isHttpStatus(error.data.statusCode, statusPrefix) &&
-    isIncludeHttpStatuses(error.status, includeStatuses)
+    isIncludeHttpStatuses(+error.status, includeStatuses)
   ) {
     currentError = error.data;
   }

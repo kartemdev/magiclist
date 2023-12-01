@@ -2,8 +2,8 @@ import React, { useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useLogin } from '~services/auth';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
+import { useLogin } from '~services/auth';
 import { ILoginFormData } from '../../types';
 import { getErrorMessage, validationLoginForm } from '../../lib';
 
@@ -51,7 +51,7 @@ const LoginForm: React.FC = () => {
         className='auth-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
-        register={registerInput}
+        registerProps={registerInput('email')}
       />
       <InputGroup.Password
         name='password'
@@ -59,7 +59,7 @@ const LoginForm: React.FC = () => {
         autoComplete='current-password'
         label={window.translate('password')}
         error={errors.password?.message}
-        register={registerInput}
+        registerProps={registerInput('password')}
       />
       <Button
         className={classNames('auth-form__submit', {

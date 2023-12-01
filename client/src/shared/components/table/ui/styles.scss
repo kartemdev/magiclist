@@ -1,6 +1,7 @@
 .ml-table {
   border-collapse: collapse;
   border-style: hidden;
+  background-color: var(--primary--white);
   
   &__block {
     max-width: max-content;
