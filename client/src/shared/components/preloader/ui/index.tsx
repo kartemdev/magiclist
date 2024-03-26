@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 
+import { usePortal } from '~shared/hooks';
+
 import './styles.scss';
 
 interface IProps {
@@ -19,16 +21,15 @@ const Preloader: React.FC<IProps> = (props) => {
     textContent,
     typeStyle,
   } = props;
+  const Portal = usePortal(document.body);
 
   useEffect(() => {
-    const preloaderElement = document.querySelector('.ml-preloader__block') as HTMLElement;
-    
-    preloaderElement.style.setProperty('--preloader--size', `${size}px`);
-    preloaderElement.style.setProperty('--preloader--thickness', `${thickness}px`);
-    preloaderElement.style.setProperty('--preloader-typestyle', typeStyle);
+    document.body.style.setProperty('--preloader--size', `${size}px`);
+    document.body.style.setProperty('--preloader--thickness', `${thickness}px`);
+    document.body.style.setProperty('--preloader-typestyle', typeStyle);
   }, []);
 
-  return (
+  const renderPreloader = () => (
     <div className={classNames('ml-preloader__block', {
       ['ml-preloader__block-full']: isFullScreen,
     })}>
@@ -42,6 +43,14 @@ const Preloader: React.FC<IProps> = (props) => {
           </div>
         )}
     </div>
+  );
+
+  return isFullScreen ? (
+    <Portal>
+      {renderPreloader()}
+    </Portal>
+  ) : (
+    renderPreloader()
   );
 };
 

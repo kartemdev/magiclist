@@ -1,0 +1,31 @@
+.verifie-email-page {
+  width: 100%;
+
+  .ml-input {
+    &__block {
+      max-width: 305px;
+    }
+  }
+
+  .ml-button {
+    &__block {
+      max-width: 305px;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--primary);
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

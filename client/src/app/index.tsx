@@ -4,8 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { initReactI18next } from 'react-i18next';
 import { AuthProvider, StoreProvider } from './providers';
-import AppRoute from './app-route';
 import { resources } from '~langs';
+import AppRoute from './app-route';
 
 import '~shared/scss';
 

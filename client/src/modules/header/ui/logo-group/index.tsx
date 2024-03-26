@@ -1,13 +1,23 @@
 import React from 'react';
 import { ListIcon } from '~shared/assets';
 import { NavbarLink } from '~shared/components';
+import { selectIsVerifiedUser } from '~services/user';
+import { useAppSelector } from '~shared/hooks';
+import { selectIsAuth } from '~services/auth';
 
 import './styles.scss';
 
 const LogoGroup: React.FC = () => {
+  const isAuth = useAppSelector(selectIsAuth);
+  const isVerifiedUser = useAppSelector(selectIsVerifiedUser);
+
   return (
     <div className='header-logo-group'>
-      <NavbarLink to='/' className='header-logo-group__link'>
+      <NavbarLink
+        to='/'
+        isDisabled={isAuth && !isVerifiedUser}
+        className='header-logo-group__link'
+      >
         <div className='header-logo-group__wrapper'>
           <ListIcon className='header-logo-group__icon'/>
           <span className='header-logo-group__title'>Magic list</span>

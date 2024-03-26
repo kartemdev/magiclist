@@ -1,10 +1,15 @@
 export {
   userApi,
   useGetUserInfo,
+  useLazyGetUserInfo,
   useUpdateUserInfo,
-} from './api/user-api';
+  useLazyGetVerifie,
+  useGetVerifie,
+  useVerifieUser,
+  useConfirmVerifieUser,
+} from './api/user.api';
 
 export {
   userSlice,
-  selectUserInfo,
+  selectIsVerifiedUser,
 } from './store/slice';

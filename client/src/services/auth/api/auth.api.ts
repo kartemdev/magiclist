@@ -10,7 +10,7 @@ export const authApi = baseApi.injectEndpoints({
         body: payload,
         credentials: 'include',
       }),
-      invalidatesTags: ['UserInfo'],
+      invalidatesTags: ['UserInfo', 'UserVerifie'],
     }),
     register: build.mutation<IAuthResponseDTO, IRegisterRequestDTO>({
       query: (payload) => ({
@@ -19,14 +19,22 @@ export const authApi = baseApi.injectEndpoints({
         body: payload,
         credentials: 'include',
       }),
-      invalidatesTags: ['UserInfo'],
+      invalidatesTags: ['UserInfo', 'UserVerifie'],
     }),
-    logout: build.mutation<unknown, unknown>({
+    logout: build.mutation<unknown, () => void>({
       query: () => ({
         url: AuthEndPoints.LOGOUT,
         method: 'GET',
         credentials: 'include',
       }),
+      async onQueryStarted(onSuccess, {queryFulfilled}) {
+        try {
+          await queryFulfilled;
+          onSuccess();
+        } catch {
+          onSuccess();
+        }
+      }
     }),
     refresh: build.query<IAuthResponseDTO, undefined>({
       query: () => ({

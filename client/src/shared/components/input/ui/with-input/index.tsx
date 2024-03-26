@@ -68,7 +68,7 @@ const withInput = (Component: React.ComponentType<IProps>) => {
     type: 'text',
     onChange: null,
     placeholder: '',
-    autoComplete: '',
+    autoComplete: 'off',
     registerProps: null,
     disabled: false,
   };

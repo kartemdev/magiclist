@@ -4,14 +4,14 @@ export { logoutAction, setAuthTokenAction } from './base-query';
 
 export type { ISelfError } from './types';
 
-export {
+export type {
   ILoginRequestDTO,
   IRegisterRequestDTO,
   IRefreshTokensRequestDTO,
   IAuthResponseDTO,
 } from './dto/auth';
 
-export {
+export type {
   IUpdateUserInfoRequestDTO,
   IUserInfoResponseDTO,
 } from './dto/user';
