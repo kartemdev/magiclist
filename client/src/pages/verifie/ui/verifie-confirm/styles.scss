@@ -1,0 +1,64 @@
+.verifie-confirm-page {
+  width: 100%;
+
+  .user-verifie-confirm-code-form {
+    .ml-input {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+
+      &__error {
+        left: 50%;
+        width: max-content;
+        transform: translate(-50%, 0);
+      }
+  
+      &__block {
+        max-width: 120px;
+      }
+    }
+  
+    .ml-button {
+      &__block {
+        max-width: 305px;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: var(--primary);
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__tools {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+        
+    .user-verifie-send-code {
+      width: 100%;
+      max-width: 150px;
+    }
+
+
+    .ml-button {
+      &__block {
+        max-width: 150px;
+      }
+    }
+  }
+}
+
+

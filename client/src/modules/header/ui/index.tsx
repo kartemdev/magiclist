@@ -14,9 +14,7 @@ const Header: React.FC = () => {
     <div className='header'>
       <Navbar
         leftGroup={<LogoGroup />}
-        rightGroup={
-          isMobile ? <MobileGroup /> : <DesktopGroup />
-        }
+        rightGroup={isMobile ? <MobileGroup /> : <DesktopGroup />}
       />
     </div>
   );

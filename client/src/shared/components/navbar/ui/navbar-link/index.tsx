@@ -7,6 +7,7 @@ import './styles.scss';
 interface IProps {
   to: string;
   className?: string;
+  isDisabled?: boolean;
   children: React.ReactNode | React.ReactPortal; 
 }
 
@@ -14,6 +15,7 @@ const NavbarLink: React.FC<IProps> = (props) => {
   const {
     to,
     className,
+    isDisabled,
     children,
   } = props;
 
@@ -24,6 +26,7 @@ const NavbarLink: React.FC<IProps> = (props) => {
       to={to}
       className={classNames('ml-navbar-item', {
         [className]: className,
+        ['ml-navbar-item__disabled']: isDisabled,
         [`${className}-active`]: to === location.pathname && className,
       })}
     >
@@ -34,6 +37,7 @@ const NavbarLink: React.FC<IProps> = (props) => {
 
 NavbarLink.defaultProps = {
   className: '',
+  isDisabled: false,
 };
 
 export default NavbarLink;

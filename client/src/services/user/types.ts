@@ -3,4 +3,7 @@ export interface IUserState {
   userName?: string;
   email?: string;
   registerDate?: string;
-}
+  isVerified?: boolean;
+  verifieCreatedTime?: number;
+  isExpiresVerifie?: boolean;
+};

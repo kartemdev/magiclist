@@ -59,14 +59,13 @@ const UserProfile: React.FC = () => {
     }
   }, [error]);
 
-  const handleChangeDisabledMode = (mode: FieldNamesEnum | null) => {
+  const handleChangeDisabledMode = async (mode: FieldNamesEnum | null) => {
     setDisabledMode(mode);
     resetField('userName');
 
     if (mode !== null) {
-      wait(0).then(() => {
-        setFocus(mode);
-      });
+      await wait(0);
+      setFocus(mode);
     }
   };
 

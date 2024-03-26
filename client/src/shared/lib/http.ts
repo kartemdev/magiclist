@@ -1,6 +1,8 @@
 import { SerializedError } from "@reduxjs/toolkit";
+
 import { ISelfError } from "~shared/api";
-import { RtkErrorStatusesEnum } from "./constants";
+
+import { RtkErrorStatusesEnum } from "./rtk-query";
 
 export enum HttpStatusPrefixes {
   'INFO' =  1,
@@ -13,7 +15,7 @@ export enum HttpStatusPrefixes {
 export interface GetHttpParamsEnum {
   error: ISelfError | SerializedError,
   statusPrefix?: HttpStatusPrefixes,
-  includeStatuses?: number[]
+  includeStatuses?: number[],
 };
 
 export const isIncludeHttpStatuses = (status: number , includeStatuses: number[]) => (
