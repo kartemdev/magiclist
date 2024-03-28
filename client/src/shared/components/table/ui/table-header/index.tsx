@@ -4,7 +4,7 @@ import type { Header, HeaderGroup } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import { Checkbox } from '~shared/components';
 import { ArrowHeadFullIcon } from '~shared/assets';
-import { SortOrder } from '~shared/lib';
+import { SortOrders } from '~shared/lib';
 import { ISortData } from '../../types';
 import { getSortOrderClassNames } from '../../lib';
 
@@ -36,8 +36,8 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
       const currentSortData: ISortData<T> = {
         fieldName: header.id as Key<T>,
         sortType: 
-          !sortData?.sortType ? SortOrder.ASC
-            : sortData.sortType === SortOrder.ASC ? SortOrder.DESC : SortOrder.ASC,
+          !sortData?.sortType ? SortOrders.ASC
+            : sortData.sortType === SortOrders.ASC ? SortOrders.DESC : SortOrders.ASC,
       };
   
       setSortData(currentSortData);

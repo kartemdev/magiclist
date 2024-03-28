@@ -9,10 +9,9 @@ const LogoutButton: React.FC = () => {
   const [logoutUser] = useLogout({ fixedCacheKey: 'logout' });
 
   const handleLogout = () => {
-    logoutUser(null);
-    navigate('/');
+    logoutUser(() => navigate('/'));
   };
-  
+
   return (
     <>
       <Button

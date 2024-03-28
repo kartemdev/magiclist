@@ -4,7 +4,7 @@ export {
   useRegister,
   useLogout,
   useRefresh,
-} from './api/auth-api';
+} from './api/auth.api';
 
 export {
   authSlice,

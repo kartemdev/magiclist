@@ -2,4 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &__disabled {
+    opacity: 0.5;
+    filter: blur(0.7px);
+    pointer-events: none;
+    user-select: none;
+  }
 }

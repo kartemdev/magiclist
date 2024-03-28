@@ -5,12 +5,15 @@ import { useGetUserInfo } from '~services/user';
 import { LogoutButton } from '~components/logout-button';
 
 const AuthTools: React.FC = () => {
-  const { data, isFetching } = useGetUserInfo();
+  const { data } = useGetUserInfo();
 
   return (
     <>
-      {isFetching && <Preloader isFullScreen />}
-      <NavbarLink to='profile' className='header-tools-group__item header-tools-group__profile'>
+      <NavbarLink
+        to='profile'
+        isDisabled={!data?.isVerified}
+        className='header-tools-group__item header-tools-group__profile'
+      >
         <ProfileUserIcon className='header-tools-group__profile_icon'/>
         <div className='header-tools-group__profile_name'>
           {data?.userName}

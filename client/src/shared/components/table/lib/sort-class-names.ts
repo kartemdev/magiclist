@@ -1,4 +1,4 @@
-import { SortOrder } from "~shared/lib";
+import { SortOrders } from "~shared/lib";
 import { ISortData } from "../types";
 
 export const getSortOrderClassNames = <T, >(id: string, sortData: ISortData<T>) => {
@@ -6,8 +6,8 @@ export const getSortOrderClassNames = <T, >(id: string, sortData: ISortData<T>) 
     const { sortType, fieldName } = sortData;
 
     return {
-      ['ml-table-header__arrowhead-asc']: sortType === SortOrder.ASC && fieldName === id,
-      ['ml-table-header__arrowhead-desc']: sortType === SortOrder.DESC && fieldName === id,
+      ['ml-table-header__arrowhead-asc']: sortType === SortOrders.ASC && fieldName === id,
+      ['ml-table-header__arrowhead-desc']: sortType === SortOrders.DESC && fieldName === id,
     }
   }
 };

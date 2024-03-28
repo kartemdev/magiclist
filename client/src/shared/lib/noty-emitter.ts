@@ -1,15 +1,18 @@
 import i18next from 'i18next';
-import { toast } from 'react-toastify';
+import { ToastOptions, toast } from 'react-toastify';
+
 import { HttpStatusPrefixes, isHttpStatus } from './http';
 
 export enum NotyEmitterTypes {
   SUCCESS = 'success',
+  WARNING = 'warning',
   ERROR = 'error',
   INFO = 'info',
 };
 
-function createToaster(value: string, type?: NotyEmitterTypes) {
-  (!type ? toast : toast[type])(i18next.t(value), {
+function createToaster(value: string, type?: NotyEmitterTypes, options: ToastOptions = {}) {
+  const currentToast = !type ? toast : toast[type];
+  const toasOptions: ToastOptions = {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -18,23 +21,29 @@ function createToaster(value: string, type?: NotyEmitterTypes) {
     draggable: false,
     progress: undefined,
     theme: "colored",
-  })
-}
-
-export function notyEmit(value: string) {
-  createToaster(value);
-}
-
-notyEmit.success = (value: string) => {
-  createToaster(i18next.t(value), NotyEmitterTypes.SUCCESS);
+    ...options,
+  }
+  currentToast(i18next.t(value), toasOptions);
 };
 
-notyEmit.error = (value: string) => {
-  createToaster(i18next.t(value), NotyEmitterTypes.ERROR);
+export function notyEmit(value: string, type?: NotyEmitterTypes, options?: ToastOptions) {
+  createToaster(value, type, options);
 }
 
-notyEmit.serverError = (value: string, status: string | number) => {
+notyEmit.success = (value: string, options?: ToastOptions) => {
+  createToaster(i18next.t(value), NotyEmitterTypes.SUCCESS, options);
+};
+
+notyEmit.info = (value: string, options?: ToastOptions) => {
+  createToaster(i18next.t(value), NotyEmitterTypes.INFO, options);
+}
+
+notyEmit.error = (value: string, options?: ToastOptions) => {
+  createToaster(i18next.t(value), NotyEmitterTypes.ERROR, options);
+};
+
+notyEmit.serverError = (value: string, status: string | number, options?: ToastOptions) => {
   if (typeof status === 'string' || isHttpStatus(status, HttpStatusPrefixes.SERVER)) {
-    createToaster(i18next.t(value), NotyEmitterTypes.ERROR);
+    createToaster(i18next.t(value), NotyEmitterTypes.ERROR, options);
   }
 };

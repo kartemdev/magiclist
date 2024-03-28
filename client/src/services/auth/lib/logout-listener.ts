@@ -1,6 +1,8 @@
 import { createListenerMiddleware } from "@reduxjs/toolkit";
+
 import { logoutAction } from "~shared/api";
-import { authApi } from "../api/auth-api";
+
+import { authApi } from "../api/auth.api";
 
 export const logoutListener = createListenerMiddleware();
 

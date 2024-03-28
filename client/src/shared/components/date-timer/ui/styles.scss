@@ -1,0 +1,7 @@
+.ml-date-timer {
+  &__item {
+    &:not(.ml-date-timer__item:last-child):after {
+      content: ' : ';
+    }
+  }
+}

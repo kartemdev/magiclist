@@ -13,7 +13,7 @@
     color: var(--gray--dark);
   }
 
-  &:hover:not(.ml-input:focus) {
+  &:hover:not(.ml-input:focus):not(.ml-input:disabled) {
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.1);
   }
 
@@ -21,6 +21,10 @@
     outline: none !important;
     border: 1px solid var(--gray--dark);
     background-color: var(--primary--white);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
   
   &__block {
