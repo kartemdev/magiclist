@@ -1,5 +1,5 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
+
 import { useLogout } from '~services/auth';
 import { Button } from '~shared/components';
 

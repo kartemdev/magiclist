@@ -1,9 +1,8 @@
-import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-import { useAppSelector } from '~shared/hooks';
 import { selectIsAuth } from '~services/auth';
 import { selectIsVerifiedUser } from '~services/user';
+import { useAppSelector } from '~shared/hooks';
 
 const PublicVerifieRoute: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);

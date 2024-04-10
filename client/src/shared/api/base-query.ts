@@ -1,7 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 import { BaseQueryFn, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { API_BASE, AuthEndPoints } from '~shared/config';
 import {
   notyEmit,
   getHttpError,
@@ -9,6 +8,7 @@ import {
   isIncludeHttpStatuses,
   EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS,
 } from '~shared/lib';
+import { API_BASE, AuthEndPoints } from '~shared/config';
 
 import { ISelfError } from './types';
 import { IAuthResponseDTO } from './dto/auth';

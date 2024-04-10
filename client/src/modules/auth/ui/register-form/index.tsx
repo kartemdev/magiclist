@@ -1,11 +1,13 @@
-import React, { useEffect, useMemo } from 'react';
-import classNames from 'classnames';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
+import classNames from 'classnames';
+
+import { useRegister } from '~services/auth';
 import { withoutFields } from '~shared/lib';
 import { IRegisterRequestDTO } from '~shared/api';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
-import { useRegister } from '~services/auth';
+
 import { IRegisterFormData } from '../../types';
 import { getErrorMessage, validationRegisterForm } from '../../lib';
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import { CheckIcon, CrossCancelIcon, EditPenIcon } from '~shared/assets';
+
 import { DirtyFields, FieldNamesEnum } from '../../types';
 
 import './styles.scss';

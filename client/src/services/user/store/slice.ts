@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { IUserState } from "../types";
-import { userApi } from "../api/user.api";
 import { matchReducer } from "../lib";
+import { userApi } from "../api/user.api";
 
 const initialState: IUserState = {
   isVerified: true,

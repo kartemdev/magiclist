@@ -1,4 +1,5 @@
 import { IUserInfoResponseDTO } from "~shared/api";
+
 import { IUserState } from "../types";
 
 export const matchReducer = (state: IUserState, payload: IUserInfoResponseDTO) => {

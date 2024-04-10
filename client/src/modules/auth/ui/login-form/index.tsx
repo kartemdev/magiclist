@@ -1,9 +1,11 @@
-import React, { useEffect, useMemo } from 'react';
-import classNames from 'classnames';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Form, InputGroup, Preloader } from '~shared/components';
+import classNames from 'classnames';
+
 import { useLogin } from '~services/auth';
+import { Button, Form, InputGroup, Preloader } from '~shared/components';
+
 import { ILoginFormData } from '../../types';
 import { getErrorMessage, validationLoginForm } from '../../lib';
 

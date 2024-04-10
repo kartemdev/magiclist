@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { baseApi } from '~shared/api';
+
 import { logoutListener, authTokenListener } from '~services/auth';
+import { baseApi } from '~shared/api';
+
 import { rootReducer } from './root-reducer';
 
 const createStore = () => configureStore({

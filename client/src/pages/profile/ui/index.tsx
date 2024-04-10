@@ -1,4 +1,3 @@
-import React from 'react';
 import ProfielUserPage from './profile-user';
 
 import './styles.scss';

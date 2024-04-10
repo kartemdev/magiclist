@@ -1,7 +1,9 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import classNames from 'classnames';
+
 import { usePortal } from '~shared/hooks';
+
 import ModalBackground from './modal-background';
 import ModalDialog from './modal-dialog';
 

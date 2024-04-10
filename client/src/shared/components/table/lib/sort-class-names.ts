@@ -1,4 +1,5 @@
 import { SortOrders } from "~shared/lib";
+
 import { ISortData } from "../types";
 
 export const getSortOrderClassNames = <T, >(id: string, sortData: ISortData<T>) => {

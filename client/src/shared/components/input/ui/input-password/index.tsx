@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { FieldValues, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
+import { useState } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
+
 import { ClosedEye, OpenedEye } from '~shared/assets';
+
 import withInput from '../with-input';
 
 import './styles.scss';

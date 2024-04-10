@@ -1,4 +1,3 @@
-import React from 'react';
 import { CrossBolderCancelIcon } from '~shared/assets';
 
 import './styles.scss';

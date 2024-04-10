@@ -1,13 +1,14 @@
 import path from 'path';
 import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
+
+import { Env } from './types';
 import resolveModule from './resolve-module';
 import babelLoader from './babel-loader';
 import styleLoader from './style-loader';
 import imageLoader from './image-loader';
 import buildConfig from './webpack-build.config';
 import devServer from './dev-server';
-import { Env } from './types';
 
 const common = (isProd: boolean) =>
   merge([

@@ -1,8 +1,7 @@
-import React from 'react'
-import { ProfileUserIcon } from '~shared/assets';
-import { NavbarLink, Preloader } from '~shared/components';
-import { useGetUserInfo } from '~services/user';
 import { LogoutButton } from '~components/logout-button';
+import { useGetUserInfo } from '~services/user';
+import { ProfileUserIcon } from '~shared/assets';
+import { NavbarLink } from '~shared/components';
 
 const AuthTools: React.FC = () => {
   const { data } = useGetUserInfo();

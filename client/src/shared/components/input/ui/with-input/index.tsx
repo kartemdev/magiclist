@@ -1,5 +1,5 @@
-import React, { memo, useState } from 'react';
-import { FieldValues, UseFormRegister, UseFormRegisterReturn } from 'react-hook-form';
+import { memo, useState } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 import classNames from 'classnames';
 
 import './styles.scss';

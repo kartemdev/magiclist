@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import { useState } from 'react';
 import type { Header, HeaderGroup } from '@tanstack/react-table'; 
 import { flexRender } from '@tanstack/react-table';
-import { Checkbox } from '~shared/components';
+import classNames from 'classnames';
+
 import { ArrowHeadFullIcon } from '~shared/assets';
 import { SortOrders } from '~shared/lib';
+
+import { Checkbox } from '../../../checkbox';
 import { ISortData } from '../../types';
 import { getSortOrderClassNames } from '../../lib';
 

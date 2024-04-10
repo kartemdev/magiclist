@@ -1,4 +1,3 @@
-import React from 'react';
 import AuthMain from './auth-main';
 
 import './styles.scss';

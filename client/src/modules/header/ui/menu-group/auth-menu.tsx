@@ -1,8 +1,6 @@
-import React from 'react';
-
+import { selectIsVerifiedUser } from '~services/user';
 import { useAppSelector } from '~shared/hooks';
 import { NavbarLink } from '~shared/components';
-import { selectIsVerifiedUser } from '~services/user';
 
 import { MAIN_LINKS } from '../../lib';
 

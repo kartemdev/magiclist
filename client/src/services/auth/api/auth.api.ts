@@ -1,5 +1,5 @@
-import { baseApi, ILoginRequestDTO, IRegisterRequestDTO, IAuthResponseDTO} from "~shared/api";
 import { AuthEndPoints } from "~shared/config";
+import { baseApi, ILoginRequestDTO, IRegisterRequestDTO, IAuthResponseDTO} from "~shared/api";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({

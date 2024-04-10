@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { useCountDownDate } from '~shared/hooks';
 import { useGetVerifie, useVerifieUser } from '~services/user'
+import { useCountDownDate } from '~shared/hooks';
 import { Button, DateTimer, DateTimerTypesEnum, Preloader } from '~shared/components';
 
 import { MINUTES_BLOCKED_SEND_VERIFIE } from '../../model';

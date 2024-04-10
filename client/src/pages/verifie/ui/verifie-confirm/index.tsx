@@ -1,8 +1,7 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from '~shared/components';
 import { UserVerifieConfirmCode, UserVerifieSendCode } from '~modules/user-verifie';
+import { Button } from '~shared/components';
 
 import './styles.scss';
 
