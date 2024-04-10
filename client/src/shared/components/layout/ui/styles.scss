@@ -1,12 +1,8 @@
-.layout-page {
+.ml-layout {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
-  .Toastify {
-    font-size: 15px;
-  }
-  
+
   &__header {
     box-sizing: border-box;
     min-width: 320px;
@@ -16,7 +12,7 @@
   &__content {
     min-width: 320px;
     min-height: calc(100lvh - 50px);
-    background-image: url('../../../shared/assets/images/homeBg.jpg');
+    background-image: url('../../../assets/images/homeBg.jpg');
     background-attachment: fixed;
     background-size: cover;
   }
@@ -30,7 +26,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .layout-page {
+  .ml-layout {
     &__header {
       position: fixed;
       z-index: var(--z-index--xxxl);
