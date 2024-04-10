@@ -1,9 +1,8 @@
-import React from 'react';
+import { selectIsAuth } from '~services/auth';
+import { selectIsVerifiedUser } from '~services/user';
 import { ListIcon } from '~shared/assets';
 import { NavbarLink } from '~shared/components';
-import { selectIsVerifiedUser } from '~services/user';
 import { useAppSelector } from '~shared/hooks';
-import { selectIsAuth } from '~services/auth';
 
 import './styles.scss';
 

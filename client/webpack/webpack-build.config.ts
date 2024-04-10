@@ -5,6 +5,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import FontPreloadPlugin from 'webpack-font-preload-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+
 import { Env } from "./types";
 
 const buildConfig = (isProd: boolean, env: Env): Configuration => {

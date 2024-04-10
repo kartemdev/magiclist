@@ -1,7 +1,13 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import {
+  useGetVerifie,
+  useVerifieUser,
+  useGetUserInfo,
+  useUpdateUserInfo,
+} from '~services/user';
 import {
   Form,
   Button,
@@ -10,12 +16,6 @@ import {
   InputGroup,
   DateTimerTypesEnum,
 } from '~shared/components';
-import {
-  useGetVerifie,
-  useVerifieUser,
-  useGetUserInfo,
-  useUpdateUserInfo,
-} from '~services/user';
 import { matchErrorMessage } from '~shared/lib';
 import { useCountDownDate } from '~shared/hooks';
 

@@ -1,9 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useEffect, useMemo, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+
+import { useGetUserInfo, useUpdateUserInfo } from '~services/user';
 import { InputGroup, Preloader } from '~shared/components';
 import { dateFormat, LocalesTags, wait } from '~shared/lib';
-import { useGetUserInfo, useUpdateUserInfo } from '~services/user';
+
 import { FieldNamesEnum, IUserProfileFormData } from '../types';
 import { getErrorMessage, validationUserProfileForm } from '../lib';
 import UserProfileInputTools from './input-tools';

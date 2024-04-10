@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Page404 } from '~shared/components';

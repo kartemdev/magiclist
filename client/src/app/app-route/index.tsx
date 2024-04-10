@@ -1,12 +1,12 @@
-import React, { Suspense, useLayoutEffect } from 'react';
+import { Suspense, useLayoutEffect } from 'react';
 import { createColumnHelper } from '@tanstack/react-table';
 import { Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { lazily } from 'react-lazily';
 
+import { selectIsAuth } from '~services/auth';
 import { Preloader, Table, Page404 } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
-import { selectIsAuth } from '~services/auth';
 import {
   selectIsVerifiedUser,
   useLazyGetUserInfo,

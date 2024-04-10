@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { useMemo } from "react";
 
 import { DateTimerPayloadValues, DateTimerTypesEnum } from "../types";
 
@@ -16,7 +16,7 @@ interface IProps {
   payloadValues: DateTimerPayloadValues;
 }
 
-const DateTimer: FC<IProps> = ({type, payloadValues}) => {
+const DateTimer: React.FC<IProps> = ({type, payloadValues}) => {
   const dateTimerType = useMemo(() => DATE_TIMER_TYPES[type], [type]);
 
   const dateTimeValues = useMemo(() => dateTimerType.map((value: Key<typeof payloadValues>) => {

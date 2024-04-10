@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { matchErrorMessage } from '~shared/lib';
 import { useConfirmVerifieUser } from '~services/user';
+import { matchErrorMessage } from '~shared/lib';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
+
 import { CONFIRM_CODE_FORM_ERRORS, IConfirmCodeFormData, validationConfirmCodeForm } from '../../model';
 
 import './styles.scss';

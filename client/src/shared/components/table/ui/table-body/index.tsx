@@ -1,8 +1,8 @@
-import React from 'react';
 import classNames from 'classnames';
 import type { Row } from '@tanstack/react-table'; 
 import { flexRender } from '@tanstack/react-table';
-import { Checkbox } from '~shared/components';
+
+import { Checkbox } from '../../../checkbox';
 import { IRow, ISelectedRows } from '../../types';
 
 import './styles.scss';

@@ -1,6 +1,7 @@
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+
 import { Navbar } from '~shared/components';
+
 import LogoGroup from './logo-group';
 import MobileGroup from './mobile';
 import DesktopGroup from './desktop';

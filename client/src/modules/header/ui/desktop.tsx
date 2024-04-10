@@ -1,6 +1,6 @@
-import React from 'react'
-import { useAppSelector } from '~shared/hooks';
 import { selectIsAuth } from '~services/auth';
+import { useAppSelector } from '~shared/hooks';
+
 import MainGroup from './main-group'
 import ToolsGroup from './tools-group'
 

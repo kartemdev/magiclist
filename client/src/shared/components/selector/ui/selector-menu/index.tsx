@@ -1,5 +1,5 @@
-import React from 'react';
 import classNames from 'classnames';
+
 import { IOption } from '../../types';
 
 import './styles.scss';

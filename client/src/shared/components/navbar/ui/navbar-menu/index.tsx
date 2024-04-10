@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
+import classNames from 'classnames';
+
 import { useOutsideClick } from '~shared/hooks';
 import { ClosedBurgerMenuIcon, OpenedBurgerMenuIcon } from '~shared/assets';
 

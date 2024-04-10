@@ -1,5 +1,5 @@
-import React from 'react';
 import i18next from 'i18next';
+
 import { useRefresh } from '~services/auth';
 import { Preloader } from '~shared/components';
 

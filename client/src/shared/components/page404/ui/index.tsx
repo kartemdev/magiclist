@@ -1,4 +1,3 @@
-import React from 'react';
 import { PageNotFoundIcon } from '~shared/assets';
 
 import './styles.scss';

@@ -1,10 +1,10 @@
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Preloader } from '~shared/components';
-import { useAppSelector } from '~shared/hooks';
 import { selectIsAuth, useLogout } from '~services/auth';
 import { selectIsVerifiedUser } from '~services/user';
+import { Preloader } from '~shared/components';
+import { useAppSelector } from '~shared/hooks';
 
 import PreviewPage from './preview-page';
 

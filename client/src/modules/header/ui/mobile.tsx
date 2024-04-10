@@ -1,7 +1,7 @@
-import React from 'react'
+import { selectIsAuth } from '~services/auth';
 import { NavbarMenu } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
-import { selectIsAuth } from '~services/auth';
+
 import ToolsGroup from './tools-group'
 import MenuGroup from './menu-group';
 

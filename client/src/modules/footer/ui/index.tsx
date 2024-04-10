@@ -1,7 +1,7 @@
-import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { GithubIcon, ListIcon, TelegramIcon } from '~shared/assets';
+
 import { LangsSelector } from '~components/langs-selector';
+import { GithubIcon, ListIcon, TelegramIcon } from '~shared/assets';
 
 import './styles.scss';
 

@@ -1,5 +1,5 @@
-import React from 'react';
 import { LangsSelector } from '~components/langs-selector';
+
 import AuthMenu from './auth-menu';
 
 import './styles.scss';

@@ -1,5 +1,5 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { RegisterForm } from '~modules/auth';
 import { useRegister } from '~services/auth';
 import { Button } from '~shared/components';

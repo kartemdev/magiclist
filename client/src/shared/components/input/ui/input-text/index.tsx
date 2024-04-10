@@ -1,5 +1,5 @@
-import React from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
+
 import withInput from '../with-input';
 
 interface IProps {

@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import i18next from 'i18next';
+
 import { IOption, Selector } from '~shared/components';
 import { GlobaIcon } from '~shared/assets';
+
 import { langsOptions } from '../lib';
 
 import './styles.scss';

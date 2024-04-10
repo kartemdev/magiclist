@@ -1,8 +1,11 @@
-import React, { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
+
 import { useOutsideClick } from '~shared/hooks';
+
 import SelectorControl from './selector-control';
 import SelectorMenu from './selector-menu';
+
 import { IOption } from '../types';
 
 import './styles.scss';

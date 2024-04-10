@@ -1,4 +1,5 @@
 import { SerializedError } from "@reduxjs/toolkit";
+
 import { ISelfError } from "~shared/api";
 import { HttpStatusPrefixes, getHttpError } from "~shared/lib";
 
