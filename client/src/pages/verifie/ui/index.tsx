@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Page404 } from '~shared/components';
-
+import { Page404 } from '../../page-404';
 import VerifieEmailPage from './verifie-email';
 import VerifieConfirmPage from './verifie-confirm';
 

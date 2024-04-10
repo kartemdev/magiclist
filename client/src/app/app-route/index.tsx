@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { lazily } from 'react-lazily';
 
 import { selectIsAuth } from '~services/auth';
-import { Preloader, Table, Page404 } from '~shared/components';
+import { Preloader, Table } from '~shared/components';
 import { useAppSelector } from '~shared/hooks';
 import {
   selectIsVerifiedUser,
@@ -14,12 +14,14 @@ import {
 } from '~services/user';
 
 import { CustomRoute } from './custom-route';
+import { LayoutProvider } from '~app/providers';
+
 
 const { HomePage } = lazily(() => import(/* webpackChunkName: "ml_home" */ '~pages/home'));
 const { AuthPage } = lazily(() => import(/* webpackChunkName: "ml_auth" */ '~pages/auth'));
-const { LayoutPage } = lazily(() => import(/* webpackChunkName: "ml_layout" */ '~pages/layout'));
 const { ProfilePage } = lazily(() => import(/* webpackChunkName: "ml_profile" */ '~pages/profile'));
-const { VerifiePage } = lazily(() => import(/* webpackChunkName: "ml_verifie" */ '~pages/verifie'))
+const { VerifiePage } = lazily(() => import(/* webpackChunkName: "ml_verifie" */ '~pages/verifie'));
+const { Page404 } = lazily(() => import(/* webpackChunkName: "ml_page_404" */ '~pages/page-404'));
 
 const AppRoute: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
@@ -90,13 +92,8 @@ const AppRoute: React.FC = () => {
   return (
     <div className='ml-app'>
       {isFetching && <Preloader isFullScreen textContent={window.translate('please_wait')} />}
-
       <Routes>
-        <Route element={
-          <Suspense fallback={renderFallback()}>
-            <LayoutPage />
-          </Suspense>
-        }>
+        <Route element={<LayoutProvider />}>
           <Route path='/' element={
             <Suspense fallback={renderFallback()}>
               <HomePage />
@@ -124,7 +121,11 @@ const AppRoute: React.FC = () => {
                 isCheckBoxSelect
                 columns={getColumns()}
               />}/>
-              <Route path='profile' element={<ProfilePage />}/>
+              <Route path='profile' element={
+                <Suspense fallback={renderFallback()}>
+                  <ProfilePage />
+                </Suspense>
+              }/>
             </Route>
           </Route>
           <Route path='*' element={<Page404 content={window.translate('page_not_found')} />}/>
