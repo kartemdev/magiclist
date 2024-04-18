@@ -12,7 +12,7 @@ import './styles.scss';
 interface IProps<T> {
   data: T[];
   columns: ColumnDef<T, any>[];
-  onChangeRow?: (data: T | T[]) => void;
+  onChangeRow?: (data: T[]) => void;
   onClickRow?: (data: T) => void;
   onClickHeaderCell?: (sortData: ISortData<T>) => void;
   isCheckBoxSelect?: boolean;
@@ -44,11 +44,8 @@ const Table = <T extends {}, >(props: IProps<T>) => {
     const rowIsCheckbox = (event.target as Element).className.includes('checkbox');
     const currentSelectedRows = getSelectedRows(row, isMultipleSelect, selectedRows);
 
-    if (!onClickRow) {
-      setSelectedRows(currentSelectedRows);
-    }
-
     if (onChangeRow && !onClickRow) {
+      setSelectedRows(currentSelectedRows);
       onChangeRow(Object.values(currentSelectedRows));
     }
 
@@ -87,6 +84,7 @@ const Table = <T extends {}, >(props: IProps<T>) => {
         <TableHeader
           headerGroups={table.getHeaderGroups()}
           isCheckBoxSelect={isCheckBoxSelect}
+          isMultipleSelect={isMultipleSelect}
           isSorted={isSorted}
           checked={Object.keys(selectedRows).length === data?.length}
           onChangeCheckbox={handleChangeCheckboxAll}

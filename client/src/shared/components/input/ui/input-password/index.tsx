@@ -9,23 +9,38 @@ import './styles.scss';
 
 interface IProps {
   name: string;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  autoComplete?: string;
-  registerProps?: UseFormRegisterReturn<string> | null;
+  value: string;
+  disabled: boolean;
+  placeholder: string;
+  autoComplete: string;
+  registerProps: UseFormRegisterReturn<string> | null;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputPasswrod: React.FC<IProps> = ({ name, registerProps, ...props }) => {
-  const [isShowPass, setIsShowPass] = useState<boolean>(false);
+const InputPasswrod: React.FC<IProps> = ({ registerProps, ...props }) => {
+  const {
+    name,
+    value,
+    disabled,
+    onChange,
+    placeholder,
+    autoComplete,
+  } = props;
+
+  const [isShowPass, setIsShowPass] = useState(false);
 
   return (
     <>
       <input
-        {...props}
-        {...registerProps}
+        name={name}
+        value={value}
+        disabled={disabled}
+        onChange={onChange}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
         type={isShowPass ? 'text' : 'password'}
         className='ml-input ml-input-password'
+        {...registerProps}
       />
       <div
         className='ml-input-password__show'

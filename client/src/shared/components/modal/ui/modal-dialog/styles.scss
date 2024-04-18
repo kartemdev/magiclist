@@ -1,6 +1,7 @@
 .ml-modal-dialog {
   position: relative;
   box-sizing: border-box;
+  z-index: (var(--z-index--xxxl));
   border-radius: 8px;
   background-color: var(--primary--white);
 
