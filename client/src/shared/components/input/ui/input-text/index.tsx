@@ -4,19 +4,37 @@ import withInput from '../with-input';
 
 interface IProps {
   name: string;
-  type?: 'email' | 'text';
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  registerProps?: UseFormRegisterReturn<string> | null;
+  type: 'email' | 'text';
+  value: string;
+  disabled: boolean;
+  placeholder: string;
+  autoComplete: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  registerProps: UseFormRegisterReturn<string> | null;
 }
 
-const InputText: React.FC<IProps> = ({name, registerProps, ...props}) => {
+const InputText: React.FC<IProps> = ({registerProps, ...props}) => {
+  const {
+    name,
+    type,
+    value,
+    disabled,
+    onChange,
+    placeholder,
+    autoComplete,
+  } = props;
+
   return (
     <input
-      {...props}
-      {...registerProps}
+      name={name}
+      type={type}
+      value={value}
+      disabled={disabled}
+      onChange={onChange}
+      placeholder={placeholder}
+      autoComplete={autoComplete}
       className='ml-input ml-input-text'
+      {...registerProps}
     />
   );
 };

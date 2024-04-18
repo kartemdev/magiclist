@@ -95,7 +95,7 @@ Selector.defaultProps = {
   label: '',
   defaultValue: null,
   isTopPlacementMenu: false,
-  placeholderEmptyOptions: 'Empty list',
+  placeholderEmptyOptions: '',
 };
 
 export default Selector;

@@ -4,32 +4,35 @@ import classNames from 'classnames';
 
 import './styles.scss';
 
-interface IProps {
+interface IInputProps {
   name: string;
   type?: 'email' | 'text';
-  label?: string;
-  className?: string;
-  error?: string;
-  value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
   disabled?: boolean;
+  placeholder?: string;
   autoComplete?: string;
   registerProps?: UseFormRegisterReturn<string> | null;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface IProps extends IInputProps {
+  value?: string;
+  label?: string;
+  error?: string;
+  className?: string;
 }
 
 const withInput = (Component: React.ComponentType<IProps>) => {
   const InputElement: React.FC<IProps> = (props) => {
     const {
       value,
-      onChange,
-      registerProps,
       label,
       error,
+      onChange,
       className,
+      registerProps,
     } = props;
 
-    const [selfValue, setSelfValue] = useState<string>('');
+    const [selfValue, setSelfValue] = useState('');
     
     const uncontrolled = value === undefined && !registerProps;
     const currentValue = uncontrolled ? selfValue : value;
@@ -54,7 +57,6 @@ const withInput = (Component: React.ComponentType<IProps>) => {
           <Component
             {...props}
             value={currentValue}
-            registerProps={registerProps}
             onChange={handleInputChange}
           />
         {error && (

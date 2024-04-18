@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react';
+import { forwardRef, memo, useState } from 'react';
 import classNames from 'classnames';
 
 import './styles.scss';
@@ -68,4 +68,4 @@ Checkbox.defaultProps = {
   onChange: null,
 };
 
-export default Checkbox;
+export default memo(Checkbox);

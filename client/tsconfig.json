@@ -32,9 +32,6 @@
       "~shared": ["./shared"],
       "~shared/*": ["./shared/*"],
 
-      "~mixins": ["./mixins"],
-      "~mixins/*": ["./mixins/*"],
-
       "~langs": ["../../langs"],
       "~langs/*": ["../../langs/*"],
     }

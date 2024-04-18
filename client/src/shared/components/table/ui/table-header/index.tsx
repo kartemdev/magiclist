@@ -15,6 +15,7 @@ import './styles.scss';
 interface IProps<T> {
   headerGroups: HeaderGroup<T>[];
   isCheckBoxSelect: boolean;
+  isMultipleSelect: boolean;
   checked: boolean;
   isSorted: boolean;
   onChangeCheckbox: () => void;
@@ -25,6 +26,7 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
   const {
     headerGroups,
     isCheckBoxSelect,
+    isMultipleSelect,
     checked,
     isSorted,
     onChangeCheckbox,
@@ -76,7 +78,7 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
               className='ml-table-header__cell ml-table-header__checkbox'
               onClick={() => onChangeCheckbox()}
             >
-              <Checkbox checked={checked} />
+              {isMultipleSelect && <Checkbox checked={checked} />}
             </th>
           )}
           {headerGroup.headers.map(header => (
