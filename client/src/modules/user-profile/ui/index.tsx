@@ -4,10 +4,14 @@ import { useForm } from 'react-hook-form';
 
 import { useGetUserInfo, useUpdateUserInfo } from '~services/user';
 import { InputGroup, Preloader } from '~shared/components';
-import { dateFormat, LocalesTags, wait } from '~shared/lib';
+import { dateFormat, LocalesTags, matchErrorMessage, wait } from '~shared/lib';
 
-import { FieldNamesEnum, IUserProfileFormData } from '../types';
-import { getErrorMessage, validationUserProfileForm } from '../lib';
+import {
+  IUserProfileFormData,
+  USER_PROFILE_FORM_ERRORS,
+  UserProfileFormFieldEnum,
+  validationUserProfileForm
+} from '../model';
 import UserProfileInputTools from './input-tools';
 
 import './styles.scss';
@@ -18,11 +22,11 @@ const UserProfile: React.FC = () => {
 
   const { id, userName, email, registerDate } = userData || {};
 
-  const [disabledMode, setDisabledMode] = useState<FieldNamesEnum>(null);
+  const [disabledMode, setDisabledMode] = useState<UserProfileFormFieldEnum>(null);
 
   const defaultValues = useMemo(() => ({
-    userName: '',
-    userEmail: '',
+    [UserProfileFormFieldEnum.UserName]: '',
+    [UserProfileFormFieldEnum.UserEmail]: '',
   }), []);
 
   const {
@@ -44,26 +48,24 @@ const UserProfile: React.FC = () => {
     } 
 
     reset({
-      userName,
-      userEmail: email,
+      [UserProfileFormFieldEnum.UserName]: userName,
+      [UserProfileFormFieldEnum.UserEmail]: email,
     });
     
     setDisabledMode(null);
   }, [userData]);
 
   useEffect(() => {
-    const errorMessage = getErrorMessage(error);
+    const errorMessage = matchErrorMessage<IUserProfileFormData>(error, USER_PROFILE_FORM_ERRORS);
 
     if (errorMessage) {
-      const [field, message] = errorMessage;
-
-      setError(field as Key<typeof defaultValues>, message)
+      setError(...errorMessage);
     }
   }, [error]);
 
-  const handleChangeDisabledMode = async (mode: FieldNamesEnum | null) => {
+  const handleChangeDisabledMode = async (mode: UserProfileFormFieldEnum | null) => {
     setDisabledMode(mode);
-    resetField('userName');
+    resetField(mode);
 
     if (mode !== null) {
       await wait(0);
@@ -82,26 +84,26 @@ const UserProfile: React.FC = () => {
       {isLoading && <Preloader isFullScreen />}
       <div className='user-profile__field'>
         <InputGroup.Text
-          name='userName'
+          name={UserProfileFormFieldEnum.UserName}
           label={window.translate('user_name')}
-          disabled={!(disabledMode === FieldNamesEnum.USER_NAME)}
+          disabled={!(disabledMode === UserProfileFormFieldEnum.UserName)}
           error={errors?.userName?.message}
-          registerProps={registerInput('userName')}
+          registerProps={registerInput(UserProfileFormFieldEnum.UserName)}
         />
         <UserProfileInputTools
           dirtyFields={dirtyFields}
           disabledMode={disabledMode}
-          keyFieldName={'USER_NAME'}
+          keyFieldName={'UserName'}
           onApply={handleSubmitForm(handleSubmitEditUserName)}
           onChangeDisabledMode={handleChangeDisabledMode}
         />
       </div>
       <div className='user-profile__field'>
         <InputGroup.Text
-          name='userEmail'
+          name={UserProfileFormFieldEnum.UserEmail}
           label={window.translate('email')}
-          disabled={!(disabledMode === FieldNamesEnum.USER_EMAIL)}
-          registerProps={registerInput('userEmail')}
+          disabled={!(disabledMode === UserProfileFormFieldEnum.UserEmail)}
+          registerProps={registerInput(UserProfileFormFieldEnum.UserEmail)}
         />
       </div>
       <div className='user-profile__field'>

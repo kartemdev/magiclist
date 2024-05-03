@@ -12,4 +12,5 @@ export {
 export {
   userSlice,
   selectIsVerifiedUser,
-} from './store/slice';
+  selectVerifieCreatedTime,
+} from './model';

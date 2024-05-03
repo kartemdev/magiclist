@@ -1,4 +1,4 @@
-import { SortOrders } from "~shared/lib";
+import { SortOrders } from "~shared/enums";
 
 import { ISortData } from "../types";
 

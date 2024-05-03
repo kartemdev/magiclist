@@ -40,6 +40,7 @@ export const userApi = baseApi.injectEndpoints({
         method: 'GET',
         credentials: 'include',
       }),
+      extraOptions: { maxReties: 1 },
       providesTags: ['UserVerifie'],
     }),
     verifieUser: build.mutation<unknown, unknown>({

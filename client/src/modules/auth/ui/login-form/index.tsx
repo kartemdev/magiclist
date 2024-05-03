@@ -4,10 +4,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import classNames from 'classnames';
 
 import { useLogin } from '~services/auth';
+import { matchErrorMessage } from '~shared/lib';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
 
-import { ILoginFormData } from '../../types';
-import { getErrorMessage, validationLoginForm } from '../../lib';
+import {
+  ILoginFormData,
+  LOGIN_FORM_ERRORS,
+  LoginFormFieldEnum,
+  validationLoginForm,
+} from '../../model';
 
 import '../styles.scss';
 
@@ -15,8 +20,8 @@ const LoginForm: React.FC = () => {
   const [loginUser, { isLoading, error }] = useLogin({ fixedCacheKey: 'login' });
 
   const defaultValues = useMemo(() => ({
-    email: '',
-    password: '',
+    [LoginFormFieldEnum.Email]: '',
+    [LoginFormFieldEnum.Password]: '',
   }), []);
 
   const {
@@ -30,12 +35,10 @@ const LoginForm: React.FC = () => {
   });
 
   useEffect(() => {
-    const errorMessage = getErrorMessage(error);
+    const errorMessage = matchErrorMessage<ILoginFormData>(error, LOGIN_FORM_ERRORS);
 
     if (errorMessage) {
-      const [field, message] = errorMessage;
-
-      setError(field as Key<typeof defaultValues>, message)
+      setError(...errorMessage);
     }
   }, [error]);
   
@@ -49,19 +52,19 @@ const LoginForm: React.FC = () => {
       onSubmit={handleSubmitForm(handleSubmit)}
     >
       <InputGroup.Text
-        name='email'
+        name={LoginFormFieldEnum.Email}
         className='auth-form__email'
         label={window.translate('email')}
         error={errors.email?.message}
-        registerProps={registerInput('email')}
+        registerProps={registerInput(LoginFormFieldEnum.Email)}
       />
       <InputGroup.Password
-        name='password'
+        name={LoginFormFieldEnum.Password}
         className='auth-form__password'
         autoComplete='current-password'
         label={window.translate('password')}
         error={errors.password?.message}
-        registerProps={registerInput('password')}
+        registerProps={registerInput(LoginFormFieldEnum.Password)}
       />
       <Button
         className={classNames('auth-form__submit', {

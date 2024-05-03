@@ -2,7 +2,7 @@ import { createListenerMiddleware } from "@reduxjs/toolkit";
 
 import { setAuthTokenAction } from "~shared/api";
 
-import { setAuthToken } from "../store/slice";
+import { setAuthToken } from "./store";
 
 export const authTokenListener = createListenerMiddleware();
 

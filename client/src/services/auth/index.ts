@@ -7,13 +7,10 @@ export {
 } from './api/auth.api';
 
 export {
+  type IAuthState,
   authSlice,
   setAuthToken,
   selectIsAuth,
-} from './store/slice';
-
-export { logoutListener, authTokenListener } from './lib';
-
-export type {
-  IAuthState,
-} from './types';
+  logoutListener,
+  authTokenListener,
+} from './model';

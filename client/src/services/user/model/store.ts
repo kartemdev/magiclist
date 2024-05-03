@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { IUserState } from "../types";
-import { matchReducer } from "../lib";
+import { IUserState } from "./types";
 import { userApi } from "../api/user.api";
 
 const initialState: IUserState = {
@@ -23,7 +22,11 @@ export const userSlice = createSlice({
       .addMatcher(
         getUserInfo.matchFulfilled,
         (state: IUserState, { payload }) => {
-          matchReducer(state, payload)
+          state.id = payload.id;
+          state.userName = payload.userName;
+          state.email = payload.email;
+          state.isVerified = payload.isVerified;
+          state.registerDate = payload.registerDate;
         }
       )
       .addMatcher(
@@ -37,3 +40,4 @@ export const userSlice = createSlice({
 });
 
 export const selectIsVerifiedUser = (state: RootState) => !!state.user.isVerified;
+export const selectVerifieCreatedTime = (state: RootState) => state.user.verifieCreatedTime;

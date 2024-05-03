@@ -1,4 +1,4 @@
-export const MAIN_LINKS = [
+export const AUTH_MAIN_LINKS = [
   {
     to: '/table',
     textContent: 'table',

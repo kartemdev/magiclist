@@ -1,15 +1,15 @@
 import { CheckIcon, CrossCancelIcon, EditPenIcon } from '~shared/assets';
 
-import { DirtyFields, FieldNamesEnum } from '../../types';
+import { UserProfileFormDirtyFields, UserProfileFormFieldEnum } from '../../model';
 
 import './styles.scss';
 
 interface IProps {
-  dirtyFields?: DirtyFields,
-  disabledMode?: FieldNamesEnum;
-  keyFieldName?:  Key<typeof FieldNamesEnum>;
+  dirtyFields?: UserProfileFormDirtyFields,
+  disabledMode?: UserProfileFormFieldEnum;
+  keyFieldName?:  Key<typeof UserProfileFormFieldEnum>;
   onApply: () => void;
-  onChangeDisabledMode?: (mode: FieldNamesEnum) => void;
+  onChangeDisabledMode?: (mode: UserProfileFormFieldEnum) => void;
 }
 
 const UserProfileInputTools: React.FC<IProps> = (props) => {
@@ -21,7 +21,7 @@ const UserProfileInputTools: React.FC<IProps> = (props) => {
     onChangeDisabledMode
   } = props;
 
-  const currentField = FieldNamesEnum[keyFieldName];
+  const currentField = UserProfileFormFieldEnum[keyFieldName];
 
   const handleChangeDisabledMode = () => {
     onChangeDisabledMode(disabledMode === currentField ? null : currentField);

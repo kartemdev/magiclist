@@ -6,14 +6,19 @@ import { useConfirmVerifieUser } from '~services/user';
 import { matchErrorMessage } from '~shared/lib';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
 
-import { CONFIRM_CODE_FORM_ERRORS, IConfirmCodeFormData, validationConfirmCodeForm } from '../../model';
+import {
+  IConfirmCodeFormData,
+  CONFIRM_CODE_FORM_ERRORS,
+  ConfirmCodeFormFieldEnum,
+  validationConfirmCodeForm,
+} from '../../model';
 
 import './styles.scss';
 
 const UserVerifieConfirmCodeForm: React.FC = () => {
   const [confirmCode, { error, isLoading }] = useConfirmVerifieUser();
 
-  const defaultValues = useMemo(() => ({ confirmCode: '' }), []);
+  const defaultValues = useMemo(() => ({ [ConfirmCodeFormFieldEnum.ConfirmCode]: '' }), []);
 
   const {
     register: registerInput,
@@ -30,11 +35,10 @@ const UserVerifieConfirmCodeForm: React.FC = () => {
   };
 
   useEffect(() => {
-    const errorMessage = matchErrorMessage(error, CONFIRM_CODE_FORM_ERRORS);
+    const errorMessage = matchErrorMessage<IConfirmCodeFormData>(error, CONFIRM_CODE_FORM_ERRORS);
 
     if (errorMessage) {
-      const [field, message] = errorMessage;
-      setError(field as Key<typeof defaultValues>, message)
+      setError(...errorMessage)
     }
   }, [error]);
 
@@ -44,9 +48,9 @@ const UserVerifieConfirmCodeForm: React.FC = () => {
       onSubmit={handleSubmitForm(handleSubmit)}
     >
       <InputGroup.Text
-        name='confirmCode'
+        name={ConfirmCodeFormFieldEnum.ConfirmCode}
         error={errors?.confirmCode?.message}
-        registerProps={registerInput('confirmCode')}
+        registerProps={registerInput(ConfirmCodeFormFieldEnum.ConfirmCode)}
       />
       <Button
         type='submit'

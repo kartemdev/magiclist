@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import {
-  useGetVerifie,
   useVerifieUser,
   useGetUserInfo,
   useUpdateUserInfo,
+  selectVerifieCreatedTime,
 } from '~services/user';
 import {
   Form,
@@ -17,12 +17,12 @@ import {
   DateTimerTypesEnum,
 } from '~shared/components';
 import { matchErrorMessage } from '~shared/lib';
-import { useCountDownDate } from '~shared/hooks';
+import { useAppSelector, useCountDownDate } from '~shared/hooks';
 
 import {
   CHANGE_EMAIL_FORM_ERRORS,
   validationChangeEmailForm,
-  ChangeEmailFormFieldsEnum,
+  ChangeEmailFormFieldEnum,
   type IChangeEmailFormData,
   MINUTES_BLOCKED_SEND_VERIFIE,
 } from '../../model';
@@ -35,19 +35,20 @@ interface IProps {
 
 const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
   const { data: userData } = useGetUserInfo();
-  const { data: verifieUserData } = useGetVerifie();
-  const [updateUserData, { error, isLoading: isLoadingUpdateUserInfo, isSuccess }] = useUpdateUserInfo();
   const [verifieUser, { isLoading: isLoadingVerifieUser }] = useVerifieUser();
+  const [updateUserData, { error, isLoading: isLoadingUpdateUserInfo, isSuccess }] = useUpdateUserInfo();
+
+  const verifieCreatedTime = useAppSelector(selectVerifieCreatedTime);
 
   const countDownValues = useCountDownDate(
-    (verifieUserData?.verifieCreatedTime || 0) + 60 * MINUTES_BLOCKED_SEND_VERIFIE * 1000
+    (verifieCreatedTime || 0) + 60 * MINUTES_BLOCKED_SEND_VERIFIE * 1000
   );
 
   const { minutes, seconds } = countDownValues;
   const isAllowedSendCode = minutes + seconds <= 0;
   const isLoading = isLoadingUpdateUserInfo || isLoadingVerifieUser;
 
-  const defaultValues = useMemo(() => ({ changedEmail: '' }), []);
+  const defaultValues = useMemo(() => ({ [ChangeEmailFormFieldEnum.ChangedEmail]: '' }), []);
 
   const {
     handleSubmit,
@@ -68,22 +69,21 @@ const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
   }, [isSuccess])
 
   useEffect(() => {
-    resetForm({ changedEmail: userData.email });
+    resetForm({ [ChangeEmailFormFieldEnum.ChangedEmail]: userData.email });
   }, [userData])
 
   useEffect(() => {
-    const errorMessage = matchErrorMessage(error, CHANGE_EMAIL_FORM_ERRORS);
+    const errorMessage = matchErrorMessage<IChangeEmailFormData>(error, CHANGE_EMAIL_FORM_ERRORS);
 
     if (errorMessage) {
-      const [field, message] = errorMessage;
-      setError(field as Key<typeof defaultValues>, message)
+      setError(...errorMessage)
     }
   }, [error]);
 
   const handleSubmitUpdateUserData = (data: IChangeEmailFormData) => {
     const payload = { email: data.changedEmail };
 
-    if (!dirtyFields[ChangeEmailFormFieldsEnum.ChangedEmail]) {
+    if (!dirtyFields[ChangeEmailFormFieldEnum.ChangedEmail]) {
       onSuccess();
       return;
     }
@@ -101,9 +101,9 @@ const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
       onSubmit={handleSubmit(handleSubmitUpdateUserData)}
     >
       <InputGroup.Text
-        name='changedEmail'
+        name={ChangeEmailFormFieldEnum.ChangedEmail}
         error={errors?.changedEmail?.message}
-        registerProps={regitsterInput('changedEmail')}
+        registerProps={regitsterInput(ChangeEmailFormFieldEnum.ChangedEmail)}
       />
       <Button
         type='submit'
