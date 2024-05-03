@@ -5,15 +5,15 @@ import { ISelfError } from "~shared/api";
 
 import { HttpStatusPrefixes, getHttpError } from "../http";
 
-export const matchErrorMessage = (
+export const matchErrorMessage = <T extends object>(
   error: ISelfError | SerializedError,
-  errors: Record<string, string>
-): [string, ErrorOption] => {
-  const httpErrorMessage = getHttpError({ error, statusPrefix: HttpStatusPrefixes.CLIENT })?.message as keyof typeof errors;
+  formErrors: Record<string, Key<T>>
+): [Key<T>, ErrorOption] => {
+  const httpErrorMessage = getHttpError({ error, statusPrefix: HttpStatusPrefixes.CLIENT })?.message;
   
-  if (!errors[httpErrorMessage as keyof typeof errors]) {
+  if (!formErrors[httpErrorMessage]) {
     return null;
   }
 
-  return  [errors[httpErrorMessage], { message: window.translate(httpErrorMessage) }];
+  return  [formErrors[httpErrorMessage], { message: window.translate(httpErrorMessage) }];
 };

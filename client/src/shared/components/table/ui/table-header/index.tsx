@@ -4,7 +4,7 @@ import { flexRender } from '@tanstack/react-table';
 import classNames from 'classnames';
 
 import { ArrowHeadFullIcon } from '~shared/assets';
-import { SortOrders } from '~shared/lib';
+import { SortOrders } from '~shared/enums';
 
 import { Checkbox } from '../../../checkbox';
 import { ISortData } from '../../types';

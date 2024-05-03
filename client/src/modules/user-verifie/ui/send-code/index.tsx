@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { useGetVerifie, useVerifieUser } from '~services/user'
-import { useCountDownDate } from '~shared/hooks';
+import { useAppSelector, useCountDownDate } from '~shared/hooks';
+import { selectVerifieCreatedTime, useVerifieUser } from '~services/user'
 import { Button, DateTimer, DateTimerTypesEnum, Preloader } from '~shared/components';
 
 import { MINUTES_BLOCKED_SEND_VERIFIE } from '../../model';
@@ -9,10 +9,11 @@ import { MINUTES_BLOCKED_SEND_VERIFIE } from '../../model';
 import './styles.scss';
 
 const UserVerifieSendCode: React.FC = () => {
-  const { data } = useGetVerifie();
   const [verifieUser, { isLoading }] = useVerifieUser();
+
+  const verifieCreatedTime = useAppSelector(selectVerifieCreatedTime);
   
-  const sendCodeTimeStamp = (data?.verifieCreatedTime || 0) + 60 * MINUTES_BLOCKED_SEND_VERIFIE * 1000;
+  const sendCodeTimeStamp = (verifieCreatedTime || 0) + 60 * MINUTES_BLOCKED_SEND_VERIFIE * 1000;
   const isBlockedSendCode = sendCodeTimeStamp - new Date().getTime() > 0;
   const countDownValues = useCountDownDate(sendCodeTimeStamp);
   const { minutes, seconds } = countDownValues;

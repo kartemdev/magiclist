@@ -2,14 +2,14 @@ import { selectIsVerifiedUser } from '~services/user';
 import { useAppSelector } from '~shared/hooks';
 import { NavbarLink } from '~shared/components';
 
-import { MAIN_LINKS } from '../../lib';
+import { AUTH_MAIN_LINKS } from '../../model';
 
 const AuthMain: React.FC = () => {
   const isVerifiedUser = useAppSelector(selectIsVerifiedUser);
 
   return (
     <>
-      {MAIN_LINKS.map(({ to, textContent }) => (
+      {AUTH_MAIN_LINKS.map(({ to, textContent }) => (
         <NavbarLink
           to={to}
           key={to}

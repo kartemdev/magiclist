@@ -2,9 +2,9 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { IAuthResponseDTO } from '~shared/api';
 
-import { matchReducer } from '../lib';
-import { IAuthState } from '../types';
+import { IAuthState } from './types';
 import { authApi } from '../api/auth.api';
+import { storeFiller } from './store-filler';
 
 const initialState: IAuthState = {};
 
@@ -13,7 +13,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthToken(state, action: PayloadAction<IAuthResponseDTO>) {
-      matchReducer(state, action.payload);
+      storeFiller(state, action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -28,19 +28,19 @@ export const authSlice = createSlice({
       .addMatcher(
         login.matchFulfilled,
         (state: IAuthState, { payload }) => {
-          matchReducer(state, payload);
+          storeFiller(state, payload);
         }
       )
       .addMatcher(
         register.matchFulfilled,
         (state: IAuthState, { payload }) => {
-          matchReducer(state, payload);
+          storeFiller(state, payload);
         }
       )
       .addMatcher(
         refresh.matchFulfilled,
         (state: IAuthState, { payload }) => {
-          matchReducer(state, payload);
+          storeFiller(state, payload);
         }
       )
       .addMatcher(
