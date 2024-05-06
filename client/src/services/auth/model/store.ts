@@ -2,8 +2,8 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { IAuthResponseDTO } from '~shared/api';
 
+import { authApi } from '../api';
 import { IAuthState } from './types';
-import { authApi } from '../api/auth.api';
 import { storeFiller } from './store-filler';
 
 const initialState: IAuthState = {};

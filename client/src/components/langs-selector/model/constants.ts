@@ -1,4 +1,4 @@
-export const langsOptions = [
+export const LANGS_OPTIONS = [
   {
     label: 'ru-RU',
     value: 'ru',

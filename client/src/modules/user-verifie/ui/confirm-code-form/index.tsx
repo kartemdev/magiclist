@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useConfirmVerifieUser } from '~services/user';
+import { useConfirmInitialVerifie } from '~services/user';
 import { matchErrorMessage } from '~shared/lib';
 import { Button, Form, InputGroup, Preloader } from '~shared/components';
 
@@ -16,7 +16,7 @@ import {
 import './styles.scss';
 
 const UserVerifieConfirmCodeForm: React.FC = () => {
-  const [confirmCode, { error, isLoading }] = useConfirmVerifieUser();
+  const [confirmCode, { error, isLoading }] = useConfirmInitialVerifie();
 
   const defaultValues = useMemo(() => ({ [ConfirmCodeFormFieldEnum.ConfirmCode]: '' }), []);
 

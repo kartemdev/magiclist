@@ -1,1 +1,1 @@
-export { default as UserProfile } from './ui';
+export { default as UserProfileForm } from './ui';

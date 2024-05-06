@@ -24,61 +24,20 @@ export const userApi = baseApi.injectEndpoints({
         method: 'PATCH',
         credentials: 'include',
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          await queryFulfilled;
+      invalidatesTags: (_, error) => {
+        if (error) {
+          return [];
+        }
 
-          notyEmit.success('user_info_success_updated');
+        notyEmit.success('user_info_success_updated');
 
-          dispatch(userApi.endpoints.getUserInfo.initiate(null, { forceRefetch: true }));
-        } catch {}
-      },
-    }),
-    getVerifie: build.query<IUserVerifieResponseDTO, unknown>({
-      query: () => ({
-        url: `${UserEndPoints.USER_VERIFIE}?__read`,
-        method: 'GET',
-        credentials: 'include',
-      }),
-      extraOptions: { maxReties: 1 },
-      providesTags: ['UserVerifie'],
-    }),
-    verifieUser: build.mutation<unknown, unknown>({
-      query: () => ({
-        url: `${UserEndPoints.USER_SEND_VERIFIE}`,
-        method: 'GET',
-        credentials: 'include',
-      }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          await queryFulfilled;
-          dispatch(userApi.endpoints.getVerifie.initiate(null, { forceRefetch: true }));
-        } catch {}
-      },
-    }),
-    confirmVerifieUser: build.mutation<unknown, string>({
-      query: (payload) => ({
-        url: `${UserEndPoints.USER_CONFIRM_VERIFIE}/${payload}`,
-        method: 'GET',
-        credentials: 'include',
-      }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          await queryFulfilled;
-          dispatch(userApi.endpoints.getUserInfo.initiate(null, { forceRefetch: true }));
-        } catch {}
+        return ['UserInfo'];
       },
     }),
   })
 });
 
-export const {
-  useUpdateUserInfoMutation: useUpdateUserInfo,
-  useVerifieUserMutation: useVerifieUser,
-  useConfirmVerifieUserMutation: useConfirmVerifieUser,
-} = userApi;
+export const { useUpdateUserInfoMutation: useUpdateUserInfo } = userApi;
 
 export const useGetUserInfo = () => userApi.useGetUserInfoQuery(null);
 export const useLazyGetUserInfo = () => userApi.useLazyGetUserInfoQuery();
-export const useGetVerifie = () => userApi.useGetVerifieQuery(null);
-export const useLazyGetVerifie = () => userApi.useLazyGetVerifieQuery();

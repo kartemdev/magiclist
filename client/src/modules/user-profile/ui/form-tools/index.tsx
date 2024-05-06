@@ -5,26 +5,26 @@ import { UserProfileFormDirtyFields, UserProfileFormFieldEnum } from '../../mode
 import './styles.scss';
 
 interface IProps {
+  onApply: () => void;
   dirtyFields?: UserProfileFormDirtyFields,
   disabledMode?: UserProfileFormFieldEnum;
   keyFieldName?:  Key<typeof UserProfileFormFieldEnum>;
-  onApply: () => void;
   onChangeDisabledMode?: (mode: UserProfileFormFieldEnum) => void;
 }
 
-const UserProfileInputTools: React.FC<IProps> = (props) => {
+const UserProfileFormTools: React.FC<IProps> = (props) => {
   const {
+    onApply,
     dirtyFields,
     disabledMode,
     keyFieldName,
-    onApply,
     onChangeDisabledMode
   } = props;
 
   const currentField = UserProfileFormFieldEnum[keyFieldName];
 
   const handleChangeDisabledMode = () => {
-    onChangeDisabledMode(disabledMode === currentField ? null : currentField);
+    onChangeDisabledMode(currentField);
   };
 
   const renderEditorButtonContent = () => (
@@ -39,7 +39,7 @@ const UserProfileInputTools: React.FC<IProps> = (props) => {
     <div className='user-profile-input-tools'>
       {dirtyFields[currentField] && (
         <button
-          type='button'
+          type='submit'
           onClick={onApply}
           className='user-profile-input-tools__apply'
         >
@@ -57,4 +57,4 @@ const UserProfileInputTools: React.FC<IProps> = (props) => {
   );
 };
 
-export default UserProfileInputTools;
+export default UserProfileFormTools;
