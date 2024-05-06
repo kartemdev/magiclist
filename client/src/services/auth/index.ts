@@ -4,10 +4,9 @@ export {
   useRegister,
   useLogout,
   useRefresh,
-} from './api/auth.api';
+} from './api';
 
 export {
-  type IAuthState,
   authSlice,
   setAuthToken,
   selectIsAuth,

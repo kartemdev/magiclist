@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import { IOption, Selector } from '~shared/components';
 import { GlobaIcon } from '~shared/assets';
 
-import { langsOptions } from '../lib';
+import { LANGS_OPTIONS } from '../model';
 
 import './styles.scss';
 
@@ -15,7 +15,7 @@ interface IProps {
 const LangsSelector: React.FC<IProps> = ({ isTopPlacementMenu }) => {
   const [lang, setLang] = useState<IOption<string>>(null);
 
-  const langSelectorOptions = langsOptions.map((lang) => ({ ...lang, label: window.translate(lang.label) }));
+  const langSelectorOptions = LANGS_OPTIONS.map((lang) => ({ ...lang, label: window.translate(lang.label) }));
 
   const defaultValue = useMemo(() =>  (
     langSelectorOptions.find((option) => option.value === i18next.language)
@@ -24,7 +24,7 @@ const LangsSelector: React.FC<IProps> = ({ isTopPlacementMenu }) => {
   const handleLangSelectorChange = (option: IOption<string>) => {
     i18next.changeLanguage(option.value);
 
-    const currentLangOption = langsOptions.find((lang) => option.value === lang.value);
+    const currentLangOption = LANGS_OPTIONS.find((lang) => option.value === lang.value);
 
     setLang({ ...option, label: window.translate(currentLangOption.label) })
   };

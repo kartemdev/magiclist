@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
 import { useGetUserInfo, useUpdateUserInfo } from '~services/user';
-import { InputGroup, Preloader } from '~shared/components';
+import { Form, InputGroup, Preloader } from '~shared/components';
 import { dateFormat, LocalesTags, matchErrorMessage, wait } from '~shared/lib';
 
 import {
@@ -12,13 +12,13 @@ import {
   UserProfileFormFieldEnum,
   validationUserProfileForm
 } from '../model';
-import UserProfileInputTools from './input-tools';
 
 import './styles.scss';
+import { UserProfileFormFields } from './form-fields';
 
-const UserProfile: React.FC = () => {
+const UserProfileForm: React.FC = () => {
   const { data: userData } = useGetUserInfo();
-  const [ updateUserData, { isLoading, error } ] = useUpdateUserInfo();
+  const [_, { isLoading, error }] = useUpdateUserInfo();
 
   const { id, userName, email, registerDate } = userData || {};
 
@@ -63,59 +63,30 @@ const UserProfile: React.FC = () => {
     }
   }, [error]);
 
-  const handleChangeDisabledMode = async (mode: UserProfileFormFieldEnum | null) => {
-    setDisabledMode(mode);
-    resetField(mode);
+  const handleChangeDisabledMode = async (currentField: UserProfileFormFieldEnum) => {
+    setDisabledMode(disabledMode === currentField ? null : currentField);
+    resetField(currentField);
 
-    if (mode !== null) {
-      await wait(0);
-      setFocus(mode);
-    }
-  };
-
-  const handleSubmitEditUserName = (data: IUserProfileFormData) => {
-    updateUserData({
-      userName: data.userName
-    });
+    await wait(0);
+    setFocus(currentField);
   };
 
   return (
-    <div className='user-profile'>
+    <Form className='user-profile-form'>
       {isLoading && <Preloader isFullScreen />}
-      <div className='user-profile__field'>
-        <InputGroup.Text
-          name={UserProfileFormFieldEnum.UserName}
-          label={window.translate('user_name')}
-          disabled={!(disabledMode === UserProfileFormFieldEnum.UserName)}
-          error={errors?.userName?.message}
-          registerProps={registerInput(UserProfileFormFieldEnum.UserName)}
-        />
-        <UserProfileInputTools
-          dirtyFields={dirtyFields}
-          disabledMode={disabledMode}
-          keyFieldName={'UserName'}
-          onApply={handleSubmitForm(handleSubmitEditUserName)}
-          onChangeDisabledMode={handleChangeDisabledMode}
-        />
-      </div>
-      <div className='user-profile__field'>
-        <InputGroup.Text
-          name={UserProfileFormFieldEnum.UserEmail}
-          label={window.translate('email')}
-          disabled={!(disabledMode === UserProfileFormFieldEnum.UserEmail)}
-          registerProps={registerInput(UserProfileFormFieldEnum.UserEmail)}
-        />
-      </div>
-      <div className='user-profile__field'>
-        <InputGroup.Text
-          name='registerDate'
-          value={registerDate && dateFormat(registerDate, LocalesTags.RUS)}
-          label={window.translate('register_date')}
-          disabled={true}
-        />
-      </div>
-    </div>
+
+      <UserProfileFormFields.Name
+        error={errors?.userName?.message}
+        dirtyFields={dirtyFields}
+        disabledMode={disabledMode}
+        registerInput={registerInput}
+        onSubmitForm={handleSubmitForm}
+        onChangeDisabledMode={handleChangeDisabledMode}
+      />
+      <UserProfileFormFields.Email disabledMode={disabledMode} registerInput={registerInput} />
+      <UserProfileFormFields.RegisterDate value={registerDate} />
+    </Form>
   );
 };
 
-export default UserProfile;
+export default UserProfileForm;

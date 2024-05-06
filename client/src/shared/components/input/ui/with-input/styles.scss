@@ -8,6 +8,7 @@
   border: 1px solid transparent;
   border-radius: 6px;
   background-color: var(--gray);
+  transition: all 0.4s;
 
   &::placeholder {
     color: var(--gray--dark);

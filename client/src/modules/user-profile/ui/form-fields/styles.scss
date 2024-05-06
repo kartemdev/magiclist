@@ -1,0 +1,27 @@
+
+.user-profile-form-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  .ml-input {
+    &__block {
+      max-width: 100%;
+    }
+
+    &:disabled {
+      cursor: text;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .user-profile-form-field {
+    gap: 5px;
+  }
+}

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { IUserState } from "./types";
-import { userApi } from "../api/user.api";
+import { userApi, userVerifieApi } from "../api";
 
 const initialState: IUserState = {
   isVerified: true,
@@ -13,10 +13,8 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    const {
-      getUserInfo,
-      getVerifie
-    } = userApi.endpoints;
+    const { getUserInfo } = userApi.endpoints;
+    const { getVerifie } = userVerifieApi.endpoints;
 
     builder
       .addMatcher(

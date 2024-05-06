@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import {
-  useVerifieUser,
+  useInitialVerifie,
   useGetUserInfo,
   useUpdateUserInfo,
   selectVerifieCreatedTime,
@@ -35,7 +35,7 @@ interface IProps {
 
 const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
   const { data: userData } = useGetUserInfo();
-  const [verifieUser, { isLoading: isLoadingVerifieUser }] = useVerifieUser();
+  const [verifie, { isLoading: isLoadingVerifieUser }] = useInitialVerifie();
   const [updateUserData, { error, isLoading: isLoadingUpdateUserInfo, isSuccess }] = useUpdateUserInfo();
 
   const verifieCreatedTime = useAppSelector(selectVerifieCreatedTime);
@@ -64,7 +64,7 @@ const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
   useEffect(() => {
     if (isSuccess) {
       onSuccess();
-      verifieUser(null);
+      verifie(null);
     }
   }, [isSuccess])
 

@@ -5,9 +5,9 @@ export {
   useUpdateUserInfo,
   useLazyGetVerifie,
   useGetVerifie,
-  useVerifieUser,
-  useConfirmVerifieUser,
-} from './api/user.api';
+  useInitialVerifie,
+  useConfirmInitialVerifie,
+} from './api';
 
 export {
   userSlice,

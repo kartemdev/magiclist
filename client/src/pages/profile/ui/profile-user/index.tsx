@@ -1,4 +1,4 @@
-import { UserProfile } from '~modules/user-profile';
+import { UserProfileForm } from '~modules/user-profile';
 
 import './styles.scss';
 
@@ -8,8 +8,8 @@ const ProfielUserPage: React.FC = () => {
       <div className='profile-user-page__title'>
         {window.translate('profile_user_page_title')}
       </div>
-      <div className='profile-user-page__wrapper'>
-        <UserProfile />
+      <div className='profile-user-page__form'>
+        <UserProfileForm />
       </div>
     </div>
   );

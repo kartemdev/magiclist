@@ -10,7 +10,7 @@ export const authApi = baseApi.injectEndpoints({
         body: payload,
         credentials: 'include',
       }),
-      invalidatesTags: ['UserInfo', 'UserVerifie'],
+      invalidatesTags: (_, error) => error ? [] : ['UserInfo', 'UserVerifie'],
     }),
     register: build.mutation<IAuthResponseDTO, IRegisterRequestDTO>({
       query: (payload) => ({
@@ -19,7 +19,7 @@ export const authApi = baseApi.injectEndpoints({
         body: payload,
         credentials: 'include',
       }),
-      invalidatesTags: ['UserInfo', 'UserVerifie'],
+      invalidatesTags: (_, error) => error ? [] : ['UserInfo', 'UserVerifie'],
     }),
     logout: build.mutation<unknown, () => void>({
       query: () => ({
