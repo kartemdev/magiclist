@@ -1,4 +1,4 @@
-export const EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS =  [
+export const EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS = [
   'login',
   'logout',
   'refresh',

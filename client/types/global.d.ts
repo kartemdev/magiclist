@@ -16,5 +16,6 @@ declare global {
 
   interface Window {
     translate: TFunction;
+    language: string;
   }
 }

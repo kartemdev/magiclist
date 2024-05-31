@@ -49,7 +49,7 @@ const UserVerifieConfirmCodeForm: React.FC = () => {
     >
       <InputGroup.Text
         name={ConfirmCodeFormFieldEnum.ConfirmCode}
-        error={errors?.confirmCode?.message}
+        error={window.translate(errors.confirmCode?.message)}
         registerProps={registerInput(ConfirmCodeFormFieldEnum.ConfirmCode)}
       />
       <Button

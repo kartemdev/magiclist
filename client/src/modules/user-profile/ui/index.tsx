@@ -76,12 +76,12 @@ const UserProfileForm: React.FC = () => {
       {isLoading && <Preloader isFullScreen />}
 
       <UserProfileFormFields.Name
-        error={errors?.userName?.message}
         dirtyFields={dirtyFields}
         disabledMode={disabledMode}
         registerInput={registerInput}
         onSubmitForm={handleSubmitForm}
         onChangeDisabledMode={handleChangeDisabledMode}
+        error={window.translate(errors.userName?.message)}
       />
       <UserProfileFormFields.Email disabledMode={disabledMode} registerInput={registerInput} />
       <UserProfileFormFields.RegisterDate value={registerDate} />

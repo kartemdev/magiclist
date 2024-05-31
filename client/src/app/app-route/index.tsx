@@ -86,7 +86,7 @@ const AppRoute: React.FC = () => {
     isFetching || <Preloader isFullScreen textContent={window.translate('please_wait')} />
   );
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   window.translate = t;
 
   return (
