@@ -2,11 +2,11 @@ import * as yup from 'yup';
 
 const validationFields = {
   changedEmail: yup.string()
-    .required(window.translate('required_field_error'))
-    .email(window.translate('email_validation_error')),
+    .required('required_field_error')
+    .email('email_validation_error'),
   confirmCode: yup.string()
-    .required(window.translate('required_field_error'))
-    .length(4, window.translate('length_symbols_4')),
+    .required('required_field_error')
+    .length(4, 'length_symbols_4'),
 };
 
 export const validationChangeEmailForm = () => {

@@ -1,18 +1,17 @@
+import { memo } from 'react';
+
 import { InputGroup } from '~shared/components';
 import { IUserInfoResponseDTO } from '~shared/api';
 import { LocalesTags, dateFormat } from '~shared/lib';
 
 import './styles.scss';
-import { memo } from 'react';
 
 interface IProps {
   value: IUserInfoResponseDTO['registerDate'];
 };
 
 const UserProfileFormRegisterDateField: React.FC<IProps> = (props) => {
-  const {
-    value
-  } = props;
+  const { value } = props;
 
   return (
     <div className='user-profile-form-field'>

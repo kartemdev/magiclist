@@ -102,7 +102,7 @@ const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
     >
       <InputGroup.Text
         name={ChangeEmailFormFieldEnum.ChangedEmail}
-        error={errors?.changedEmail?.message}
+        error={window.translate(errors.changedEmail?.message)}
         registerProps={regitsterInput(ChangeEmailFormFieldEnum.ChangedEmail)}
       />
       <Button

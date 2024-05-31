@@ -60,14 +60,14 @@ const RegisterForm: React.FC = () => {
         name={RegisterFormFieldEnum.UserName}
         className='auth-form__user-name'
         label={window.translate('user_name')}
-        error={errors.userName?.message}
+        error={window.translate(errors.userName?.message)}
         registerProps={registerInput(RegisterFormFieldEnum.UserName)}
       />
       <InputGroup.Text
         name={RegisterFormFieldEnum.Email}
         className='auth-form__email'
         label={window.translate('email')}
-        error={errors.email?.message}
+        error={window.translate(errors.email?.message)}
         registerProps={registerInput(RegisterFormFieldEnum.Email)}
       />
       <InputGroup.Password
@@ -75,7 +75,7 @@ const RegisterForm: React.FC = () => {
         className='auth-form__password'
         label={window.translate('password')}
         autoComplete='new-password'
-        error={errors.password?.message}
+        error={window.translate(errors.password?.message)}
         registerProps={registerInput(RegisterFormFieldEnum.Password)}
       />
       <InputGroup.Password
@@ -83,7 +83,7 @@ const RegisterForm: React.FC = () => {
         className='auth-form__repeat-password'
         label={window.translate('repeat_password')}
         autoComplete='off'
-        error={errors.confirmPassword?.message}
+        error={window.translate(errors.confirmPassword?.message)}
         registerProps={registerInput(RegisterFormFieldEnum.ComfirmPassword)}
       />
       <Button

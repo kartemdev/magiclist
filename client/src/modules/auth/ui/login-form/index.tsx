@@ -55,7 +55,7 @@ const LoginForm: React.FC = () => {
         name={LoginFormFieldEnum.Email}
         className='auth-form__email'
         label={window.translate('email')}
-        error={errors.email?.message}
+        error={window.translate(errors.email?.message)}
         registerProps={registerInput(LoginFormFieldEnum.Email)}
       />
       <InputGroup.Password
@@ -63,7 +63,7 @@ const LoginForm: React.FC = () => {
         className='auth-form__password'
         autoComplete='current-password'
         label={window.translate('password')}
-        error={errors.password?.message}
+        error={window.translate(errors.password?.message)}
         registerProps={registerInput(LoginFormFieldEnum.Password)}
       />
       <Button
