@@ -62,13 +62,6 @@ const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
   });
 
   useEffect(() => {
-    if (isSuccess) {
-      onSuccess();
-      verifie(null);
-    }
-  }, [isSuccess])
-
-  useEffect(() => {
     resetForm({ [ChangeEmailFormFieldEnum.ChangedEmail]: userData.email });
   }, [userData])
 
@@ -80,8 +73,18 @@ const UserVerifieChangeEmailForm: React.FC<IProps> = ({ onSuccess }) => {
     }
   }, [error]);
 
+  const handleSuccessUpdateUser = () => {
+    onSuccess();
+    verifie(null);
+  }
+
   const handleSubmitUpdateUserData = (data: IChangeEmailFormData) => {
-    const payload = { email: data.changedEmail };
+    const payload = {
+      onSuccess: handleSuccessUpdateUser,
+      data: {
+        email: data.changedEmail
+      }
+    };
 
     if (!dirtyFields[ChangeEmailFormFieldEnum.ChangedEmail]) {
       onSuccess();

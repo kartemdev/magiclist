@@ -6,6 +6,7 @@ import {
 import { IUserVerifieResponseDTO } from "~shared/api/dto/user";
 import { UserEndPoints } from "~shared/config";
 import { notyEmit } from "~shared/lib";
+import { RtkQueryCallbacks } from "~shared/lib";
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -17,18 +18,19 @@ export const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ['UserInfo'],
     }),
-    updateUserInfo: build.mutation<unknown, IUpdateUserInfoRequestDTO>({
+    updateUserInfo: build.mutation<unknown, RtkQueryCallbacks<IUpdateUserInfoRequestDTO>>({
       query: (payload) => ({
         url: `${UserEndPoints.USER_INFO}?__update`,
-        body: payload,
+        body: payload.data,
         method: 'PATCH',
         credentials: 'include',
       }),
-      invalidatesTags: (_, error) => {
+      invalidatesTags: (_, error, { onSuccess }) => {
         if (error) {
           return [];
         }
 
+        onSuccess();
         notyEmit.success('user_info_success_updated');
 
         return ['UserInfo'];

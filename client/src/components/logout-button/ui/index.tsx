@@ -8,8 +8,15 @@ const LogoutButton: React.FC = () => {
   
   const [logoutUser] = useLogout({ fixedCacheKey: 'logout' });
 
+  const redirectToHome = () => {
+    navigate('/');
+  };
+
   const handleLogout = () => {
-    logoutUser(() => navigate('/'));
+    logoutUser({
+      onSuccess: redirectToHome,
+      onError: redirectToHome,
+    });
   };
 
   return (
