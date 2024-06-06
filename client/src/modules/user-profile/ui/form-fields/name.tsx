@@ -23,7 +23,9 @@ const UserProfileFormNameField: React.FC<IUserProfileFormFieldProps> = (props) =
 
   const handleSubmitEditUserName = (data: IUserProfileFormData) => {
     updateUserData({
-      userName: data.userName
+      data: {
+        userName: data.userName
+      },
     });
   };
 

@@ -1,4 +1,5 @@
 import { AuthEndPoints } from "~shared/config";
+import { RtkQueryCallbacks } from "~shared/lib";
 import { baseApi, ILoginRequestDTO, IRegisterRequestDTO, IAuthResponseDTO} from "~shared/api";
 
 export const authApi = baseApi.injectEndpoints({
@@ -21,18 +22,18 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: (_, error) => error ? [] : ['UserInfo', 'UserVerifie'],
     }),
-    logout: build.mutation<unknown, () => void>({
+    logout: build.mutation<unknown, RtkQueryCallbacks>({
       query: () => ({
         url: AuthEndPoints.LOGOUT,
         method: 'GET',
         credentials: 'include',
       }),
-      async onQueryStarted(onSuccess, {queryFulfilled}) {
+      async onQueryStarted({ onSuccess, onError }, { queryFulfilled }) {
         try {
           await queryFulfilled;
           onSuccess();
         } catch {
-          onSuccess();
+          onError();
         }
       }
     }),
