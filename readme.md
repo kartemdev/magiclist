@@ -1,6 +1,6 @@
 <h1>Magic List</h1>
 <h3>Description</h3>
-The MagicList project implies a product for business. At this point in time, the structure, authorization, and methodologies and technologies have been implemented. The project is not forgotten and you can already see what skills I have.
+The MagicList demo project implies a product for business. At this point in time, the structure, authorization, and methodologies and technologies have been implemented. The project is not forgotten and you can already see what skills I have.
 The main motivation for writing this project is to rewrite the <a href="https://github.com/kartemdev/TaskWelbeX" target="_blank">TaskWelbex</a> project with further scaling and implementation of business tools.
 <h3>Local startup</h3>
 This project has been hosted before, to explore this topic. Since there is no basic functionality yet, I stopped hosting it. 
