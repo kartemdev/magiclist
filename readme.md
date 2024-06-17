@@ -10,5 +10,4 @@ Technologies I used: <i>React, TypeScript, RTK-Query, React Router Dom, Webpack,
 I also used some rules from FSD, organizing my project structure as a mixture of Modular Architecture and FSD. Just below look at some representation of the dependency direction of the so called application layers, the arrows indicate the dependencies (what a layer can use).
 <br />
 <br />
-<img style="width: 5%;" src="https://github.com/kartemdev/magiclist/assets/103846630/6442b3d9-4ead-47d5-b231-5c2a695bf0e9" />
-<img style="width: 70%;" src="https://github.com/kartemdev/magiclist/assets/103846630/f8a620e2-e479-4645-88ca-d375c9794f47" />
+<img src="https://github.com/kartemdev/magiclist/assets/103846630/6442b3d9-4ead-47d5-b231-5c2a695bf0e9" />
