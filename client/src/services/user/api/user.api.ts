@@ -3,7 +3,6 @@ import {
   IUserInfoResponseDTO,
   IUpdateUserInfoRequestDTO,
 } from "~shared/api";
-import { IUserVerifieResponseDTO } from "~shared/api/dto/user";
 import { UserEndPoints } from "~shared/config";
 import { notyEmit } from "~shared/lib";
 import { RtkQueryCallbacks } from "~shared/lib";
@@ -29,8 +28,8 @@ export const userApi = baseApi.injectEndpoints({
         if (error) {
           return [];
         }
-
-        onSuccess();
+        
+        onSuccess?.();
         notyEmit.success('user_info_success_updated');
 
         return ['UserInfo'];

@@ -1,1 +1,2 @@
-export { default as AuthPage } from './ui';
+import AuthPage from './ui';
+export default AuthPage;

@@ -1,13 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import { initReactI18next } from 'react-i18next';
 import i18next from 'i18next';
 
 import { resources } from '~langs';
 
 import { AuthProvider, StoreProvider } from './providers';
-import AppRoute from './app-route';
+import AppRoute from './app-router';
 
 import '~shared/scss';
 
@@ -27,11 +26,9 @@ const root = createRoot(container);
 root.render(
   <StrictMode>
     <StoreProvider>
-      <BrowserRouter>
-        <AuthProvider>
-          <AppRoute />
-        </AuthProvider>
-      </BrowserRouter>
+      <AuthProvider>
+        <AppRoute />
+      </AuthProvider>
     </StoreProvider>
   </StrictMode>,
 );

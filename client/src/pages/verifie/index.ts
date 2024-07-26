@@ -1,1 +1,2 @@
-export { default as VerifiePage } from './ui';
+import VerifiePage from './ui';
+export default VerifiePage;
