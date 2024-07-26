@@ -1,5 +1,4 @@
 export {
-  userApi,
   useGetUserInfo,
   useLazyGetUserInfo,
   useUpdateUserInfo,

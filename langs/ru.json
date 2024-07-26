@@ -48,5 +48,6 @@
 	"verifie_email_page_handle_back": "Назад",
 	"verifie_confirm_page_handle_change_email": "Изменить email",
 	"user_verifie_expires_data": "Код уже устарел, отправьте сообщение повторно",
-	"server_rate_limit_error": "Превышен лимит запросов, повторите чуть позже"
+	"server_rate_limit_error": "Превышен лимит запросов, повторите чуть позже",
+	"not_found_page_back_to_home": "На главную страницу"
 }

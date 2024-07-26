@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Page404 } from '../../page-404';
 import VerifieEmailPage from './verifie-email';
 import VerifieConfirmPage from './verifie-confirm';
 
@@ -17,7 +16,7 @@ const VerifiePage: React.FC = () => {
           <Route path='email' element={<VerifieEmailPage />} />
           <Route path='/' element={<Navigate to='confirm' />} />
           <Route path='confirm' element={<VerifieConfirmPage />} />
-          <Route path='*' element={<Page404 content={window.translate('page_not_found')} />} />
+          <Route path='*' element={<Navigate to='/not-found' />} />
         </Routes>
       </div>
     </div>

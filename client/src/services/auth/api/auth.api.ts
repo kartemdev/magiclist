@@ -31,9 +31,9 @@ export const authApi = baseApi.injectEndpoints({
       async onQueryStarted({ onSuccess, onError }, { queryFulfilled }) {
         try {
           await queryFulfilled;
-          onSuccess();
+          onSuccess?.();
         } catch {
-          onError();
+          onError?.();
         }
       }
     }),

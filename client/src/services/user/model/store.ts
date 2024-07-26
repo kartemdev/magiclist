@@ -4,7 +4,6 @@ import { IUserState } from "./types";
 import { userApi, userVerifieApi } from "../api";
 
 const initialState: IUserState = {
-  isVerified: true,
   isExpiresVerifie: true,
 };
 

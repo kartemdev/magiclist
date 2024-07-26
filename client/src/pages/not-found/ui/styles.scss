@@ -1,4 +1,12 @@
-.page404 {
+.not-found-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .ml-button__block {
+    max-width: max-content;
+  }
+
   &__icon {
     height: calc(100vw - 100px);
     max-height: 450px;
@@ -16,11 +24,12 @@
     font-weight: 500;
     text-align: center;
     color: var(--primary);
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (max-width: 570px) {
-  .page404 {
+  .not-found {
     &__text {
       font-size: 5vw;
     }

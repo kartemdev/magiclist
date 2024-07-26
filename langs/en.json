@@ -48,5 +48,6 @@
 	"verifie_email_page_handle_back": "Backward",
 	"verifie_confirm_page_handle_change_email": "Change email",
 	"user_verifie_expires_data": "The code is already out of date, resend the message",
-	"server_rate_limit_error": "Request limit exceeded, repeat a little later"
+	"server_rate_limit_error": "Request limit exceeded, repeat a little later",
+	"not_found_page_back_to_home": "Home page"
 }

@@ -33,6 +33,7 @@ const UserProfileForm: React.FC = () => {
     reset,
     setError,
     setFocus,
+    setValue,
     resetField,
     formState: { dirtyFields, errors },
     register: registerInput,
@@ -45,13 +46,13 @@ const UserProfileForm: React.FC = () => {
   useEffect(() => {
     if (!id) {
       return;
-    } 
+    }
 
     reset({
       [UserProfileFormFieldEnum.UserName]: userName,
       [UserProfileFormFieldEnum.UserEmail]: email,
     });
-    
+
     setDisabledMode(null);
   }, [userData]);
 
@@ -76,6 +77,7 @@ const UserProfileForm: React.FC = () => {
       {isLoading && <Preloader isFullScreen />}
 
       <UserProfileFormFields.Name
+        initValue={setValue}
         dirtyFields={dirtyFields}
         disabledMode={disabledMode}
         registerInput={registerInput}
@@ -83,8 +85,12 @@ const UserProfileForm: React.FC = () => {
         onChangeDisabledMode={handleChangeDisabledMode}
         error={window.translate(errors.userName?.message)}
       />
-      <UserProfileFormFields.Email disabledMode={disabledMode} registerInput={registerInput} />
-      <UserProfileFormFields.RegisterDate value={registerDate} />
+      <UserProfileFormFields.Email
+        initValue={setValue}
+        disabledMode={disabledMode}
+        registerInput={registerInput}
+      />
+      <UserProfileFormFields.RegisterDate />
     </Form>
   );
 };
