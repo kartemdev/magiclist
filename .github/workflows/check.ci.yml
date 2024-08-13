@@ -1,0 +1,31 @@
+name: check
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x, 17.x, 16.x ]
+    steps:
+      -
+        uses: actions/checkout@v3
+      -
+        name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      -
+        name: install packages
+        run: npm ci
+        working-directory: 'client'
+      -
+        name: build static files
+        run: npm run build
+        working-directory: 'client'
