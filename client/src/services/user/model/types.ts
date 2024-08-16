@@ -4,6 +4,6 @@ export interface IUserState {
   email?: string;
   registerDate?: string;
   isVerified?: boolean;
-  verifieCreatedTime?: number;
+  createdAt?: string;
   isExpiresVerifie?: boolean;
 };

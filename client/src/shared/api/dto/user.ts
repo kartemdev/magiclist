@@ -16,6 +16,6 @@ export interface IUserInfoResponseDTO {
 }
 
 export interface IUserVerifieResponseDTO {
-  verifieCreatedTime: number;
+  createdAt: string;
   isExpiresVerifie: boolean;
 }
