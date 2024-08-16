@@ -1,0 +1,42 @@
+name: deploy
+
+on:
+  workflow_run:
+    workflows: [build-push]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: copy file to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          envs: TEST
+          host: 147.45.138.133
+          username: root
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: ./docker-compose.yml
+          target: /
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          PATH_SERT_FULLCHAIN: ${{ secrets.PATH_SERT_FULLCHAIN }}
+          PATH_SERT_PRIVKEY: ${{ secrets.PATH_SERT_PRIVKEY }}
+        with:
+          envs: PATH_SERT_FULLCHAIN, PATH_SERT_PRIVKEY
+          host: 147.45.138.133
+          username: root
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd /
+            cat > /.env << EOF
+              PATH_SERT_FULLCHAIN=$PATH_SERT_FULLCHAIN
+              PATH_SERT_PRIVKEY=$PATH_SERT_PRIVKEY
+            EOF
+            docker-compose pull
+            docker-compose down
+            docker-compose up -d
