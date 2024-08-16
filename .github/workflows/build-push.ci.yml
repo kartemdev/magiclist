@@ -1,14 +1,17 @@
 name: build-push
 on:
   pull_request:
-    branches: 
-      - master
     types:
-      - closed
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
 jobs:
   docker:
-    if: ${{ github.event.pull_request.merged }}
+    # if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
+    # environment: production
     steps:
       -
         name: Checkout
@@ -31,6 +34,26 @@ jobs:
         with:
           context: .
           push: true
-          tags: kartemdev/magic-list:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/magiclist:latest
           build-args: |
-            "API_HOST=${{ vars.API_HOST }}"
+            "API_HOST=${{ secrets.API_HOST }}"
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    # environment: production
+      
+    steps:
+      - uses: actions/checkout@v3
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          PATH_SERT_FULLCHAIN: ${{ secrets.PATH_SERT_FULLCHAIN }}
+          PATH_SERT_PRIVKEY: ${{ secrets.PATH_SERT_PRIVKEY }}
+        with:
+          envs: PATH_SERT_FULLCHAIN, PATH_SERT_PRIVKEY
+          host: 147.45.138.133
+          username: root
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            chmod +x /usr/apps/frontend/entrypoint.sh
+            /usr/apps/frontend/entrypoint.sh
