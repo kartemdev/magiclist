@@ -1,0 +1,59 @@
+name: build-push
+on:
+  pull_request:
+    types:
+      - closed
+jobs:
+  build-push:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGE }}
+          build-args: |
+            "API_HOST=${{ secrets.API_HOST }}"
+  pull-deploy:
+    needs: build-push
+    runs-on: ubuntu-latest
+    environment: production
+      
+    steps:
+      -
+        uses: actions/checkout@v3
+      -
+        name: Connect to SSH & Execution entrypoint.sh
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          PATH_SERT_FULLCHAIN: ${{ secrets.PATH_SERT_FULLCHAIN }}
+          PATH_SERT_PRIVKEY: ${{ secrets.PATH_SERT_PRIVKEY }}
+          ENTRYPOINT_SH: ${{ secrets.ENTRYPOINT_SH }}
+        with:
+          envs: PATH_SERT_FULLCHAIN, PATH_SERT_PRIVKEY, ENTRYPOINT_SH
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            chmod +x $ENTRYPOINT_SH
+            $ENTRYPOINT_SH
+            
