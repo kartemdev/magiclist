@@ -1,18 +1,12 @@
-name: check
+name: check-app
 on:
   pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-      - synchronize
-      - ready_for_review
 jobs:
-  node:
+  build-on-node:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.x, 17.x, 16.x ]
+        node-version: [ 18.x, 16.x ]
     steps:
       -
         uses: actions/checkout@v3

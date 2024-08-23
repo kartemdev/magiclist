@@ -29,7 +29,7 @@ export const userSlice = createSlice({
       .addMatcher(
         getVerifie.matchFulfilled,
         (state: IUserState, { payload }) => {
-          state.verifieCreatedTime = payload.verifieCreatedTime;
+          state.createdAt = payload.createdAt;
           state.isExpiresVerifie = payload.isExpiresVerifie;
         }
       )
@@ -37,4 +37,8 @@ export const userSlice = createSlice({
 });
 
 export const selectIsVerifiedUser = (state: RootState) => !!state.user.isVerified;
-export const selectVerifieCreatedTime = (state: RootState) => state.user.verifieCreatedTime;
+export const selectVerifieCreatedTime = (state: RootState) => {
+  const createdAt = state.user.createdAt;
+
+  return createdAt ? new Date(createdAt).getTime() : null;
+};
