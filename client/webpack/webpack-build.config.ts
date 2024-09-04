@@ -13,7 +13,7 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
 
   return {
     mode,
-    devtool: 'eval-cheap-module-source-map',
+    devtool: !isProd && 'eval-cheap-module-source-map',
     output: {
       path: path.resolve(__dirname, '../build'),
       filename: isProd ? '[name].[fullhash].bundle.js' : '[name].bundle.js',
