@@ -23,3 +23,22 @@ jobs:
         name: build static files
         run: npm run build
         working-directory: 'client'
+  lint-code:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
+      -
+        name: Starting Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      -
+        name: install packages
+        run: npm ci
+        working-directory: 'client'
+      -
+        name: linting js scripts
+        run: npx lint-staged --diff="origin/${GITHUB_BASE_REF}...origin/${GITHUB_HEAD_REF}"
+        working-directory: 'client'

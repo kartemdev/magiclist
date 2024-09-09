@@ -1,3 +1,5 @@
+export * from './http-utils';
+
 export { baseApi } from './base-api';
 
 export { logoutAction, setAuthTokenAction } from './base-query';
@@ -9,9 +11,10 @@ export type {
   IRegisterRequestDTO,
   IRefreshTokensRequestDTO,
   IAuthResponseDTO,
-} from './dto/auth';
+} from './dtos/auth';
 
 export type {
   IUpdateUserInfoRequestDTO,
   IUserInfoResponseDTO,
-} from './dto/user';
+  IUserVerifieResponseDTO,
+} from './dtos/user';

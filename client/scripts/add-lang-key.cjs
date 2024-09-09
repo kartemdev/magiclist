@@ -1,5 +1,4 @@
-const fs = require("fs"),
-path = require("path");
+const fs = require('fs');
 
 const isEntryPoint = () => require.main === module;
 
@@ -8,14 +7,15 @@ if (isEntryPoint()) {
 
   if (argLength < 8) {
     console.log(
-      'There are missing arguments (npm run add-lang-key (key) (rus translate) (eng translate) (json files paths))'
+      'There are missing arguments ' +
+        '(npm run add-lang-key (key) (rus translate) (eng translate) (json files paths))',
     );
     process.exit(1);
   }
 }
 
 const writeLangKeys = (args) => {
-  const [,, langKey, ruTranslate, enTranslate, ...filesPaths] = args;
+  const [, , langKey, ruTranslate, enTranslate, ...filesPaths] = args;
   const ruKeysPath = filesPaths.find((path) => path.slice(-7) === 'ru.json');
   const enKeysPath = filesPaths.find((path) => path.slice(-7) === 'en.json');
 
@@ -32,7 +32,7 @@ const writeLangKeys = (args) => {
 
   fs.writeFileSync(ruKeysPath, JSON.stringify({ ...ruKeys, [langKey]: ruTranslate }, null, '\t'));
   fs.writeFileSync(enKeysPath, JSON.stringify({ ...enKeys, [langKey]: enTranslate }, null, '\t'));
-  process.exit(1)
+  process.exit(1);
 };
 
-module.exports = writeLangKeys(process.argv)
+module.exports = writeLangKeys(process.argv);

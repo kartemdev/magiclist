@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import type { Header, HeaderGroup } from '@tanstack/react-table'; 
+import type { Header, HeaderGroup } from '@tanstack/react-table';
 import { flexRender } from '@tanstack/react-table';
 import classNames from 'classnames';
 
 import { ArrowHeadFullIcon } from '~shared/assets';
-import { SortOrders } from '~shared/enums';
+import { SortOrders } from '~shared/lib';
 
 import { Checkbox } from '../../../checkbox';
 import { ISortData } from '../../types';
@@ -22,7 +22,7 @@ interface IProps<T> {
   onClickCell?: (sortData: ISortData<T>) => void;
 }
 
-const TableHeader = <T extends {}, >(props: IProps<T>) => {
+const TableHeader = <T extends {}>(props: IProps<T>) => {
   const {
     headerGroups,
     isCheckBoxSelect,
@@ -39,13 +39,15 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
     if (isSorted && onClickCell) {
       const currentSortData: ISortData<T> = {
         fieldName: header.id as Key<T>,
-        sortType: 
-          !sortData?.sortType ? SortOrders.ASC
-            : sortData.sortType === SortOrders.ASC ? SortOrders.DESC : SortOrders.ASC,
+        sortType: !sortData?.sortType
+          ? SortOrders.ASC
+          : sortData.sortType === SortOrders.ASC
+            ? SortOrders.DESC
+            : SortOrders.ASC,
       };
-  
+
       setSortData(currentSortData);
-  
+
       if (onClickCell) {
         onClickCell(currentSortData);
       }
@@ -58,20 +60,20 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
     return (
       <>
         {header.isPlaceholder ? null : content}
-        {(
+        {
           <ArrowHeadFullIcon
             className={classNames('ml-table-header__arrowhead', {
               ...getSortOrderClassNames(header.id, sortData),
             })}
           />
-        )}
+        }
       </>
     );
   };
 
   return (
     <thead className='ml-table-header'>
-      {headerGroups.map(headerGroup => (
+      {headerGroups.map((headerGroup) => (
         <tr key={headerGroup.id} className='ml-table-header__row'>
           {isCheckBoxSelect && (
             <th
@@ -81,13 +83,13 @@ const TableHeader = <T extends {}, >(props: IProps<T>) => {
               {isMultipleSelect && <Checkbox checked={checked} />}
             </th>
           )}
-          {headerGroup.headers.map(header => (
+          {headerGroup.headers.map((header) => (
             <th
               key={header.id}
               className='ml-table-header__cell'
               onClick={() => handleClickCell(header)}
             >
-              <div className='ml-table-header__cell-content' children={renderCell(header)} />
+              <div className='ml-table-header__cell-content'>{renderCell(header)}</div>
             </th>
           ))}
         </tr>
