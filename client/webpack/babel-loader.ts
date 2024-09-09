@@ -1,4 +1,7 @@
-import { Configuration } from "webpack";
+import path from 'path';
+import { Configuration } from 'webpack';
+
+const babelConfigFile = path.resolve(__dirname, '../config/babel.config.mjs');
 
 const babelLoader = (isProd: boolean): Configuration => ({
   module: {
@@ -8,6 +11,9 @@ const babelLoader = (isProd: boolean): Configuration => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            configFile: babelConfigFile,
+          },
         },
       },
       {
@@ -16,16 +22,19 @@ const babelLoader = (isProd: boolean): Configuration => ({
         use: [
           {
             loader: 'babel-loader',
+            options: {
+              configFile: babelConfigFile,
+            },
           },
           {
             loader: 'ts-loader',
             options: {
               transpileOnly: isProd,
-            }
-          }
-        ]
-      }
-    ]
+            },
+          },
+        ],
+      },
+    ],
   },
 });
 

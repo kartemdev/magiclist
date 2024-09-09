@@ -1,17 +1,12 @@
 import { createAction } from '@reduxjs/toolkit';
 import { BaseQueryFn, FetchArgs, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import {
-  notyEmit,
-  getHttpError,
-  SERVER_TIMEOUT,
-  isIncludeHttpStatuses,
-  EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS,
-} from '~shared/lib';
+import { notyEmit, SERVER_TIMEOUT, EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS } from '~shared/lib';
 import { API_BASE, AuthEndPoints } from '~shared/config';
 
 import { ISelfError } from './types';
-import { IAuthResponseDTO } from './dto/auth';
+import { IAuthResponseDTO } from './dtos/auth';
+import { getHttpError, isIncludeHttpStatuses } from './http-utils';
 
 export const logoutAction = createAction('auth/logout');
 export const setAuthTokenAction = createAction<IAuthResponseDTO>('auth/set-auth-user');
@@ -31,11 +26,13 @@ export const baseQuery = fetchBaseQuery({
   credentials: 'include',
 }) as BaseQueryFn<string | FetchArgs, unknown, ISelfError, {}>;
 
-export const baseQueryWithReauth: BaseQueryFn<
-  string | FetchArgs, unknown, ISelfError
-> = async (args, api, extraOptions) => {
+export const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, ISelfError> = async (
+  args,
+  api,
+  extraOptions,
+) => {
   const { dispatch, endpoint } = api;
-  
+
   let response = await baseQuery(args, api, extraOptions);
   const { error = null } = response;
 
@@ -43,10 +40,10 @@ export const baseQueryWithReauth: BaseQueryFn<
     isIncludeHttpStatuses(+error?.status, [401]) &&
     !EXCLUDED_QUERY_INTERCEPTOR_ENDPOINTS.includes(endpoint)
   ) {
-    const refreshResponse = await baseQuery(AuthEndPoints.REFRESH, api, extraOptions)
+    const refreshResponse = await baseQuery(AuthEndPoints.REFRESH, api, extraOptions);
 
     if (refreshResponse.data) {
-      dispatch(setAuthTokenAction(refreshResponse.data as IAuthResponseDTO))
+      dispatch(setAuthTokenAction(refreshResponse.data as IAuthResponseDTO));
 
       response = await baseQuery(args, api, extraOptions);
     } else {
@@ -55,12 +52,12 @@ export const baseQueryWithReauth: BaseQueryFn<
   }
 
   if (isIncludeHttpStatuses(+error?.status, [429])) {
-    notyEmit.error('server_rate_limit_error')
+    notyEmit.error('server_rate_limit_error');
   }
 
   if (error) {
     notyEmit.serverError(getHttpError({ error })?.message, error?.status);
   }
-  
+
   return response;
 };
