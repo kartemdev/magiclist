@@ -25,6 +25,6 @@ export default {
     'type-empty': [2, 'never'],
 
     // Перечислим все возможные варианты коммитов
-    'type-enum': [2, 'always', ['ci/cd', 'feat', 'fix', 'refactor']],
+    'type-enum': [2, 'always', ['feat', 'fix', 'refactor', 'ci']],
   },
 };
