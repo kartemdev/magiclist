@@ -1,18 +1,18 @@
 import classNames from 'classnames';
 
 import { useAppSelector, useCountDownDate } from '~shared/hooks';
-import { selectVerifieCreatedTime, useInitialVerifie } from '~services/user'
-import { Button, DateTimer, DateTimerTypesEnum, Preloader } from '~shared/components';
+import { selectVerifieCreatedTime, useInitialVerifie } from '~services/user';
+import { Button, DateTimer, DateTimerTypesEnum, Preloader } from '~shared/ui';
 
 import { MINUTES_BLOCKED_SEND_VERIFIE } from '../../model';
 
-import './styles.scss';
+import './index.scss';
 
 const UserVerifieSendCode: React.FC = () => {
   const [verifie, { isLoading }] = useInitialVerifie();
 
   const verifieCreatedTime = useAppSelector(selectVerifieCreatedTime);
-  
+
   const sendCodeTimeStamp = (verifieCreatedTime || 0) + 60 * MINUTES_BLOCKED_SEND_VERIFIE * 1000;
   const countDownValues = useCountDownDate(sendCodeTimeStamp);
   const { minutes, seconds } = countDownValues;
@@ -24,9 +24,8 @@ const UserVerifieSendCode: React.FC = () => {
     verifie(null);
   };
 
-  const renderPerloader = () => (
-    isLoading && <Preloader size={30} thickness={5} typeStyle='secondary'/>
-  );
+  const renderPerloader = () =>
+    isLoading && <Preloader size={30} thickness={5} typeStyle='secondary' />;
 
   return (
     <div className='user-verifie-send-code'>

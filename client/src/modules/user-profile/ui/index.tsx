@@ -2,32 +2,35 @@ import { useEffect, useMemo, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
+import { Form, Preloader } from '~shared/ui';
+import { matchErrorMessage, wait } from '~shared/lib';
 import { useGetUserInfo, useUpdateUserInfo } from '~services/user';
-import { Form, InputGroup, Preloader } from '~shared/components';
-import { dateFormat, LocalesTags, matchErrorMessage, wait } from '~shared/lib';
 
 import {
   IUserProfileFormData,
   USER_PROFILE_FORM_ERRORS,
   UserProfileFormFieldEnum,
-  validationUserProfileForm
+  validationUserProfileForm,
 } from '../model';
-
-import './styles.scss';
 import { UserProfileFormFields } from './form-fields';
+
+import './index.scss';
 
 const UserProfileForm: React.FC = () => {
   const { data: userData } = useGetUserInfo();
   const [_, { isLoading, error }] = useUpdateUserInfo();
 
-  const { id, userName, email, registerDate } = userData || {};
+  const { id, userName, email } = userData || {};
 
   const [disabledMode, setDisabledMode] = useState<UserProfileFormFieldEnum>(null);
 
-  const defaultValues = useMemo(() => ({
-    [UserProfileFormFieldEnum.UserName]: '',
-    [UserProfileFormFieldEnum.UserEmail]: '',
-  }), []);
+  const defaultValues = useMemo(
+    () => ({
+      [UserProfileFormFieldEnum.UserName]: '',
+      [UserProfileFormFieldEnum.UserEmail]: '',
+    }),
+    [],
+  );
 
   const {
     reset,
@@ -37,7 +40,7 @@ const UserProfileForm: React.FC = () => {
     resetField,
     formState: { dirtyFields, errors },
     register: registerInput,
-    handleSubmit: handleSubmitForm
+    handleSubmit: handleSubmitForm,
   } = useForm({
     defaultValues,
     resolver: yupResolver(validationUserProfileForm()),

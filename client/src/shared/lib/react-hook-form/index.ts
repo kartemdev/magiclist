@@ -1,1 +1,1 @@
-export * from './match-error-message';
+export * from './match-error-message.lib';

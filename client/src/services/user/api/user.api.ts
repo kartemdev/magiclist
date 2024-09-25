@@ -1,41 +1,39 @@
 import {
   baseApi,
+  UserEndPoints,
+  RtkQueryCallbacks,
   IUserInfoResponseDTO,
   IUpdateUserInfoRequestDTO,
-} from "~shared/api";
-import { UserEndPoints } from "~shared/config";
-import { notyEmit } from "~shared/lib";
-import { RtkQueryCallbacks } from "~shared/lib";
+} from '~shared/api';
+import { notyEmit } from '~shared/lib';
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getUserInfo: build.query<IUserInfoResponseDTO, unknown>({
       query: () => ({
-        url: `${UserEndPoints.USER_INFO}?__read`,
         method: 'GET',
-        credentials: 'include',
+        url: UserEndPoints.USER_INFO,
       }),
       providesTags: ['UserInfo'],
     }),
     updateUserInfo: build.mutation<unknown, RtkQueryCallbacks<IUpdateUserInfoRequestDTO>>({
       query: (payload) => ({
-        url: `${UserEndPoints.USER_INFO}?__update`,
-        body: payload.data,
         method: 'PATCH',
-        credentials: 'include',
+        body: payload.data,
+        url: UserEndPoints.USER_INFO,
       }),
       invalidatesTags: (_, error, { onSuccess }) => {
         if (error) {
           return [];
         }
-        
+
         onSuccess?.();
         notyEmit.success('user_info_success_updated');
 
         return ['UserInfo'];
       },
     }),
-  })
+  }),
 });
 
 export const { useUpdateUserInfoMutation: useUpdateUserInfo } = userApi;

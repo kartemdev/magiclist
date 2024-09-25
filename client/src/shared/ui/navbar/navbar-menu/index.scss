@@ -1,0 +1,73 @@
+.ml-navbar-menu {
+  position: fixed;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: var(--z-index--xxxl);
+  height: calc(100dvh - 50px);
+  transition: 0.1s linear;
+  width: 200px;
+  
+  top: 50px;
+  right: 0;
+  padding: 20px 0px;
+  background: var(--primary--white);
+  box-shadow: -10px 0px 8px -10px rgba(34, 60, 80, 0.2);
+
+  &__block-left & {
+    left: 0
+  }
+
+  &__button {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    user-select: none;
+
+    &-icon {
+      width: 100%;
+      height: 100%;
+
+      path {
+        stroke: var(--primary);
+      }
+    }
+  }
+
+  &__block-left &-enter {
+    left: -100%;
+
+    &-active {
+      left: 0;
+      transition: all 0.3s;
+    }
+  }
+
+  &__block-left &-exit {
+    left: 0;
+      
+    &-active {
+      left: -100%;
+      transition: all 0.3s;
+    }
+  }
+    
+  &-enter {
+    right: -100%;
+
+    &-active {
+      right: 0;
+      transition: all 0.3s;
+    }
+  }
+
+  &-exit {
+    right: 0;
+      
+    &-active {
+      right: -100%;
+      transition: all 0.3s;
+    }
+  }
+}

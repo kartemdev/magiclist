@@ -1,5 +1,5 @@
-export { default as useOutsideClick } from './use-outside-click';
-export { default as usePortal } from './use-portal';
-export { default as useAppSelector } from './use-app-selector';
-export { default as useAppDispatch } from './use-app-dispatch';
-export { default as useCountDownDate } from './use-count-down-date';
+export { default as useOutsideClick } from './use-outside-click.hook';
+export { default as usePortal } from './use-portal.hook';
+export { default as useAppSelector } from './use-app-selector.hook';
+export { default as useAppDispatch } from './use-app-dispatch.hook';
+export { default as useCountDownDate } from './use-count-down-date.hook';

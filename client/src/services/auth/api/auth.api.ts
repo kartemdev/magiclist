@@ -1,32 +1,34 @@
-import { AuthEndPoints } from "~shared/config";
-import { RtkQueryCallbacks } from "~shared/lib";
-import { baseApi, ILoginRequestDTO, IRegisterRequestDTO, IAuthResponseDTO} from "~shared/api";
+import {
+  baseApi,
+  AuthEndPoints,
+  RtkQueryCallbacks,
+  ILoginRequestDTO,
+  IAuthResponseDTO,
+  IRegisterRequestDTO,
+} from '~shared/api';
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     login: build.mutation<IAuthResponseDTO, ILoginRequestDTO>({
       query: (payload) => ({
-        url: AuthEndPoints.LOGIN,
         method: 'POST',
         body: payload,
-        credentials: 'include',
+        url: AuthEndPoints.LOGIN,
       }),
-      invalidatesTags: (_, error) => error ? [] : ['UserInfo', 'UserVerifie'],
+      invalidatesTags: (_, error) => (error ? [] : ['UserInfo', 'UserVerifie']),
     }),
     register: build.mutation<IAuthResponseDTO, IRegisterRequestDTO>({
       query: (payload) => ({
-        url: AuthEndPoints.REGISTER,
         method: 'POST',
         body: payload,
-        credentials: 'include',
+        url: AuthEndPoints.REGISTER,
       }),
-      invalidatesTags: (_, error) => error ? [] : ['UserInfo', 'UserVerifie'],
+      invalidatesTags: (_, error) => (error ? [] : ['UserInfo', 'UserVerifie']),
     }),
     logout: build.mutation<unknown, RtkQueryCallbacks>({
       query: () => ({
-        url: AuthEndPoints.LOGOUT,
         method: 'GET',
-        credentials: 'include',
+        url: AuthEndPoints.LOGOUT,
       }),
       async onQueryStarted({ onSuccess, onError }, { queryFulfilled }) {
         try {
@@ -35,13 +37,12 @@ export const authApi = baseApi.injectEndpoints({
         } catch {
           onError?.();
         }
-      }
+      },
     }),
     refresh: build.query<IAuthResponseDTO, undefined>({
       query: () => ({
-        url: AuthEndPoints.REFRESH,
         method: 'GET',
-        credentials: 'include',
+        url: AuthEndPoints.REFRESH,
       }),
     }),
   }),

@@ -2,24 +2,18 @@ import { CheckIcon, CrossCancelIcon, EditPenIcon } from '~shared/assets';
 
 import { UserProfileFormDirtyFields, UserProfileFormFieldEnum } from '../../model';
 
-import './styles.scss';
+import './index.scss';
 
 interface IProps {
   onApply: () => void;
-  dirtyFields?: UserProfileFormDirtyFields,
+  dirtyFields?: UserProfileFormDirtyFields;
   disabledMode?: UserProfileFormFieldEnum;
-  keyFieldName?:  Key<typeof UserProfileFormFieldEnum>;
+  keyFieldName?: Key<typeof UserProfileFormFieldEnum>;
   onChangeDisabledMode?: (mode: UserProfileFormFieldEnum) => void;
 }
 
 const UserProfileFormTools: React.FC<IProps> = (props) => {
-  const {
-    onApply,
-    dirtyFields,
-    disabledMode,
-    keyFieldName,
-    onChangeDisabledMode
-  } = props;
+  const { onApply, dirtyFields, disabledMode, keyFieldName, onChangeDisabledMode } = props;
 
   const currentField = UserProfileFormFieldEnum[keyFieldName];
 
@@ -27,23 +21,18 @@ const UserProfileFormTools: React.FC<IProps> = (props) => {
     onChangeDisabledMode(currentField);
   };
 
-  const renderEditorButtonContent = () => (
+  const renderEditorButtonContent = () =>
     disabledMode === currentField ? (
       <CrossCancelIcon className='user-profile-input-tools__editor_icon-cross' />
     ) : (
       <EditPenIcon className='user-profile-input-tools__editor_icon-pen' />
-    )
-  );
+    );
 
   return (
     <div className='user-profile-input-tools'>
       {dirtyFields[currentField] && (
-        <button
-          type='submit'
-          onClick={onApply}
-          className='user-profile-input-tools__apply'
-        >
-          <CheckIcon className='user-profile-input-tools__apply_icon-check'/>
+        <button type='submit' onClick={onApply} className='user-profile-input-tools__apply'>
+          <CheckIcon className='user-profile-input-tools__apply_icon-check' />
         </button>
       )}
       <button

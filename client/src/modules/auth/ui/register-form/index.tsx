@@ -1,31 +1,34 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
 
 import { useRegister } from '~services/auth';
 import { matchErrorMessage, withoutFields } from '~shared/lib';
 import { IRegisterRequestDTO } from '~shared/api';
-import { Button, Form, InputGroup, Preloader } from '~shared/components';
+import { Button, Form, InputGroup, Preloader } from '~shared/ui';
 
 import {
   IRegisterFormData,
   REGISTER_FORM_ERRORS,
   RegisterFormFieldEnum,
-  validationRegisterForm
+  validationRegisterForm,
 } from '../../model';
 
-import '../styles.scss';
+import '../index.scss';
 
 const RegisterForm: React.FC = () => {
   const [registerUser, { isLoading, error }] = useRegister({ fixedCacheKey: 'register' });
 
-  const defaultValues = useMemo(() => ({
-    [RegisterFormFieldEnum.UserName]: '',
-    [RegisterFormFieldEnum.Email]: '',
-    [RegisterFormFieldEnum.Password]: '',
-    [RegisterFormFieldEnum.ComfirmPassword]: '',
-  }), []);
+  const defaultValues = useMemo(
+    () => ({
+      [RegisterFormFieldEnum.UserName]: '',
+      [RegisterFormFieldEnum.Email]: '',
+      [RegisterFormFieldEnum.Password]: '',
+      [RegisterFormFieldEnum.ComfirmPassword]: '',
+    }),
+    [],
+  );
 
   const {
     register: registerInput,
@@ -36,7 +39,7 @@ const RegisterForm: React.FC = () => {
     defaultValues,
     resolver: yupResolver(validationRegisterForm()),
   });
-  
+
   useEffect(() => {
     const errorMessage = matchErrorMessage<IRegisterFormData>(error, REGISTER_FORM_ERRORS);
 
@@ -44,18 +47,17 @@ const RegisterForm: React.FC = () => {
       setError(...errorMessage);
     }
   }, [error]);
-  
+
   const handleSubmit = (data: IRegisterFormData) => {
     registerUser(
-      withoutFields<IRegisterFormData, IRegisterRequestDTO>(data, [RegisterFormFieldEnum.ComfirmPassword])
+      withoutFields<IRegisterFormData, IRegisterRequestDTO>(data, [
+        RegisterFormFieldEnum.ComfirmPassword,
+      ]),
     );
   };
-  
+
   return (
-    <Form
-      className='auth-form register-form'
-      onSubmit={handleSubmitForm(handleSubmit)}
-    >
+    <Form className='auth-form register-form' onSubmit={handleSubmitForm(handleSubmit)}>
       <InputGroup.Text
         name={RegisterFormFieldEnum.UserName}
         className='auth-form__user-name'
@@ -92,7 +94,11 @@ const RegisterForm: React.FC = () => {
         })}
         type='submit'
       >
-        {isLoading ? <Preloader size={30} thickness={5} typeStyle='secondary'/> : window.translate('sign_up')}
+        {isLoading ? (
+          <Preloader size={30} thickness={5} typeStyle='secondary' />
+        ) : (
+          window.translate('sign_up')
+        )}
       </Button>
     </Form>
   );

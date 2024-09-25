@@ -1,8 +1,8 @@
 import { LangsSelector } from '~components/langs-selector';
 
-import AuthMenu from './auth-menu';
+import AuthMenu from './auth-menu.ui';
 
-import './styles.scss';
+import './index.scss';
 
 interface IProps {
   isAuth: boolean;
@@ -11,9 +11,7 @@ interface IProps {
 const MenuGroup: React.FC<IProps> = ({ isAuth }) => {
   return (
     <div className='header-menu-group'>
-      <div className='header-menu-group__body'>
-        {isAuth && <AuthMenu />}
-      </div>
+      <div className='header-menu-group__body'>{isAuth && <AuthMenu />}</div>
       <div className='header-menu-group__footer'>
         <LangsSelector isTopPlacementMenu />
       </div>

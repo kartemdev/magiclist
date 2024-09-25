@@ -1,16 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 
 import { UserVerifieConfirmCode, UserVerifieSendCode } from '~modules/user-verifie';
-import { Button } from '~shared/components';
+import { Button } from '~shared/ui';
 
-import './styles.scss';
+import './index.scss';
 
 const VerifieConfirmPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleNavigateChangeEmail = () => {
     navigate('/verifie/email');
-  }
+  };
 
   return (
     <div className='verifie-confirm-page'>

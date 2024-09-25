@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from '~shared/components';
+import { Button } from '~shared/ui';
 
-import './styles.scss';
+import './index.scss';
 
 const PreviewPage: React.FC = () => {
   const navigate = useNavigate();
@@ -15,11 +15,7 @@ const PreviewPage: React.FC = () => {
           <span className='home-page-preview__logo-item' />
           <span className='home-page-preview__logo-item' />
         </div>
-        <Button
-          onClick={() => navigate('/auth/register')}
-        >
-          {window.translate('begin')}
-        </Button>
+        <Button onClick={() => navigate('/auth/register')}>{window.translate('begin')}</Button>
         <div className='home-page-preview__slogan'>
           <span className='home-page-preview__slogan-item'>{`${window.translate('edit')}`}</span>
           <span className='home-page-preview__slogan-item'>{`${window.translate('analyze')}`}</span>
