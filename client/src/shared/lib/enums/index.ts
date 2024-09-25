@@ -1,1 +1,1 @@
-export * from './sort-orders';
+export * from './sort-orders.lib';

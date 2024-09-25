@@ -1,4 +1,3 @@
-export * from './types';
-export * from './constants';
-export * from './validation';
-
+export * from './types.model';
+export * from './constants.model';
+export * from './validation.model';

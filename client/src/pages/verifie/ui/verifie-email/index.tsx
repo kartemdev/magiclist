@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
 import { UserVerifieChangeEmailForm } from '~modules/user-verifie';
-import { Button } from '~shared/components';
+import { Button } from '~shared/ui';
 
-import './styles.scss';
+import './index.scss';
 
 const VerifieEmailPage: React.FC = () => {
   const navigate = useNavigate();
@@ -19,9 +19,7 @@ const VerifieEmailPage: React.FC = () => {
       </div>
       <div className='verifie-email-page__wrapper'>
         <UserVerifieChangeEmailForm onSuccess={handleBack} />
-        <Button onClick={handleBack}>
-          {window.translate('verifie_email_page_handle_back')}
-        </Button>
+        <Button onClick={handleBack}>{window.translate('verifie_email_page_handle_back')}</Button>
       </div>
     </div>
   );

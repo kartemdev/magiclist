@@ -1,6 +1,6 @@
-import UserProfileFormNameField from "./name";
-import UserProfileFormEmailField from "./email";
-import UserProfileFormRegisterDateField from "./register-date";
+import UserProfileFormNameField from './name.ui';
+import UserProfileFormEmailField from './email.ui';
+import UserProfileFormRegisterDateField from './register-date.ui';
 
 export const UserProfileFormFields = {
   Name: UserProfileFormNameField,

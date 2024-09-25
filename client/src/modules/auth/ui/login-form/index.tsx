@@ -1,11 +1,11 @@
 import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
 import classNames from 'classnames';
 
 import { useLogin } from '~services/auth';
 import { matchErrorMessage } from '~shared/lib';
-import { Button, Form, InputGroup, Preloader } from '~shared/components';
+import { Button, Form, InputGroup, Preloader } from '~shared/ui';
 
 import {
   ILoginFormData,
@@ -14,15 +14,18 @@ import {
   validationLoginForm,
 } from '../../model';
 
-import '../styles.scss';
+import '../index.scss';
 
 const LoginForm: React.FC = () => {
   const [loginUser, { isLoading, error }] = useLogin({ fixedCacheKey: 'login' });
 
-  const defaultValues = useMemo(() => ({
-    [LoginFormFieldEnum.Email]: '',
-    [LoginFormFieldEnum.Password]: '',
-  }), []);
+  const defaultValues = useMemo(
+    () => ({
+      [LoginFormFieldEnum.Email]: '',
+      [LoginFormFieldEnum.Password]: '',
+    }),
+    [],
+  );
 
   const {
     register: registerInput,
@@ -41,16 +44,13 @@ const LoginForm: React.FC = () => {
       setError(...errorMessage);
     }
   }, [error]);
-  
+
   const handleSubmit = (data: ILoginFormData) => {
     loginUser(data);
   };
 
   return (
-    <Form
-      className='auth-form login-form'
-      onSubmit={handleSubmitForm(handleSubmit)}
-    >
+    <Form className='auth-form login-form' onSubmit={handleSubmitForm(handleSubmit)}>
       <InputGroup.Text
         name={LoginFormFieldEnum.Email}
         className='auth-form__email'
@@ -72,7 +72,11 @@ const LoginForm: React.FC = () => {
         })}
         type='submit'
       >
-        {isLoading ? <Preloader size={30} thickness={5} typeStyle='secondary'/> : window.translate('sign_in')}
+        {isLoading ? (
+          <Preloader size={30} thickness={5} typeStyle='secondary' />
+        ) : (
+          window.translate('sign_in')
+        )}
       </Button>
     </Form>
   );

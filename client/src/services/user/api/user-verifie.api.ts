@@ -1,30 +1,25 @@
-import { baseApi } from '~shared/api';
-import { UserEndPoints } from '~shared/config';
-import { IUserVerifieResponseDTO } from '~shared/api';
+import { baseApi, IUserVerifieResponseDTO, UserEndPoints } from '~shared/api';
 
 export const userVerifieApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getVerifie: build.query<IUserVerifieResponseDTO, unknown>({
       query: () => ({
-        url: `${UserEndPoints.USER_VERIFIE}?__read`,
         method: 'GET',
-        credentials: 'include',
+        url: UserEndPoints.USER_VERIFIE,
       }),
       providesTags: ['UserVerifie'],
     }),
     initialVerifie: build.mutation<unknown, unknown>({
       query: () => ({
-        url: `${UserEndPoints.USER_VERIFIE_SEND_INITIAL}`,
         method: 'GET',
-        credentials: 'include',
+        url: UserEndPoints.USER_VERIFIE_SEND_INITIAL,
       }),
       invalidatesTags: (_, error) => (error ? [] : ['UserVerifie']),
     }),
     confirmInitialVerifie: build.mutation<unknown, string>({
       query: (payload) => ({
-        url: `${UserEndPoints.USER_VERIFIE_CONFIRM_INITIAL}/${payload}`,
         method: 'GET',
-        credentials: 'include',
+        url: `${UserEndPoints.USER_VERIFIE_CONFIRM_INITIAL}/${payload}`,
       }),
       invalidatesTags: (_, error) => (error ? [] : ['UserInfo']),
     }),

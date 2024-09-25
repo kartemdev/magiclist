@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 
 import { useRefresh } from '~services/auth';
-import { Preloader } from '~shared/components';
+import { Preloader } from '~shared/ui';
 
 interface IProps {
   children: React.ReactNode;
@@ -10,7 +10,11 @@ interface IProps {
 const AuthProvider: React.FC<IProps> = ({ children }) => {
   const { isLoading } = useRefresh();
 
-  return isLoading ? <Preloader isFullScreen textContent={i18next.t('please_wait')}/> : <>{children}</>;
+  return isLoading ? (
+    <Preloader isFullScreen textContent={i18next.t('please_wait')} />
+  ) : (
+    <>{children}</>
+  );
 };
 
 export default AuthProvider;

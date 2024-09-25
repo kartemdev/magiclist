@@ -2,20 +2,18 @@ import { useNavigate } from 'react-router-dom';
 
 import { LoginForm } from '~modules/auth';
 import { useLogin } from '~services/auth';
-import { Button } from '~shared/components';
+import { Button } from '~shared/ui';
 
-import '../styles.scss';
+import '../index.scss';
 
 const LoginPage: React.FC = () => {
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
   const [, { isLoading }] = useLogin({ fixedCacheKey: 'login' });
 
   return (
     <div className='auth-page login-page'>
       <div className='auth-page__form'>
-        <div className='auth-page__title'>
-          {window.translate('sign_in_acc')}
-        </div>
+        <div className='auth-page__title'>{window.translate('sign_in_acc')}</div>
 
         <LoginForm />
 
