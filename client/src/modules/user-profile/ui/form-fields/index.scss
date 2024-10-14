@@ -12,9 +12,17 @@
 
     &:disabled {
       cursor: text;
+    }
+  }
+}
 
-      &:hover {
-        box-shadow: none;
+@media (hover: hover) {
+  .user-profile-form-field {
+    .ml-input {
+      &__block {
+        &:disabled &:hover {
+          box-shadow: none;
+        }
       }
     }
   }
