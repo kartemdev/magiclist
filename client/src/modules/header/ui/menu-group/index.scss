@@ -19,7 +19,7 @@
       text-decoration: none;
       color: var(--primary--black);
 
-      &-active, &:hover {
+      &-active {
         background-color: var(--disabled--light);
       }
     }
@@ -28,5 +28,15 @@
   &__footer {
     display: flex;
     justify-content: center;
+  }
+
+  @media (hover: hover) {
+    &_body {
+      &_item-active {
+        &:hover {
+          background-color: var(--disabled--light);
+        }
+      }
+    }
   }
 }

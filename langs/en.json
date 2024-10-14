@@ -27,12 +27,9 @@
 	"user_email_already_exists": "This email is already in use",
 	"user_name_already_exists": "This name is already in use",
 	"timeout_error": "Response timeout has expired",
-	"edit": "Edit",
-	"analyze": "Analyze",
-	"organize": "Organize",
 	"powered_kartemdev": "Powered by kartemdev",
-	"copyright_ml": "2023 - 2024 Magic list",
-	"web_tables_ml": "Spreadsheets in browser",
+	"copyright_ml_date": "2023 - 2024 Magic list",
+	"copyright_ml_title": "Accounting tool for business",
 	"profile_page_title": "Profile",
 	"register_date": "Register date",
 	"profile_user_page_title": "User information",
@@ -49,5 +46,9 @@
 	"verifie_confirm_page_handle_change_email": "Change email",
 	"user_verifie_expires_data": "The code is already out of date, resend the message",
 	"server_rate_limit_error": "Request limit exceeded, repeat a little later",
-	"not_found_page_back_to_home": "Home page"
+	"not_found_page_back_to_home": "Home page",
+	"huy": "ХУЙ",
+	"home_preview_page_slogan_first": "Accounting",
+	"home_preview_page_slogan_second": "Analysis",
+	"home_preview_page_slogan_third": "Result"
 }

@@ -37,8 +37,8 @@ const Footer: React.FC = () => {
           </a>
         </div>
         <span className='footer__block-second_copyright'>
-          <span>&#xa9; {`${window.translate('copyright_ml')}.`}</span>
-          <span>{`${window.translate('web_tables_ml')}.`}</span>
+          <span>&#xa9; {`${window.translate('copyright_ml_date')}.`}</span>
+          <span>{`${window.translate('copyright_ml_title')}.`}</span>
         </span>
       </div>
     </div>

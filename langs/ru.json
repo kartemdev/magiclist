@@ -27,12 +27,9 @@
 	"user_email_already_exists": "Email уже используется",
 	"user_name_already_exists": "Это имя уже используется",
 	"timeout_error": "Время ожидания ответа истекло",
-	"edit": "Редактируй",
-	"analyze": "Анализируй",
-	"organize": "Организовывай",
 	"powered_kartemdev": "Powered by kartemdev",
-	"copyright_ml": "2023 - 2024 Magic list",
-	"web_tables_ml": "Электронные таблицы в браузере",
+	"copyright_ml_date": "2023 - 2024 Magic list",
+	"copyright_ml_title": "Инструмент учетa для бизнеса",
 	"profile_page_title": "Профиль",
 	"register_date": "Дата регистрации",
 	"profile_user_page_title": "Информация о пользователе",
@@ -49,5 +46,8 @@
 	"verifie_confirm_page_handle_change_email": "Изменить email",
 	"user_verifie_expires_data": "Код уже устарел, отправьте сообщение повторно",
 	"server_rate_limit_error": "Превышен лимит запросов, повторите чуть позже",
-	"not_found_page_back_to_home": "На главную страницу"
+	"not_found_page_back_to_home": "На главную страницу",
+	"home_preview_page_slogan_first": "Учет",
+	"home_preview_page_slogan_second": "Анализ",
+	"home_preview_page_slogan_third": "Результат"
 }

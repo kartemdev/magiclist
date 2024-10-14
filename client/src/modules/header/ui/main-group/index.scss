@@ -7,12 +7,23 @@
     align-items: center;
     text-decoration: none;
     color: var(--primary-black);
+  }
+  
+  &__item-active {
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
 
-    &-active, &:hover {
-      text-decoration: underline;
-      text-decoration-color: var(--primary);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 2px;
+  @media (hover: hover) {
+    &__item-active {
+      &:hover {
+        text-decoration: underline;
+        text-decoration-color: var(--primary);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+      }
     }
   }
 }

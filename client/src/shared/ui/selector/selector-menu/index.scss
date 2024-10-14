@@ -22,29 +22,32 @@
     overflow: auto;
     max-height: 210px;
 
-    &-item {
-      padding: 8px 10px;
-      
+    @include custom-scroll;
+  }
+  &__list-item {
+    padding: 8px 10px;
+  }
+  
+  &__list-active {
+    background-color: var(--primary);
+    color: var(--primary--white);
+
+    &:hover {
+      background-color: var(--primary);
+    }
+  }
+
+  &__list-empty {
+    text-align: center;
+    color: var(--primary--light)
+  }
+
+  @media (hover: hover) {
+    &__list-item {
       &:hover {
         background-color: var(--primary--lighter);
         cursor: pointer;
       }
     }
-    
-    &-active {
-      background-color: var(--primary);
-      color: var(--primary--white);
-
-      &:hover {
-        background-color: var(--primary);
-      }
-    }
-
-    &-empty {
-      text-align: center;
-      color: var(--primary--light)
-    }
-
-    @include custom-scroll;
   }
 }

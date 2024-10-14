@@ -1,6 +1,6 @@
 .ml-table-body {
   &__row {
-    &:hover, &-active {
+    &-active {
       background-color: var(--primary--lighter);
     }
   }
@@ -21,5 +21,13 @@
 
   &__checkbox {
     padding: 7px 12px;
+  }
+
+  @media (hover: hover) {
+    &__row {
+      &:hover {
+        background-color: var(--primary--lighter);
+      }
+    }
   }
 }
