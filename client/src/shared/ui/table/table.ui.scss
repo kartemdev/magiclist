@@ -1,11 +1,11 @@
 .ml-table {
+  width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   border-style: hidden;
   background-color: var(--primary--white);
   
   &__block {
-    max-width: max-content;
-    border: 2px solid var(--disabled);
     border-radius: 4px;
   }
 }

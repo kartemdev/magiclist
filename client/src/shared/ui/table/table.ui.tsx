@@ -36,7 +36,7 @@ const Table = <T extends {}>(props: IProps<T>) => {
   const [selectedRows, setSelectedRows] = useState<ISelectedRows<T>>({});
 
   const table = useReactTable({
-    data,
+    data: data || [],
     columns: columns,
     getCoreRowModel: getCoreRowModel(),
   });

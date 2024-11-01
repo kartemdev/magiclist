@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import { InputGroup } from '~shared/ui';
-import { LocalesTags, dateFormat } from '~shared/lib';
+import { dateFormat } from '~shared/lib';
 import { useGetUserInfo } from '~services/user';
 
 import './index.scss';
@@ -16,7 +16,7 @@ const UserProfileFormRegisterDateField: React.FC = () => {
         disabled
         name='registerDate'
         label={window.translate('register_date')}
-        value={registerDate && dateFormat(registerDate, LocalesTags.RUS)}
+        value={registerDate && dateFormat(registerDate)}
       />
     </div>
   );

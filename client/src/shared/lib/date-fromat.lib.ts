@@ -1,7 +1,2 @@
-export enum LocalesTags {
-  RUS = 'ru-RU',
-  US = 'en-US',
-}
-
-export const dateFormat = (date: Date | string, localeTag: LocalesTags) =>
-  new Intl.DateTimeFormat(localeTag).format(new Date(date));
+export const dateFormat = (date: Date | string) =>
+  new Intl.DateTimeFormat(undefined).format(new Date(date));

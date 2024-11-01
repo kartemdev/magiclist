@@ -1,15 +1,21 @@
 .ml-table-body {
   &__row {
-    &-active {
-      background-color: var(--primary--lighter);
+    transition: background-color 0.1s ease-in-out;
+
+    &:nth-of-type(even) {
+      background-color: var(--gray);
     }
   }
 
+  &__row.ml-table-body__row-active {
+    background-color: var(--primary--lighter);
+  }
+
   &__cell {
-    border: 2px solid var(--disabled);
+    border-right: 1px solid var(--disabled);
     
     &-content {
-      padding: 7px 10px;
+      padding: 10px 12px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -20,11 +26,13 @@
   }
 
   &__checkbox {
-    padding: 7px 12px;
+    width: 22px;
+    padding: 10px 12px;
+    background-color: var(--primary--lighter);
   }
 
   @media (hover: hover) {
-    &__row {
+    &__row:not(:has(.ml-table-body__checkbox:hover)) {
       &:hover {
         background-color: var(--primary--lighter);
       }
