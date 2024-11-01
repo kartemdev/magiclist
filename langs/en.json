@@ -57,5 +57,6 @@
 	"resiudes_table_residue": "Residue",
 	"resiudes_table_unit_price": "Unit price",
 	"resiudes_table_created_date": "Creation date",
-	"ml_table_empty_data": "Data not found"
+	"ml_table_empty_data": "Data not found",
+	"head_link_residues": "Leftovers"
 }
