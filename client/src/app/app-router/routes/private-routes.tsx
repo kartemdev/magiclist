@@ -9,6 +9,7 @@ import { selectIsAuth } from '~services/auth';
 import { selectIsVerifiedUser } from '~services/user';
 
 const ProfilePage = lazy(() => import(/* webpackChunkName: "ml_profile" */ '~pages/profile'));
+const ResiduesPage = lazy(() => import(/* webpackChunkName: "ml_residues" */ '~pages/residues'));
 
 const Guard: React.FC = () => {
   const isAuth = useAppSelector(selectIsAuth);
@@ -75,6 +76,10 @@ const privateRoutes: RouteObject = {
     {
       path: 'profile',
       element: <ProfilePage />,
+    },
+    {
+      path: 'residues',
+      element: <ResiduesPage />,
     },
   ],
 };

@@ -1,5 +1,6 @@
 export * from './auth';
 export * from './user';
+export * from './residues';
 export * from './http-utils.api';
 
 export { baseApi } from './base.api';

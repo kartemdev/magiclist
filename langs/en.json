@@ -50,5 +50,12 @@
 	"huy": "ХУЙ",
 	"home_preview_page_slogan_first": "Accounting",
 	"home_preview_page_slogan_second": "Analysis",
-	"home_preview_page_slogan_third": "Result"
+	"home_preview_page_slogan_third": "Result",
+	"residues_page_title": "Leftovers",
+	"resiudes_table_article": "Article",
+	"resiudes_table_product": "Product",
+	"resiudes_table_residue": "Residue",
+	"resiudes_table_unit_price": "Unit price",
+	"resiudes_table_created_date": "Creation date",
+	"ml_table_empty_data": "Data not found"
 }

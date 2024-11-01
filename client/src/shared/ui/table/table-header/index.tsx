@@ -36,7 +36,7 @@ const TableHeader = <T extends {}>(props: IProps<T>) => {
   const [sortData, setSortData] = useState<ISortData<T>>(null);
 
   const handleClickCell = (header: Header<T, unknown>) => {
-    if (isSorted && onClickCell) {
+    if (isSorted) {
       const currentSortData: ISortData<T> = {
         fieldName: header.id as Key<T>,
         sortType: !sortData?.sortType
@@ -47,10 +47,7 @@ const TableHeader = <T extends {}>(props: IProps<T>) => {
       };
 
       setSortData(currentSortData);
-
-      if (onClickCell) {
-        onClickCell(currentSortData);
-      }
+      onClickCell(currentSortData);
     }
   };
 

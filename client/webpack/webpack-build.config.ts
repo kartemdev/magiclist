@@ -1,15 +1,15 @@
-import path from "path";
+import path from 'path';
 import webpack, { Configuration } from 'webpack';
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import FontPreloadPlugin from 'webpack-font-preload-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
-import { Env } from "./types";
+import { Env } from './types';
 
 const buildConfig = (isProd: boolean, env: Env): Configuration => {
-  const mode = isProd ? "production" : "development";
+  const mode = isProd ? 'production' : 'development';
 
   return {
     mode,
@@ -21,7 +21,7 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
       publicPath: '/',
       clean: true,
     },
-    plugins:[
+    plugins: [
       new FontPreloadPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
@@ -29,7 +29,7 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
         favicon: path.resolve(__dirname, '../public', 'favicon.ico'),
       }),
       new webpack.DefinePlugin({
-        'API_HOST': JSON.stringify(env.API_HOST),
+        API_HOST: JSON.stringify(env.API_HOST),
       }),
     ],
     performance: {
@@ -38,6 +38,9 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
       maxAssetSize: 512000,
     },
     optimization: {
+      runtimeChunk: isProd && { name: 'runtime' },
+      removeAvailableModules: isProd,
+      removeEmptyChunks: isProd,
       minimize: isProd,
       minimizer: [
         new TerserPlugin({
@@ -45,7 +48,7 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
           extractComments: true,
         }),
         new CssMinimizerPlugin(),
-      ],  
+      ],
       splitChunks: isProd && {
         minSize: 17000,
         minRemainingSize: 0,
@@ -54,45 +57,45 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
           react: {
             test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
             name: 'vendor_react',
-            chunks: "all",
+            chunks: 'all',
             priority: 10,
           },
           redux: {
             test: /[\\/]node_modules[\\/](redux|react-redux|@reduxjs\/toolkit)[\\/]/,
             name: 'vendor_redux',
-            chunks: "all",
+            chunks: 'all',
             priority: 10,
           },
           reactRouter: {
             test: /[\\/]node_modules[\\/](react-router-dom)[\\/]/,
             name: 'vendor_react_router_dom',
-            chunks: "all",
+            chunks: 'all',
             priority: 10,
           },
           reactHookForm: {
             test: /[\\/]node_modules[\\/](react-hook-form|@hookform\/resolvers|yup)[\\/]/,
             name: 'vendor_react_hook_form',
-            chunks: "all",
+            chunks: 'all',
             priority: 10,
           },
           tanstack: {
             test: /[\\/]node_modules[\\/](@tanstack\/react-table)[\\/]/,
             name: 'vendor_tanstack',
-            chunks: "all",
+            chunks: 'all',
             priority: 10,
           },
           i18next: {
             test: /[\\/]node_modules[\\/](i18next|react-i18next)[\\/]/,
             name: 'vendor_i18next',
-            chunks: "all",
+            chunks: 'all',
             priority: 10,
           },
           common: {
             test: /[\\/]node_modules[\\/]/,
             priority: -5,
             reuseExistingChunk: true,
-            chunks: "initial",
-            name: "vendor_common",
+            chunks: 'initial',
+            name: 'vendor_common',
             minSize: 0,
           },
           default: {
@@ -104,7 +107,7 @@ const buildConfig = (isProd: boolean, env: Env): Configuration => {
         },
       },
     },
-  }
+  };
 };
 
 export default buildConfig;

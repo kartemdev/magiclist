@@ -49,5 +49,12 @@
 	"not_found_page_back_to_home": "На главную страницу",
 	"home_preview_page_slogan_first": "Учет",
 	"home_preview_page_slogan_second": "Анализ",
-	"home_preview_page_slogan_third": "Результат"
+	"home_preview_page_slogan_third": "Результат",
+	"residues_page_title": "Остатки",
+	"resiudes_table_article": "Артикул",
+	"resiudes_table_product": "Товар",
+	"resiudes_table_residue": "Остаток",
+	"resiudes_table_unit_price": "Цена за еденицу",
+	"resiudes_table_created_date": "Дата создания",
+	"ml_table_empty_data": "Данные не найдены"
 }

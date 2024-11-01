@@ -1,0 +1,7 @@
+@import '~mixins';
+
+.residue-table {
+  overflow: auto;
+
+  @include custom-scroll;
+}
