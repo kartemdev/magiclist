@@ -12,6 +12,6 @@ export const validationUserProfileForm = () => {
       .string()
       .required('required_field_error')
       .min(3, 'min_symbols_length_3')
-      .max(20, 'max_symbols_length_20'),
+      .max(50, 'max_symbols_length_20'),
   });
 };

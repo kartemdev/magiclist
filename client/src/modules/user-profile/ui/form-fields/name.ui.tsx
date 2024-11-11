@@ -22,7 +22,7 @@ const UserProfileFormNameField: React.FC<IUserProfileFormFieldProps> = (props) =
   } = props;
 
   const { data: userData } = useGetUserInfo();
-  const [updateUserData] = useUpdateUserInfo();
+  const [updateUserData] = useUpdateUserInfo({ fixedCacheKey: 'user-update-profile' });
 
   const { userName } = userData || {};
 
