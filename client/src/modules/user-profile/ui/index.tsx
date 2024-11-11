@@ -18,7 +18,7 @@ import './index.scss';
 
 const UserProfileForm: React.FC = () => {
   const { data: userData } = useGetUserInfo();
-  const [_, { isLoading, error }] = useUpdateUserInfo();
+  const [_, { isLoading, error }] = useUpdateUserInfo({ fixedCacheKey: 'user-update-profile' });
 
   const { id, userName, email } = userData || {};
 
@@ -59,6 +59,7 @@ const UserProfileForm: React.FC = () => {
     setDisabledMode(null);
   }, [userData]);
 
+  console.log(error, '!!!');
   useEffect(() => {
     const errorMessage = matchErrorMessage<IUserProfileFormData>(error, USER_PROFILE_FORM_ERRORS);
 
