@@ -32,12 +32,11 @@ const LayoutProvider: React.FC = () => {
     }
   }, [isAuth, isVerifiedUser]);
 
-  const renderFallback = () =>
-    isFetching || <Preloader isFullScreen textContent={window.translate('please_wait')} />;
+  const renderFallback = () => isFetching || <Preloader isFullScreen />;
 
   return (
     <Layout headerSlot={<Header />} footerSlot={<Footer />}>
-      {isFetching && <Preloader isFullScreen textContent={window.translate('please_wait')} />}
+      {isFetching && <Preloader isFullScreen />}
 
       <ToastContainer style={{ fontSize: '15px' }} />
 

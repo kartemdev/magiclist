@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
   return (
     <div className='home-page'>
       <>
-        {isLoading && <Preloader isFullScreen textContent={window.translate('please_wait')} />}
+        {isLoading && <Preloader isFullScreen />}
         {isAuth && isVerified ? (
           <div style={{ fontSize: 30 }}>Julia, you my big love &#128151;</div>
         ) : (

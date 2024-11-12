@@ -49,7 +49,7 @@ const TableBody = <T extends {}>(props: IProps<T>) => {
           </tr>
         ))
       ) : (
-        <tr className='ml-table-body__empty'>{window.translate('ml_table_empty_data')}</tr>
+        <span className='ml-table-body__empty'>{window.translate('ml_table_empty_data')}</span>
       )}
     </tbody>
   );
