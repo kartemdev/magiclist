@@ -12,16 +12,12 @@
   }
 
   &__cell {
+    padding: 10px 12px;
     border-right: 1px solid var(--disabled);
     
     &-content {
-      padding: 10px 12px;
+      text-align: center;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 3px;
     }
   }
 
@@ -29,6 +25,20 @@
     width: 22px;
     padding: 10px 12px;
     background-color: var(--primary--lighter);
+  }
+
+  &:has(.ml-table-body__empty) {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 39px);
+    background-color: var(--gray);
+  }
+
+  &__empty {
+    font-size: 24px;
   }
 
   @media (hover: hover) {
