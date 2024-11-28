@@ -15,3 +15,4 @@ export { default as ProfileUserIcon } from './profile-user.svg';
 export { default as LoginUserIcon } from './login-user.svg';
 export { default as EditPenIcon } from './edit-pen.svg';
 export { default as CheckIcon } from './check.svg';
+export { default as DesktopIcon } from './desktop.svg';
