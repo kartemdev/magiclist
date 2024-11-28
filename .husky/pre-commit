@@ -1,1 +1,1 @@
-cd client && npm run hook:pre-commit
+cd client && npm run hook:release && npm run hook:pre-commit

@@ -1,0 +1,54 @@
+.home-guest-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  .ml-button {
+    height: 45px;
+    font-size: 20px;
+    font-weight: 500;
+  
+    &__block {
+      max-width: 250px;
+    }
+  }
+
+  &__slogan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+
+    &-item {
+      font-size: 30px;
+      font-weight: 500;
+      align-self: center;
+      color: var(--primary--slightly);
+      animation: slideTop .4s ease-in;
+      animation-delay: .4s;
+      animation-fill-mode: backwards;
+    }
+
+    &-item:first-child {
+      animation-delay: .2s;
+    }
+
+    &-item:last-child {
+      animation-delay: .6s;
+    }
+  }
+
+  @keyframes slideTop {
+    0% {
+      opacity: 0;
+      transform: translate(0, 200px);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+}

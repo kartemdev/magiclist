@@ -57,5 +57,11 @@
 	"resiudes_table_unit_price": "Цена за еденицу",
 	"resiudes_table_created_date": "Дата создания",
 	"ml_table_empty_data": "Данные не найдены",
-	"head_link_residues": "Остатки"
+	"head_link_residues": "Остатки",
+	"home_auth_page_title": "Привет! Не стесняйся, кликай:",
+	"home_auth_page_profile_link": "Профиль",
+	"home_auth_page_residues_link": "Остатки",
+	"mobile_unavail_func_modal_title": "Предупреждение!",
+	"mobile_unavail_func_modal_text": "К сожалению, данный функционал не доступен на планшетах и мобильных устройствах. Пожалуйста, воспользуйтесь компьютером или ноутбуком.",
+	"mobile_unavail_func_modal_confirm": "ОК"
 }

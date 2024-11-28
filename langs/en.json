@@ -47,7 +47,6 @@
 	"user_verifie_expires_data": "The code is already out of date, resend the message",
 	"server_rate_limit_error": "Request limit exceeded, repeat a little later",
 	"not_found_page_back_to_home": "Home page",
-	"huy": "ХУЙ",
 	"home_preview_page_slogan_first": "Accounting",
 	"home_preview_page_slogan_second": "Analysis",
 	"home_preview_page_slogan_third": "Result",
@@ -58,5 +57,11 @@
 	"resiudes_table_unit_price": "Unit price",
 	"resiudes_table_created_date": "Creation date",
 	"ml_table_empty_data": "Data not found",
-	"head_link_residues": "Leftovers"
+	"head_link_residues": "Leftovers",
+	"home_auth_page_title": "Hi! Don't be shy, click:",
+	"home_auth_page_profile_link": "Profile",
+	"home_auth_page_residues_link": "Leftovers",
+	"mobile_unavail_func_modal_title": "Warning!",
+	"mobile_unavail_func_modal_text": "Unfortunately, this functionality is not available on tablets and mobile devices. Please use a computer or laptop.",
+	"mobile_unavail_func_modal_confirm": "OK"
 }
