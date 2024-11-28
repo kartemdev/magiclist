@@ -1,16 +1,18 @@
-import { useLayoutEffect } from 'react';
+import { lazy, useLayoutEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { selectIsAuth, useLogout } from '~services/auth';
-import { selectIsVerifiedUser } from '~services/user';
 import { Preloader } from '~shared/ui';
 import { useAppSelector } from '~shared/hooks';
 
-import PreviewPage from './preview-page';
+import { selectIsVerifiedUser } from '~services/user';
+import { selectIsAuth, useLogout } from '~services/auth';
+
+const HomeAuthPage = lazy(() => import(/* webpackChunkName: "ml_home_guest" */ './auth-page'));
+const HomeGuestPage = lazy(() => import(/* webpackChunkName: "ml_home_guest" */ './guest-page'));
 
 import './index.scss';
 
-const HomePage: React.FC = () => {
+const HomePage = () => {
   const navigate = useNavigate();
   const [, { isLoading }] = useLogout({ fixedCacheKey: 'logout' });
 
@@ -25,14 +27,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div className='home-page'>
-      <>
-        {isLoading && <Preloader isFullScreen />}
-        {isAuth && isVerified ? (
-          <div style={{ fontSize: 30 }}>Julia, you my big love &#128151;</div>
-        ) : (
-          <PreviewPage />
-        )}
-      </>
+      {isLoading && <Preloader isFullScreen />}
+      {isAuth && isVerified ? <HomeAuthPage /> : <HomeGuestPage />}
     </div>
   );
 };

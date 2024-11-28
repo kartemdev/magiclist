@@ -1,0 +1,27 @@
+.mobile-unavail-func-modal {
+  &__body {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__text {
+    font-size: 18px;
+    text-align: center;
+    color: var(--disabled--dark);
+  }
+
+  &__footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
