@@ -1,0 +1,65 @@
+@import '~mixins';
+
+$menu-delays: 1 0.4s, 2 0.7s;
+
+.home-auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+
+  &__title {
+    color: var(--primary--slightly);
+    margin-bottom: 15px;
+    animation: opacityIn 1s ease-in-out backwards;
+  }
+
+  &__menu-list {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .home-auth-page__menu-item {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 50px;
+    text-decoration: none;
+    color: var(--primary--white);
+    width: 200px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: background-color 0.6s ease;
+    background-color: var(--primary--slightly);
+
+    &::after {
+      content: "\279C";
+      font-size: 20px;
+      position: absolute;
+      font-size: 35px;
+      left: calc(100% - 36px);
+      transition: left 0.6s ease;
+    }
+    
+    &:hover {
+      background-color: var(--primary--light);
+
+      &::after {
+        left: calc(100% - 32px);
+      }
+    }
+
+    @each $index, $delay in $menu-delays {
+      &:nth-child(#{$index}) {
+        animation: opacityIn 0.2s #{$delay} ease-in backwards;
+      }
+    }
+  }
+
+  @include keyframesOpacity;
+}

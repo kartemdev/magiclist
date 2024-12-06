@@ -15,8 +15,8 @@ interface IProps {
 
 const Preloader: React.FC<IProps> = (props) => {
   const {
-    size = 50,
-    thickness = 10,
+    size = 70,
+    thickness = 15,
     textContent = null,
     isFullScreen = false,
     typeStyle = 'primary',
